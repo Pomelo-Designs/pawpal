@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import { App } from './App';
 import Root from './routes/Root';
-import ErrorPage from './ErrorPage';
+import ErrorPage from './routes/ErrorPage';
+import Home from './routes/Home';
 
 // Pets
 import Pets from './routes/Pets/Pets';
@@ -39,10 +39,13 @@ import Report from './routes/Help/Report';
 
 const router = createBrowserRouter([
   {
-    path: "/",
     element: <Root />,
     errorElement: <ErrorPage />,
     children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
       {
         path: "pets",
         element: <Pets />,
@@ -146,4 +149,3 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <RouterProvider router={router} />
   </React.StrictMode>
 );
-

@@ -1,18 +1,17 @@
-import { Nav } from "../../components/Nav/Nav";
+import { useRoutes } from "../../hooks/useRoutes";
 
 export default function Services() {
-
-  const links = [
-    { link: '/services', label: 'Services' },
-    { link: 'vet-care', label: 'Vet Care' },
-    { link: 'grooming', label: 'Grooming' },
-    { link: 'chipping', label: 'Chipping' },
-    { link: 'licensing', label: 'Licensing' }
+  const routes = [
+    { route: '/services', label: 'Services Overview' },
+    { route: 'vet-care', label: 'Vet Care' },
+    { route: 'grooming', label: 'Grooming' },
+    { route: 'chipping', label: 'Chipping' },
+    { route: 'licensing', label: 'Licensing' }
   ];
 
-  return (
+  return useRoutes(routes, (
     <>
-      <Nav links={links} />
+      Services Overview
     </>
-  );
+  ));
 }

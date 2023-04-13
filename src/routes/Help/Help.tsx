@@ -1,15 +1,14 @@
-import { Nav } from "../../components/Nav/Nav";
+import { useRoutes } from "../../hooks/useRoutes";
 
 export default function Help() {
-
-  const links = [
-    { link: '/help', label: 'Help' },
-    { link: 'report', label: 'Report' }
+  const routes = [
+    { route: '/help', label: 'Help' },
+    { route: 'report', label: 'Report' }
   ];
 
-  return (
+  return useRoutes(routes, (
     <>
-      <Nav links={links} />
+      Help Overview
     </>
-  );
+  ));
 }

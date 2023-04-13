@@ -1,19 +1,18 @@
-import { Nav } from "../../components/Nav/Nav";
+import { useRoutes } from "../../hooks/useRoutes";
 
 export default function Pets() {
-
-  const links = [
-    { link: '/pets', label: 'Pets Overview' },
-    { link: 'adoption', label: 'Adoption' },
-    { link: 'foster-care', label: 'Foster Care' },
-    { link: 'working-cats', label: 'Working Cats' },
-    { link: 'requirements', label: 'Requirements' }
+  const routes = [
+    { route: '/pets', label: 'Pets Overview' },
+    { route: 'adoption', label: 'Adoption' },
+    { route: 'foster-care', label: 'Foster Care' },
+    { route: 'working-cats', label: 'Working Cats' },
+    { route: 'requirements', label: 'Requirements' }
   ];
 
-  return (
+  return useRoutes(routes, (
     <>
-      <Nav links={links} />
+      Pets Overview
     </>
-  );
+  ));
 }
 

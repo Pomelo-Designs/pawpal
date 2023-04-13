@@ -1,19 +1,18 @@
-import { Nav } from "../../components/Nav/Nav";
+import { useRoutes } from "../../hooks/useRoutes";
 
 export default function About() {
-
-  const links = [
-    { link: '/about', label: 'About' },
-    { link: 'education', label: 'Education' },
-    { link: 'programs', label: 'Programs' },
-    { link: 'employment', label: 'Employment' },
-    { link: 'news', label: 'News' },
-    { link: 'shop', label: 'Gift Shop' }
+  const routes = [
+    { route: '/about', label: 'About' },
+    { route: 'education', label: 'Education' },
+    { route: 'programs', label: 'Programs' },
+    { route: 'employment', label: 'Employment' },
+    { route: 'news', label: 'News' },
+    { route: 'shop', label: 'Gift Shop' }
   ];
 
-  return (
+  return useRoutes(routes, (
     <>
-      <Nav links={links} />
+      About
     </>
-  );
+  ));
 }

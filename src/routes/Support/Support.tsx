@@ -1,16 +1,15 @@
-import { Nav } from "../../components/Nav/Nav";
+import { useRoutes } from "../../hooks/useRoutes";
 
 export default function Support() {
-
-  const links = [
-    { link: '/support', label: 'Support' },
-    { link: 'donate', label: 'Donate' },
-    { link: 'volunteer', label: 'Volunteer' }
+  const routes = [
+    { route: '/support', label: 'Support Overview' },
+    { route: 'donate', label: 'Donate' },
+    { route: 'volunteer', label: 'Volunteer' }
   ];
 
-  return (
+  return useRoutes(routes, (
     <>
-      <Nav links={links} />
+      Support Overview
     </>
-  );
+  ));
 }
