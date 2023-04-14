@@ -1,4 +1,4 @@
-import { Nav } from "../components/Nav/Nav";
+import { SubNav } from "../components/Nav/SubNav";
 import { useLocation } from "react-router-dom";
 
 const useRoutes = (routes: any, children: any) => {
@@ -7,7 +7,7 @@ const useRoutes = (routes: any, children: any) => {
 
   return (
     <div className="flex flex-row">
-      <Nav routes={routes} />
+      <SubNav routes={routes} />
       {path === routes[0].route && children}
     </div>
   )
