@@ -1,4 +1,6 @@
 import { NavLink, Outlet } from "react-router-dom";
+import { motion } from "framer-motion";
+import { useState } from "react";
 
 export const SubNav = (routes: { routes: any[] }) => {
 
@@ -22,29 +24,46 @@ export const SubNav = (routes: { routes: any[] }) => {
 }
 
 const Item = ({ index, item }: any) => {
+  const [hover, setHover] = useState(false);
 
-  const baseClasses = "text-[22px] leading-7 w-full p-2 text-center rounded-full"
+  // const getClasses = ({ isActive }: any) => {
+  //   const baseClasses = "relative flex flex-col items-center text-[22px] leading-7 w-full p-2 text-center rounded-full"
 
-  const getClasses = ({ isActive }: any) => {
-    switch (true) {
-      case (isActive): {
-        return `${baseClasses} bg-green-400 hover:bg-green-500`;
-      }
-      default: {
-        return `${baseClasses} hover:bg-gray-200`;
-      }
-    }
-  }
+  //   switch (true) {
+  //     case (isActive && hover): {
+  //       return "bg-green-400";
+  //     }
+  //     case (isActive): {
+  //       return "bg-green-300";
+  //     }
+  //     case (hover): {
+  //       return "bg-gray-200"
+  //     }
+  //   }
+  // }
 
   return (
     <li key={index} className="p-1 w-full flex flex-col">
       <NavLink
         to={item.route}
         tabIndex={index}
-        className={({ isActive }) => getClasses({isActive})}
+        className="relative flex flex-col items-center h-[44px] w-full p-2"
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
         end
       >
-        {item.label}
+        {({ isActive }) => (
+          <>
+            <span className="absolute text-[22px] leading-7 text-center z-10">{item.label}</span>
+            {isActive &&
+              <motion.div
+                className={`${hover ? 'bg-green-300' : ''} absolute mt-[-8px] bg-green-100 h-full w-14 rounded-full`}
+                initial={{ height: 'h-7', width: '20px' }}
+                animate={{ width: ['100px', '236px'] }}
+                transition={{ ease: "easeOut", duration: 0.3 }}
+              />}
+          </>
+        )}
       </NavLink>
     </li>
   )
