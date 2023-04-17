@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Outlet, NavLink } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Root() {
 
@@ -37,7 +38,7 @@ const Item = (props: any) => {
   const [hover, setHover] = useState(false);
 
   const Icon = (props: any) => (
-    <span className={`material-symbols-outlined p-1 rounded-full ${props.className}`}
+    <span className="material-symbols-outlined z-10"
       style={{ fontSize: '32px', color: "#1C1B1F", fontWeight: "400" }}>
       {props.icon}
     </span>
@@ -58,24 +59,36 @@ const Item = (props: any) => {
   }
 
   return (
-    <li>
+    <li key={props.index}>
       <NavLink
         to={props.route}
-        className="flex flex-col items-center capitalize text-xs gap-1"
+        className="flex flex-col w-14 items-center capitalize text-xs gap-1 break-normal"
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
         tabIndex={props.index}
       >
         {({ isActive }) => (
-          <>
+          <AnimatePresence initial={false}>
             <Icon
-              className={getClasses({ isActive, hover })}
               icon={props.icon}
             />
-            <span className={hover ? "text-black": ""}>
+            <span className={hover ? "text-black z-10 mt-2" : "z-10 mt-2"}>
               {props.label}
             </span>
-          </>
+            <div className="w-12 relative flex flex-col m-0">
+              <div className={`w-12 h-12 absolute mt-[-70px] ${hover ? 'bg-pink-100' : ''} rounded-2xl`} />
+              {isActive &&
+                <motion.div
+                  key={props.index}
+                  className={`${hover ? 'bg-pink-300' : ''} active:bg-pink-300 h-12 w-12 mt-[-70px] absolute bg-pink-300 rounded-2xl`}
+                  initial={{ opacity: 0, width: '20px' }}
+                  animate={{ opacity: 1, width: ['25%', '100%'] }}
+                  // transition={{ ease: "linear", duration: 0.3 }}
+                  exit={{ opacity: 0, width: ['100%', '25%'] }}
+                />
+              }
+            </div>
+          </AnimatePresence>
         )}
       </NavLink>
     </li>
