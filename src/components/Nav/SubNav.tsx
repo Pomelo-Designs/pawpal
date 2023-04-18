@@ -9,7 +9,7 @@ export const SubNav = (routes: any) => {
     <AnimatePresence initial={false}>
       <motion.nav
         key="subnav"
-        className="fixed top-0 left-[72px] p-2 h-screen w-[244px] border-r-[1px] bg-[#FFF8F6] border-[#D8C2C0]"
+        className="fixed top-0 left-[72px] z-20 p-2 h-screen w-[244px] border-r-[1px] bg-[#FFF8F6] border-[#D8C2C0]"
         initial={{ opacity: 0, width: '0px' }}
         animate={{ opacity: 1, width: ['0px', '244px'] }}
         transition={{ ease: "linear" }}
