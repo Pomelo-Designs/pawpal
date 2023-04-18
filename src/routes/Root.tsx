@@ -15,9 +15,9 @@ export default function Root() {
 
   return (
     <section className="flex flex-row">
-      <nav className="h-screen w-fit p-3 border-r-[1px] border-black">
-        <ul className="flex flex-col gap-6 items-center">
-          {routes.map((item: any, index: any) => {
+      <nav className="h-screen w-fit p-3 bg-[#FFF8F6] border-r-[1px] border-[#D8C2C0]">
+        <ul className="flex flex-col items-center gap-5 mt-1">
+          {routes.map((item: any, index: number) => {
             return (
               <Item
                 route={item.route}
@@ -34,60 +34,83 @@ export default function Root() {
   );
 }
 
-const Item = (props: any) => {
+const Item = ({ index, route, label, icon }: any) => {
   const [hover, setHover] = useState(false);
+  const [clicked, setClicked] = useState(false);
 
-  const Icon = (props: any) => (
-    <span className="material-symbols-outlined z-10"
-      style={{ fontSize: '32px', color: "#1C1B1F", fontWeight: "400" }}>
-      {props.icon}
+  const Icon = ({ icon, classes }: any) => (
+    <span className={`flex material-symbols-rounded z-10 ${classes}`}>
+      {icon}
     </span>
   )
 
-  const getClasses = ({ isActive, hover }: any) => {
+  const getIconStyles = ({ isActive, hover, clicked }: any) => {
     switch (true) {
       case (isActive && hover): {
-        return "bg-green-400";
+        return "material-active-hover"
+      }
+      case (isActive && clicked): {
+        return "material-active-clicked"
       }
       case (isActive): {
-        return "bg-green-300";
+        return "material-active";
+      }
+      case (clicked): {
+        return "material-hover-clicked"
       }
       case (hover): {
-        return "bg-gray-200"
+        return "material-hover";
       }
+      default: return "material-passive"
     }
+
   }
 
   return (
-    <li key={props.index}>
+    <li key={index}>
       <NavLink
-        to={props.route}
-        className="flex flex-col w-14 items-center capitalize text-xs gap-1 break-normal"
+        to={route}
+        className="relative flex flex-col w-14 h-fit items-center text-[#201A18] capitalize text-xs break-normal"
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
-        tabIndex={props.index}
+        onMouseDown={() => setClicked(true)}
+        onMouseUp={() => setClicked(false)}
+        tabIndex={index}
+
       >
         {({ isActive }) => (
-          <AnimatePresence initial={false}>
-            <Icon
-              icon={props.icon}
-            />
-            <span className={hover ? "text-black z-10 mt-2" : "z-10 mt-2"}>
-              {props.label}
-            </span>
-            <div className="w-12 relative flex flex-col m-0">
-              <div className={`w-12 h-12 absolute mt-[-70px] ${hover ? 'bg-pink-100' : ''} rounded-2xl`} />
+          <AnimatePresence>
+            <div
+              className="h-11 w-11 flex flex-col items-center justify-center">
+              <div className={`
+                flex items-center justify-center w-11 h-11 absolute rounded-2xl
+                ${hover && 'bg-pink-100'} 
+                ${clicked && 'bg-pink-200'} 
+                `} />
+              <Icon
+                icon={icon}
+                classes={getIconStyles({ hover, isActive, clicked })}
+              />
               {isActive &&
                 <motion.div
-                  key={props.index}
-                  className={`${hover ? 'bg-pink-300' : ''} active:bg-pink-300 h-12 w-12 mt-[-70px] absolute bg-pink-300 rounded-2xl`}
-                  initial={{ opacity: 0, width: '20px' }}
-                  animate={{ opacity: 1, width: ['25%', '100%'] }}
+                  key={index}
+                  className={`
+                    w-11 h-11 absolute z-0 rounded-2xl bg-pink-300
+                    ${hover ? 'bg-pink-300' : ''} 
+                    ${clicked ? 'bg-pink-300' : ''} 
+                  `}
+                  initial={{ opacity: 0, width: '11px' }}
+                  animate={{ opacity: 1, width: ['11px', '44px'] }}
                   // transition={{ ease: "linear", duration: 0.3 }}
-                  exit={{ opacity: 0, width: ['100%', '25%'] }}
+                  exit={{ opacity: 0, width: ['44px', '11px'] }}
                 />
               }
             </div>
+
+            <span className={`${hover ? "text-black" : ''} text-[#201A18] font-medium text-xs z-10`}>
+              {label}
+            </span>
+
           </AnimatePresence>
         )}
       </NavLink>

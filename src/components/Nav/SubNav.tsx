@@ -6,7 +6,7 @@ export const SubNav = (routes: { routes: any[] }) => {
 
   return (
     <section className="flex flex-row">
-      <nav className="h-screen w-[245px] border-r-[1px] rounded-r-2xl border-black">
+      <nav className="h-screen w-[245px] border-r-[1px] bg-[#FFF8F6] border-[#D8C2C0]">
         <ul className="flex flex-col mt-4">
           {routes.routes.map((item: any, index: number) => {
             return (
@@ -53,15 +53,15 @@ const Item = ({ index, item }: any) => {
         end
       >
         {({ isActive }) => (
-          <AnimatePresence initial={false}>
-            <span className="absolute text-xl text-center z-10">
+          <AnimatePresence>
+            <span className="absolute text-xl text-center z-10 text-[#201A18]">
               {item.label}
             </span>
             {isActive &&
               <motion.div
                 key={index}
                 className={`${hover ? 'bg-pink-300' : ''} active:bg-pink-300 absolute mt-[-8px] bg-pink-300 h-full w-14 rounded-full`}
-                initial={{ opacity: 0, width: '20px' }}
+                initial={{ opacity: 0, width: '10%' }}
                 animate={{ opacity: 1, width: ['25%', '100%'] }}
                 // transition={{ ease: "linear", duration: 0.3 }}
                 exit={{ opacity: 0, width: ['100%', '25%'] }}
