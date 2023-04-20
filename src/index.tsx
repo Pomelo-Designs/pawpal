@@ -1,45 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
-import Root from './routes/Root';
+// Routes
+import Layout from './routes/Layout';
 import ErrorPage from './routes/ErrorPage';
 import Home from './routes/Home';
-
-// Pets
-import Pets from './routes/Pets/Pets';
-import Adoption from './routes/Pets/Adoption';
-import FosterCare from './routes/Pets/FosterCare';
-import WorkingCats from './routes/Pets/WorkingCats';
-import Requirements from './routes/Pets/Requirements';
-
-// Services
-import Services from './routes/Services/Services';
-import VetCare from './routes/Services/VetCare';
-import Grooming from './routes/Services/Grooming';
-import Chipping from './routes/Services/Chipping';
-import Licensing from './routes/Services/Licensing';
-
-// About
-import About from './routes/About/About';
-import Education from './routes/About/Education';
-import Programs from './routes/About/Programs';
-import Employment from './routes/About/Employment';
-import News from './routes/About/News';
-import Shop from './routes/About/Shop';
-
-// Support
-import Support from './routes/Support/Support';
-import Donate from './routes/Support/Donate';
-import Volunteer from './routes/Support/Volunteer';
-
-// Help
-import Help from './routes/Help/Help';
-import Report from './routes/Help/Report';
+// // Pets
+import { Pets, Adoption, FosterCare, WorkingCats, Requirements } from './routes/Pets/Pets';
+// // Services
+import { Services, VetCare, Grooming, Chipping, Licensing } from './routes/Services/Services';
+// // About
+import { About, Education, Programs, Employment, News, Shop } from './routes/About/About';
+// // Support
+import { Support, Donate, Volunteer } from './routes/Support/Support';
+// // Help
+import { Help, Report } from './routes/Help/Help';
 
 const router = createBrowserRouter([
   {
-    element: <Root />,
+    element: <Layout />,
     errorElement: <ErrorPage />,
     children: [
       {
@@ -47,7 +26,7 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "pets",
+        path: "/pets",
         element: <Pets />,
         children: [
           {

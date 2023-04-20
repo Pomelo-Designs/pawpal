@@ -1,4 +1,6 @@
-export default function Help() {
+export { default as Report } from "./Report";
+
+export const Help = () => {
 
   return (
     <>
