@@ -1,38 +1,48 @@
 import { NavLink } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import { LinkAnimation } from "./LinkAnimation";
 
-export const SubNav = ({ routes, hover, setHover }: any) => {
-  console.log(routes)
+export const SubNav = ({ routes, hover }: any) => {
 
-  if (routes.length !== 0) return (
-    <AnimatePresence initial={false}>
-      <motion.nav
-        key="subnav"
-        className="fixed top-0 left-[72px] z-20 p-2 h-screen w-[244px] border-r-[1px] bg-[#FFF8F6] border-[#D8C2C0]"
-        initial={{ opacity: 0, width: '0px' }}
-        animate={{ opacity: 1, width: ['0px', '244px'] }}
-        transition={{ ease: "linear", duration: 0.3 }}
-        exit={{ opacity: 0, width: ['244px', '0px'] }}
-      >
-        <ul className="flex flex-col">
-          {routes.map((item: any, index: number) => {
-            console.log(item);
-
-            return (
-              <li key={index} className="w-full flex flex-col">
-                <Item
-                  item={item}
-                  index={index}
-                />
-              </li>
-            );
-          })}
-        </ul>
-      </motion.nav>
-    </AnimatePresence>
-  ); else return null;
+  switch (true) {
+    case (routes.length === 0): return null;
+    case (hover === true): {
+      return (
+        <NavAnimation>
+          <ul className="flex flex-col">
+            {routes.map((item: any, index: number) => {
+              return (
+                <li key={index} className="w-full flex flex-col">
+                  <Item
+                    item={item}
+                    index={index}
+                  />
+                </li>
+              );
+            })}
+          </ul>
+        </NavAnimation>
+      )
+    }
+    default: return null;
+  }
 }
+
+const NavAnimation = ({ children }: any) => (
+  <AnimatePresence initial={false}>
+    <motion.nav
+      key="subnav"
+      className="fixed top-0 left-[72px] z-20 p-2 h-screen w-[244px] border-r-[1px] bg-[#FFF8F6] border-[#D8C2C0]"
+      initial={{ opacity: 0, width: '0px' }}
+      animate={{ opacity: 1, width: ['0px', '244px'] }}
+      transition={{ ease: "linear", duration: 0.3 }}
+      exit={{ opacity: 0, width: ['244px', '0px'] }}
+    >
+      {children}
+    </motion.nav>
+  </AnimatePresence>
+);
 
 const Item = ({ index, item }: any) => {
   const [hover, setHover] = useState(false);
@@ -57,38 +67,16 @@ const Item = ({ index, item }: any) => {
           >
             {item.label}
           </span>
-          <Animation
+          <LinkAnimation
             isActive={isActive}
             index={index}
             hover={hover}
+            style="h-full w-full rounded-full"
+            minWidth="25%"
+            maxWidth="100%"
           />
         </div>
       )}
     </NavLink>
-  )
-}
-
-const Animation = ({ isActive, index, hover }: any) => {
-
-  const background = () => {
-    switch (true) {
-      case (hover): return "bg-pink-300";
-      default: return "bg-pink-300 active:bg-pink-300";
-    }
-  }
-
-  return (
-    <AnimatePresence>
-      {isActive &&
-        <motion.div
-          key={index}
-          className={`${background()} flex self-center absolute h-full w-full rounded-full`}
-          initial={{ opacity: 0, width: '10%' }}
-          animate={{ opacity: 1, width: ['25%', '100%'] }}
-          // transition={{ ease: "linear", duration: 0.3 }}
-          exit={{ opacity: 0, width: ['100%', '25%'] }}
-        />
-      }
-    </AnimatePresence>
   )
 }

@@ -1,26 +1,20 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
 import { SubNav } from "./SubNav";
 import { routes } from "../../routes/Routes";
+import { LinkAnimation } from "./LinkAnimation";
 
 export default function Navigation() {
-  const [hover, setHover] = useState(false);
 
   return (
     <nav className="fixed z-10 h-screen w-fit p-2 bg-[#FFF8F6] border-r-[1px] border-[#D8C2C0]">
       <ul className="flex flex-col items-center gap-7">
         {routes.map((item: any, index: number) => {
           return (
-            <li
-              key={index}
-              onMouseEnter={() => setHover(true)}
-              onMouseLeave={() => setHover(false)}
-            >
+            <li key={index}>
               <Item
                 item={item}
                 index={index}
-                hover={hover}
               />
             </li>
           )
@@ -30,16 +24,16 @@ export default function Navigation() {
   )
 }
 
-const Item = ({ index, item, hover }: any) => {
-  // const [hover, setHover] = useState(false);
+const Item = ({ index, item }: any) => {
+  const [hover, setHover] = useState(false);
   const [clicked, setClicked] = useState(false);
 
   return (
     <NavLink
       to={item.route}
       className="relative flex flex-col w-14 h-fit items-center text-[#201A18] capitalize text-xs break-normal"
-      // onMouseOver={() => setHover(true)}
-      // onMouseLeave={() => setHover(false)}
+      onMouseOver={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
       onMouseDown={() => setClicked(true)}
       onMouseUp={() => setClicked(false)}
       tabIndex={index}
@@ -47,7 +41,7 @@ const Item = ({ index, item, hover }: any) => {
       {({ isActive }) => (
         <div className="flex flex-col items-center">
           <div className="h-11 w-11 flex flex-col items-center justify-center">
-            <Bg 
+            <Bg
               hover={hover}
               clicked={clicked}
             />
@@ -57,18 +51,26 @@ const Item = ({ index, item, hover }: any) => {
               clicked={clicked}
               isActive={isActive}
             />
-            <Animation
+            <LinkAnimation
               isActive={isActive}
               index={index}
               hover={hover}
               clicked={clicked}
-              item={item}
+              style="w-11 h-11 rounded-2xl"
+              minWidth="11px"
+              maxWidth="44px"
             />
           </div>
-          <span className={`${hover ? "text-black" : 'text-[#201A18]'} font-medium text-xs z-10`}>
+          <span className={`
+            ${hover ? "text-black" : 'text-[#201A18]'} 
+            font-medium text-xs z-10
+          `}>
             {item.label}
           </span>
-          {/* {hover && <SubNav routes={item.subnav} /> } */}
+          <SubNav
+            routes={item.subnav}
+            hover={hover}
+          />
         </div>
       )}
     </NavLink>
@@ -109,28 +111,3 @@ const Bg = ({ hover, clicked }: any) => {
     <div className={`w-11 h-11 absolute rounded-2xl ${background()}`} />
   )
 }
-
-const Animation = ({ isActive, index, hover, clicked, item }: any) => (
-  <AnimatePresence>
-    {isActive &&
-      <>
-        <motion.div
-          key={index}
-          className={`
-            w-11 h-11 absolute z-0 rounded-2xl bg-pink-300
-            ${hover ? 'bg-pink-300' : ''} 
-            ${clicked ? 'bg-pink-300' : ''} 
-          `}
-          initial={{ opacity: 0, width: '11px' }}
-          animate={{ opacity: 1, width: ['11px', '44px'] }}
-          // transition={{ ease: "linear", duration: 0.3 }}
-          exit={{ opacity: 0, width: ['44px', '11px'] }}
-        />
-        {hover && <SubNav routes={item.subnav} />}
-      </>
-    }
-  </AnimatePresence>
-)
-
-// if page is on route, show subnav
-// if page is on route, and hover on another icon, hide subnav and show subnav for other icon routes
