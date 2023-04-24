@@ -3,15 +3,15 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { LinkAnimation } from "./LinkAnimation";
 
-export const SubNav = ({ routes, hover }: any) => {
+export const SubNav = ({ data }: any) => {
 
   switch (true) {
-    case (routes.length === 0): return null;
-    case (hover === true): {
+    case (data.length === 0): return null;
+    case (data.length !== 0): {
       return (
         <NavAnimation>
           <ul className="flex flex-col">
-            {routes.map((item: any, index: number) => {
+            {data.map((item: any, index: number) => {
               return (
                 <li key={index} className="w-full flex flex-col">
                   <Item
@@ -33,7 +33,7 @@ const NavAnimation = ({ children }: any) => (
   <AnimatePresence initial={false}>
     <motion.nav
       key="subnav"
-      className="fixed top-0 left-[72px] z-20 p-2 h-screen w-[244px] border-r-[1px] bg-[#FFF8F6] border-[#D8C2C0]"
+      className="p-2 h-screen w-[244px] border-r-[1px] bg-[#FFF8F6] border-[#D8C2C0]"
       initial={{ opacity: 0, width: '0px' }}
       animate={{ opacity: 1, width: ['0px', '244px'] }}
       transition={{ ease: "linear", duration: 0.3 }}

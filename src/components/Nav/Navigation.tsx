@@ -1,13 +1,12 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { SubNav } from "./SubNav";
 import { routes } from "../../routes/Routes";
 import { LinkAnimation } from "./LinkAnimation";
 
-export default function Navigation() {
+export default function Navigation({ setShow, setData }: any) {
 
   return (
-    <nav className="fixed z-10 h-screen w-fit p-2 bg-[#FFF8F6] border-r-[1px] border-[#D8C2C0]">
+    <nav className="p-2 bg-[#FFF8F6] border-r-[1px] border-[#D8C2C0]">
       <ul className="flex flex-col items-center gap-7">
         {routes.map((item: any, index: number) => {
           return (
@@ -15,6 +14,8 @@ export default function Navigation() {
               <Item
                 item={item}
                 index={index}
+                setData={setData}
+                setShow={setShow}
               />
             </li>
           )
@@ -24,7 +25,7 @@ export default function Navigation() {
   )
 }
 
-const Item = ({ index, item }: any) => {
+const Item = ({ index, item, setData, setShow }: any) => {
   const [hover, setHover] = useState(false);
   const [clicked, setClicked] = useState(false);
 
@@ -32,7 +33,11 @@ const Item = ({ index, item }: any) => {
     <NavLink
       to={item.route}
       className="relative flex flex-col w-14 h-fit items-center text-[#201A18] capitalize text-xs break-normal"
-      onMouseOver={() => setHover(true)}
+      onMouseEnter={() => {
+        setHover(true)
+        setData(item.subnav)
+        setShow(true)
+      }}
       onMouseLeave={() => setHover(false)}
       onMouseDown={() => setClicked(true)}
       onMouseUp={() => setClicked(false)}
@@ -67,10 +72,6 @@ const Item = ({ index, item }: any) => {
           `}>
             {item.label}
           </span>
-          <SubNav
-            routes={item.subnav}
-            hover={hover}
-          />
         </div>
       )}
     </NavLink>
