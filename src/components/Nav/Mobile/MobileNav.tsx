@@ -52,21 +52,36 @@ const Button = ({ show, setShow }: any) => (
 
 const Menu = ({ show, setShow, render, data, setData, setRender }: any) => {
   return (
-    <div className="fixed p-2 top-0 left-0 flex flex-col z-20 h-screen rounded-r-xl
+    <div className="fixed p-2 top-0 left-0 flex flex-col z-20 h-screen compact:rounded-none medium:rounded-r-xl
     bg-[#FFF8F6] border-r-[1px] border-[#D8C2C0]
       compact:w-screen medium:w-80">
       <Button
         show={show}
         setShow={setShow}
       />
-      {render ?
-        <MainNav
-          setShow={setShow}
-          setData={setData}
-          setRender={setRender}
-        />
-        : <SubNav data={data} />
-      }
+      <Nav
+        data={data}
+        render={render}
+        setShow={setShow}
+        setData={setData}
+        setRender={setRender}
+      />
     </div>
   )
+}
+
+const Nav = ({ data, setData, setRender, render, setShow }: any) => {
+  if (render === false) {
+    return (
+      <MainNav
+        setShow={setShow}
+        setData={setData}
+        setRender={setRender}
+      />
+    )
+  } else if (render === true) {
+    if (data) {
+      return <SubNav data={data} setData={setData} setRender={setRender} />
+    }
+  } return null;
 }
