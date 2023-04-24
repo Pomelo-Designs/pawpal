@@ -6,7 +6,6 @@ import { LinkAnimation } from "./LinkAnimation";
 export const SubNav = ({ data }: any) => {
 
   switch (true) {
-    case (data.length === 0): return null;
     case (data.length !== 0): {
       return (
         <NavAnimation>
@@ -46,7 +45,7 @@ const NavAnimation = ({ children }: any) => (
 
 const Item = ({ index, item }: any) => {
   const [hover, setHover] = useState(false);
-
+  
   return (
     <NavLink
       to={item.route}

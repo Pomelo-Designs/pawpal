@@ -6,11 +6,11 @@ export const routes = [
     subnav: []
   },
   {
-    route: '/pets',
+    route: 'pets',
     label: 'pets',
     icon: 'sound_detection_dog_barking',
     subnav: [
-      { route: '/pets', label: 'Pets overview' },
+      { route: 'pets', label: 'Pets overview' },
       { route: '/pets/adoption', label: 'Adoption' },
       { route: '/pets/foster-care', label: 'Foster care' },
       { route: '/pets/working-cats', label: 'Working cats' },

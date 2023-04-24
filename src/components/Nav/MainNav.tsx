@@ -3,8 +3,7 @@ import { NavLink } from "react-router-dom";
 import { routes } from "../../routes/Routes";
 import { LinkAnimation } from "./LinkAnimation";
 
-export default function Navigation({ setShow, setData }: any) {
-
+export const MainNav = ({ setShow, setData }: any) => {
   return (
     <nav className="p-2 bg-[#FFF8F6] border-r-[1px] border-[#D8C2C0]">
       <ul className="flex flex-col items-center gap-7">
