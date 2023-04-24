@@ -1,15 +1,14 @@
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
-import { routes } from "../../routes/Routes";
-import { LinkAnimation } from "./LinkAnimation";
+import { useState } from "react"
+import { routes } from "../../../routes/Routes"
+import { NavLink } from "react-router-dom"
 
-export const MainNav = ({ setShow, setData, setRender }: any) => {
+export const MainNav = ({ setData, setShow, setRender }: any) => {
   return (
-    <nav className="p-2 bg-[#FFF8F6] border-r-[1px] border-[#D8C2C0]">
-      <ul className="flex flex-col items-center gap-7">
+    <nav>
+      <ul className="flex flex-col w-full items-center">
         {routes.map((item: any, index: number) => {
           return (
-            <li key={index}>
+            <li key={index} className="w-full">
               <Item
                 item={item}
                 index={index}
@@ -25,7 +24,7 @@ export const MainNav = ({ setShow, setData, setRender }: any) => {
   )
 }
 
-const Item = ({ index, item, setData, setShow, setRender }: any) => {
+const Item = ({ item, index, setData, setShow, setRender }: any) => {
   const [hover, setHover] = useState(false);
   const [clicked, setClicked] = useState(false);
 
@@ -36,7 +35,7 @@ const Item = ({ index, item, setData, setShow, setRender }: any) => {
   return (
     <NavLink
       to={item.route}
-      className="relative flex flex-col w-14 h-fit items-center text-[#201A18] capitalize text-xs break-normal"
+      className="relative text-[#201A18] capitalize text-xs break-normal"
       onMouseEnter={() => {
         setRender(false);
         setHover(true);
@@ -50,35 +49,30 @@ const Item = ({ index, item, setData, setShow, setRender }: any) => {
       tabIndex={index}
     >
       {({ isActive }) => (
-        <div className="flex flex-col items-center">
-          <div className="h-11 w-11 flex flex-col items-center justify-center">
-            <Bg
-              hover={hover}
-              clicked={clicked}
-            />
+        <>
+          <Bg
+            isActive={isActive}
+          />
+          <div className="flex flex-row items-center w-full h-12 
+          py-0.5 px-4">
             <Icon
               icon={item.icon}
               hover={hover}
               clicked={clicked}
               isActive={isActive}
             />
-            <LinkAnimation
-              isActive={isActive}
-              index={index}
-              hover={hover}
-              clicked={clicked}
-              style="w-11 h-11 rounded-2xl"
-              minWidth="11px"
-              maxWidth="44px"
-            />
+            <span className="flex w-full h-full items-center 
+              tracking-[0.15px] text-base font-medium text-[#201A18]
+              z-10 whitespace-nowrap"
+            >
+              {item.label}
+            </span>
+            {item.subnav.length !== 0 &&
+              <span className="material-symbols-rounded ml-auto">arrow_right_alt</span>
+            }
+
           </div>
-          <span className={`
-            ${hover ? "text-black" : 'text-[#201A18]'} 
-            font-medium text-xs z-10
-          `}>
-            {item.label}
-          </span>
-        </div>
+        </>
       )}
     </NavLink>
   )
@@ -98,23 +92,22 @@ const Icon = ({ icon, hover, clicked, isActive }: any) => {
   }
 
   return (
-    <span className={`flex material-symbols-rounded z-10 ${style()}`}>
+    <span className={`flex material-symbols-rounded mr-4 z-10 ${style()}`}>
       {icon}
     </span>
   )
 }
 
-const Bg = ({ hover, clicked }: any) => {
+const Bg = ({ isActive }: any) => {
 
   const background = () => {
     switch (true) {
-      case (clicked): return "bg-pink:200";
-      case (hover): return "bg-pink-100";
+      case (isActive): return "bg-pink-200";
       default: return "bg-transparent";
     }
   }
 
   return (
-    <div className={`w-11 h-11 absolute rounded-2xl ${background()}`} />
+    <div className={`w-full h-12 absolute rounded-full ${background()}`} />
   )
 }

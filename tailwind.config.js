@@ -6,6 +6,16 @@ module.exports = {
   ],
   darkMode: ['class', '[data-mode="dark"]'],
   theme: {
+    screens: {
+      'expanded': '840px',
+      // => @media (min-width: 1023px) { ... }
+
+      'medium': { 'max': '840px' },
+      // => @media (max-width: 767px) { ... }
+
+      'compact': { 'max': '600px' },
+      // => @media (max-width: 639px) { ... }
+    },
     extend: {
       colors: {
         pink: {
