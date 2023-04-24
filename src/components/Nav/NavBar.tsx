@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { MainNav } from "./MainNav";
 import { SubNav } from "./SubNav";
+import { SubNavBar } from "./SubNavBar";
 
 export default function NavBar() {
   const [show, setShow] = useState(false);
   const [data, setData] = useState([]);
+  const [render, setRender] = useState(false);
 
   return (
     <div
@@ -14,8 +16,22 @@ export default function NavBar() {
       <MainNav
         setShow={setShow}
         setData={setData}
+        setRender={setRender}
       />
-      {show ? <SubNav data={data} /> : null}
+      <Nav
+        show={show}
+        data={data}
+        render={render}
+      />
     </div>
   )
+}
+
+const Nav = ({ show, data, render }: any) => {
+
+  if (show === true && data.length !== 0) return (
+    <SubNavBar>
+      { render ? <SubNav data={data} /> : null }
+    </SubNavBar>
+  ); else return null;
 }

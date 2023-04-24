@@ -1,51 +1,35 @@
 import { NavLink } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useState } from "react";
 import { LinkAnimation } from "./LinkAnimation";
 
 export const SubNav = ({ data }: any) => {
-
-  switch (true) {
-    case (data.length !== 0): {
-      return (
-        <NavAnimation>
-          <ul className="flex flex-col">
-            {data.map((item: any, index: number) => {
-              return (
-                <li key={index} className="w-full flex flex-col">
-                  <Item
-                    item={item}
-                    index={index}
-                  />
-                </li>
-              );
-            })}
-          </ul>
-        </NavAnimation>
-      )
-    }
-    default: return null;
-  }
-}
-
-const NavAnimation = ({ children }: any) => (
-  <AnimatePresence initial={false}>
-    <motion.nav
-      key="subnav"
-      className="p-2 h-screen w-[244px] border-r-[1px] bg-[#FFF8F6] border-[#D8C2C0]"
-      initial={{ opacity: 0, width: '0px' }}
-      animate={{ opacity: 1, width: ['0px', '244px'] }}
+  return (
+    <motion.ul
+      key="ul"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
       transition={{ ease: "linear", duration: 0.3 }}
-      exit={{ opacity: 0, width: ['244px', '0px'] }}
+      className="flex flex-col"
     >
-      {children}
-    </motion.nav>
-  </AnimatePresence>
-);
+      {data.map((item: any, index: number) => {
+        return (
+          <li key={index} className="w-full flex flex-col">
+            <Item
+              item={item}
+              index={index}
+            />
+          </li>
+        );
+      })}
+    </motion.ul>
+  )
+}
 
 const Item = ({ index, item }: any) => {
   const [hover, setHover] = useState(false);
-  
+
   return (
     <NavLink
       to={item.route}
