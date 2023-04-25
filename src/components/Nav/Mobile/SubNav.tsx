@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 export const SubNav = ({ data, setData, setRender }: any) => {
   return (
-    <div>
+    <div className="px-2">
       <button
         className="w-full flex flex-row items-center h-12 px-4"
         onClick={() => {
@@ -43,7 +43,7 @@ const Item = ({ item, index }: any) => {
       end
     >
       {({ isActive }) => (
-        <div className="flex items-center w-full h-11 px-4">
+        <div className="flex items-center w-full h-12 px-4">
           <span className="text-start">
             {item.label}
           </span>
