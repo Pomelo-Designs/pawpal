@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { MainNav } from "./MainNav";
 import { SubNav } from "./SubNav";
+import { Icon } from "../Icon";
+import { Background } from "../Background";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function MobileNav() {
   const [show, setShow] = useState(false);
@@ -37,35 +40,70 @@ export default function MobileNav() {
   )
 }
 
-const Button = ({ show, setShow }: any) => (
-  <button
-    className="h-12 w-12 mb-2 ml-3 flex items-center justify-center"
-    onClick={() => setShow(!show)}>
-    {show ?
-      <span className="material-symbols-rounded">menu_open</span> :
-      <span className="material-symbols-rounded">menu</span>
-    }
-  </button>
-)
+const Button = ({ show, setShow }: any) => {
+  const [hover, setHover] = useState(false);
+  const [clicked, setClicked] = useState(false);
+
+  return (
+    <button
+      className="relative h-12 w-12 mb-2 ml-3 flex items-center justify-center"
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      onMouseDown={() => setClicked(true)}
+      onMouseUp={() => setClicked(false)}
+      onClick={() => setShow(!show)}
+    >
+      <Background
+        hover={hover}
+        clicked={clicked}
+        styles="w-full h-12 rounded-full"
+      />
+      {show ?
+        <Icon
+          icon="menu_open"
+          hover={hover}
+          clicked={clicked}
+        /> :
+        <Icon
+          icon="menu"
+          hover={hover}
+          clicked={clicked}
+        />
+      }
+    </button>
+  )
+}
 
 const Menu = ({ show, setShow, render, data, setData, setRender }: any) => {
   return (
-    <div className="fixed pt-2 pb-6 top-0 left-0 flex flex-col z-20 h-screen 
-    compact:rounded-none medium:rounded-r-xl
-    bg-[#FFF8F6] border-r-[1px] border-[#D8C2C0]
-      compact:w-screen compact:min-w-[320px] medium:w-80">
-      <Button
-        show={show}
-        setShow={setShow}
-      />
-      <Nav
-        data={data}
-        render={render}
-        setShow={setShow}
-        setData={setData}
-        setRender={setRender}
-      />
-    </div>
+    <AnimatePresence initial={false}>
+      <motion.nav
+        key="subnavbar"
+        className="fixed pt-2 pb-6 top-0 left-0
+        flex flex-col z-20 h-screen w-[320px] 
+        bg-[#FFF8F6] border-r-[1px] border-[#D8C2C0]
+        compact:rounded-none medium:rounded-r-xl
+        compact:w-screen compact:min-w-[320px] medium:w-80"
+        initial={{ opacity: 0, x: 0 }}
+        animate={{ opacity: 1, x: [-320, 0] }}
+        transition={{ ease: "linear", duration: 0.2 }}
+        exit={{ opacity: 0, x: [0, -320] }}
+      >
+        <Button
+          show={show}
+          setShow={setShow}
+        />
+        <div className="px-2">
+          <Nav
+            data={data}
+            render={render}
+            setShow={setShow}
+            setData={setData}
+            setRender={setRender}
+          />
+        </div>
+      </motion.nav>
+    </AnimatePresence>
   )
 }
 
@@ -84,6 +122,7 @@ const Nav = ({ data, setData, setRender, render, setShow }: any) => {
         <SubNav
           data={data}
           setData={setData}
+          setShow={setShow}
           setRender={setRender}
         />
       )

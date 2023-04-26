@@ -2,6 +2,8 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { routes } from "../../../routes/Routes";
 import { LinkAnimation } from "./LinkAnimation";
+import { Background } from "../Background";
+import { Icon } from "../Icon";
 
 export const MainNav = ({ setShow, setData, setRender }: any) => {
   return (
@@ -52,9 +54,11 @@ const Item = ({ index, item, setData, setShow, setRender }: any) => {
       {({ isActive }) => (
         <div className="flex flex-col items-center">
           <div className="h-11 w-11 flex flex-col items-center justify-center">
-            <Bg
+            <Background
               hover={hover}
               clicked={clicked}
+              isActive={isActive}
+              styles="w-11 h-11 rounded-2xl"
             />
             <Icon
               icon={item.icon}
@@ -81,40 +85,5 @@ const Item = ({ index, item, setData, setShow, setRender }: any) => {
         </div>
       )}
     </NavLink>
-  )
-}
-
-const Icon = ({ icon, hover, clicked, isActive }: any) => {
-
-  const style = () => {
-    switch (true) {
-      case (isActive && clicked): return "material-active-clicked";
-      case (isActive && hover): return "material-active-hover";
-      case (isActive): return "material-active";
-      case (clicked): return "material-hover-clicked";
-      case (hover): return "material-hover";
-      default: return "material-passive";
-    }
-  }
-
-  return (
-    <span className={`flex material-symbols-rounded z-10 ${style()}`}>
-      {icon}
-    </span>
-  )
-}
-
-const Bg = ({ hover, clicked }: any) => {
-
-  const background = () => {
-    switch (true) {
-      case (clicked): return "bg-pink:200";
-      case (hover): return "bg-pink-100";
-      default: return "bg-transparent";
-    }
-  }
-
-  return (
-    <div className={`w-11 h-11 absolute rounded-2xl ${background()}`} />
   )
 }

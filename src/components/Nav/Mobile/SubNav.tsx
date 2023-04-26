@@ -1,18 +1,15 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { Background } from "../Background";
+import { Icon } from "../Icon";
 
-export const SubNav = ({ data, setData, setRender }: any) => {
+export const SubNav = ({ data, setData, setRender, setShow }: any) => {
   return (
-    <div className="px-2">
-      <button
-        className="w-full flex flex-row items-center h-12 px-4"
-        onClick={() => {
-          setData([]);
-          setRender(false);
-        }}>
-        <span className="material-symbols-rounded mr-4">arrow_back</span>
-        Main menu
-      </button>
+    <nav>
+      <Button
+        setData={setData}
+        setRender={setRender}
+      />
       <ul className="ml-10">
         {data.map((item: any, index: number) => {
           return (
@@ -20,17 +17,52 @@ export const SubNav = ({ data, setData, setRender }: any) => {
               <Item
                 item={item}
                 index={index}
+                setShow={setShow}
               />
             </li>
           );
         })}
       </ul>
-    </div>
+    </nav>
   )
 }
 
-const Item = ({ item, index }: any) => {
+const Button = ({ setData, setRender }: any) => {
   const [hover, setHover] = useState(false);
+  const [clicked, setClicked] = useState(false);
+
+  return (
+    <button
+      className="relative w-full flex flex-row items-center h-12"
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      onMouseDown={() => setClicked(true)}
+      onMouseUp={() => setClicked(false)}
+      onClick={() => {
+        setData([]);
+        setRender(false);
+      }}>
+      <Background
+        hover={hover}
+        clicked={clicked}
+        styles="w-full h-12 rounded-full"
+      />
+      <div className="flex px-4">
+        <Icon
+          icon="arrow_back"
+          styles="mr-4"
+          hover={hover}
+          clicked={clicked}
+        />
+        Main menu
+      </div>
+    </button>
+  )
+}
+
+const Item = ({ item, index, setShow }: any) => {
+  const [hover, setHover] = useState(false);
+  const [clicked, setClicked] = useState(false);
 
   return (
     <NavLink
@@ -40,14 +72,27 @@ const Item = ({ item, index }: any) => {
         hover:bg-pink-100 active:bg-pink-200 rounded-full"
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
+      onMouseDown={() => setClicked(true)}
+      onMouseUp={() => setClicked(false)}
+      onClick={() => {
+        setShow(false);
+      }}
       end
     >
       {({ isActive }) => (
-        <div className="flex items-center w-full h-12 px-4">
-          <span className="text-start">
-            {item.label}
-          </span>
-        </div>
+        <>
+          <Background
+            hover={hover}
+            clicked={clicked}
+            isActive={isActive}
+            styles="w-full h-12 rounded-full"
+          />
+          <div className="flex items-center w-full h-12 px-4">
+            <span className="text-start">
+              {item.label}
+            </span>
+          </div>
+        </>
       )}
     </NavLink>
   )

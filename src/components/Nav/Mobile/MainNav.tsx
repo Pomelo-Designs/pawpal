@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react"
 import { routes } from "../../../routes/Routes"
-import { NavLink, matchPath, useLocation } from "react-router-dom"
+import { NavLink, useLocation } from "react-router-dom";
+import { Background } from "../Background";
+import { Icon } from "../Icon";
 
 export const MainNav = ({ setData, setShow, setRender }: any) => {
   return (
-    <nav className="px-2">
+    <nav>
       <ul className="flex flex-col w-full items-center">
         {routes.map((item: any, index: number) => {
           return (
@@ -37,6 +39,7 @@ const DivItem = ({ setRender, setData, setShow, item, index }: any) => {
   const [clicked, setClicked] = useState(false);
   const [isActive, setIsActive] = useState(false);
 
+
   const location = useLocation();
   const path = location.pathname;
   console.log(path);
@@ -45,25 +48,26 @@ const DivItem = ({ setRender, setData, setShow, item, index }: any) => {
     setTimeout(() => setRender(true), 200)
   }
 
+  const getActive = () => {
+    if (location.pathname.includes(item.route)) setIsActive(true);
+    else setIsActive(false);
+  }
+
   useEffect(() => {
-    setIsActive(Boolean(matchPath("/users/123", location.pathname)));
-
-    console.log(matchPath("/users/123", location.pathname));
-
-    const match = matchPath("/users/123", location.pathname);
-
-    console.log(match);
+    getActive();
 
   }, [path])
 
   return (
     <div
-      className="relative text-[#201A18] capitalize text-xs break-normal"
+      className="relative text-[#201A18] capitalize text-xs break-normal cursor-pointer"
       onMouseEnter={() => {
-        setRender(false)
         setHover(true)
         setData(item.subnav)
         setShow(true)
+      }}
+      onClick={() => {
+        setRender(false)
         handleRender()
       }}
       onMouseLeave={() => setHover(false)}
@@ -72,13 +76,16 @@ const DivItem = ({ setRender, setData, setShow, item, index }: any) => {
       tabIndex={index}
     >
       <>
-        <Bg
+        <Background
           isActive={isActive}
+          hover={hover}
+          clicked={clicked}
+          styles="w-full h-12 rounded-full"
         />
         <div className="flex flex-row items-center w-full h-12 
           py-0.5 px-4">
           <Icon
-            margin="mr-4"
+            styles="mr-4"
             icon={item.icon}
             hover={hover}
             clicked={clicked}
@@ -93,13 +100,12 @@ const DivItem = ({ setRender, setData, setShow, item, index }: any) => {
           {item.subnav.length !== 0 &&
             <Icon
               icon="arrow_forward"
-              margin="ml-auto"
+              styles="ml-auto"
               hover={hover}
               clicked={clicked}
               isActive={isActive}
             />
           }
-
         </div>
       </>
     </div>
@@ -119,6 +125,9 @@ const LinkItem = ({ item, index, setData, setShow }: any) => {
         setData(item.subnav)
         setShow(true)
       }}
+      onClick={() => {
+        setShow(false);
+      }}
       onMouseLeave={() => setHover(false)}
       onMouseDown={() => setClicked(true)}
       onMouseUp={() => setClicked(false)}
@@ -126,13 +135,16 @@ const LinkItem = ({ item, index, setData, setShow }: any) => {
     >
       {({ isActive }) => (
         <>
-          <Bg
+          <Background
             isActive={isActive}
+            hover={hover}
+            clicked={clicked}
+            styles="w-full h-12 rounded-full"
           />
           <div className="flex flex-row items-center w-full h-12 
           py-0.5 px-4">
             <Icon
-              margin="mr-4"
+              styles="mr-4"
               icon={item.icon}
               hover={hover}
               clicked={clicked}
@@ -147,7 +159,7 @@ const LinkItem = ({ item, index, setData, setShow }: any) => {
             {item.subnav.length !== 0 &&
               <Icon
                 icon="arrow_forward"
-                margin="ml-auto"
+                styles="ml-auto"
                 hover={hover}
                 clicked={clicked}
                 isActive={isActive}
@@ -158,39 +170,5 @@ const LinkItem = ({ item, index, setData, setShow }: any) => {
         </>
       )}
     </NavLink>
-  )
-}
-
-const Icon = ({ icon, hover, clicked, isActive, margin }: any) => {
-
-  const style = () => {
-    switch (true) {
-      case (isActive && clicked): return "material-active-clicked";
-      case (isActive && hover): return "material-active-hover";
-      case (isActive): return "material-active";
-      case (clicked): return "material-hover-clicked";
-      case (hover): return "material-hover";
-      default: return "material-passive";
-    }
-  }
-
-  return (
-    <span className={`flex material-symbols-rounded ${margin} z-10 ${style()}`}>
-      {icon}
-    </span>
-  )
-}
-
-const Bg = ({ isActive }: any) => {
-
-  const background = () => {
-    switch (true) {
-      case (isActive): return "bg-pink-200";
-      default: return "bg-transparent";
-    }
-  }
-
-  return (
-    <div className={`w-full h-12 absolute rounded-full ${background()}`} />
   )
 }

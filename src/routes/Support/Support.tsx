@@ -6,7 +6,7 @@ export const Support = () => useRoutePath({
   path: "/support",
   children: (
     <>
-      Services overview
+      Support overview
     </>
   )
 });

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { MainNav } from "./MainNav";
 import { SubNav } from "./SubNav";
-import { SubNavBar } from "./SubNavBar";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function NavBar() {
   const [show, setShow] = useState(false);
@@ -20,7 +20,7 @@ export default function NavBar() {
   return (
     <div
       className="compact:hidden medium:hidden expanded:flex 
-        fixed top-0 left-0 h-screen w-fit z-10 flex flex-row"
+        fixed top-0 left-0 h-screen w-fit z-20 flex flex-row"
       onMouseLeave={() => setShow(false)}
     >
       <MainNav
@@ -39,9 +39,19 @@ export default function NavBar() {
 
 const Nav = ({ show, data, render }: any) => {
 
-  if (show === true && data.length !== 0) return (
-    <SubNavBar>
-      {render ? <SubNav data={data} /> : null}
-    </SubNavBar>
+  if (show === true && data.length !== 0 && render === true) return (
+    <AnimatePresence initial={false}>
+      <motion.nav
+        key="subnavbar"
+        className="z-0 p-2 h-screen w-[244px] border-r-[1px] bg-[#FFF8F6] border-[#D8C2C0]"
+        initial={{ opacity: 0, x: 0 }}
+        
+        animate={{ opacity: 1, x: [-244, 0] }}
+        transition={{ ease: "linear", duration: 0.2 }}
+        exit={{ opacity: 0, x: [0, -244] }}
+      >
+        <SubNav data={data} />
+      </motion.nav>
+    </AnimatePresence>
   ); else return null;
 }
