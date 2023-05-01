@@ -1,12 +1,12 @@
 import { Outlet } from "react-router-dom";
-import NavBar from "../components/Nav/Desktop/NavBar";
-import MobileNav from "../components/Nav/Mobile/MobileNav";
+import Navbar from "../components/Navbar/Expanded/Navbar";
+import CompactNavbar from "../components/Navbar/Compact/CompactNavbar";
 
 export default function Layout() {
   return (
     <section className="flex flex-row">
-      <NavBar />
-      <MobileNav />
+      <Navbar />
+      <CompactNavbar />
       <div className="absolute top-0 left-[72px] z-0">
         <Outlet />
         {/* Footer */}

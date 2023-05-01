@@ -4,7 +4,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import { Background } from "../Background";
 import { Icon } from "../Icon";
 
-export const MainNav = ({ setData, setShow, setRender }: any) => {
+export const Drawer = ({ setData, setShow, setRender }: any) => {
   return (
     <nav>
       <ul className="flex flex-col w-full items-center">

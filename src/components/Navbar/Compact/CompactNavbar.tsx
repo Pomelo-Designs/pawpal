@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { MainNav } from "./MainNav";
-import { SubNav } from "./SubNav";
+import { Drawer } from "./Drawer";
+import { SubDrawer } from "./SubDrawer";
 import { Icon } from "../Icon";
 import { Background } from "../Background";
-import { AnimatePresence, motion } from "framer-motion";
+import { Slide } from "../../Animations/Slide";
 
-export default function MobileNav() {
+export default function CompactNavbar() {
   const [show, setShow] = useState(false);
   const [data, setData] = useState([]);
   const [render, setRender] = useState(false);
@@ -76,41 +76,36 @@ const Button = ({ show, setShow }: any) => {
 
 const Menu = ({ show, setShow, render, data, setData, setRender }: any) => {
   return (
-    <AnimatePresence initial={false}>
-      <motion.nav
-        key="subnavbar"
-        className="fixed pt-2 pb-6 top-0 left-0
-        flex flex-col z-20 h-screen w-[320px] 
-        bg-[#FFF8F6] border-r-[1px] border-[#D8C2C0]
-        compact:rounded-none medium:rounded-r-xl
-        compact:w-screen compact:min-w-[320px] medium:w-80"
-        initial={{ opacity: 0, x: 0 }}
-        animate={{ opacity: 1, x: [-320, 0] }}
-        transition={{ ease: "linear", duration: 0.2 }}
-        exit={{ opacity: 0, x: [0, -320] }}
-      >
-        <Button
-          show={show}
+    <Slide
+      key="compact"
+      classes="fixed pt-2 pb-6 top-0 left-0
+      flex flex-col z-20 h-screen w-[320px] 
+      bg-[#FFF8F6] border-r-[1px] border-[#D8C2C0]
+      compact:rounded-none medium:rounded-r-xl
+      compact:w-screen compact:min-w-[320px] medium:w-80"
+      x={-320}
+    >
+      <Button
+        show={show}
+        setShow={setShow}
+      />
+      <div className="px-2">
+        <Nav
+          data={data}
+          render={render}
           setShow={setShow}
+          setData={setData}
+          setRender={setRender}
         />
-        <div className="px-2">
-          <Nav
-            data={data}
-            render={render}
-            setShow={setShow}
-            setData={setData}
-            setRender={setRender}
-          />
-        </div>
-      </motion.nav>
-    </AnimatePresence>
+      </div>
+    </Slide>
   )
 }
 
 const Nav = ({ data, setData, setRender, render, setShow }: any) => {
   if (render === false) {
     return (
-      <MainNav
+      <Drawer
         setShow={setShow}
         setData={setData}
         setRender={setRender}
@@ -119,7 +114,7 @@ const Nav = ({ data, setData, setRender, render, setShow }: any) => {
   } else if (render === true) {
     if (data) {
       return (
-        <SubNav
+        <SubDrawer
           data={data}
           setData={setData}
           setShow={setShow}

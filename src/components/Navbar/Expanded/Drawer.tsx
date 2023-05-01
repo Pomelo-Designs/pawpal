@@ -1,9 +1,9 @@
 import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { LinkAnimation } from "./LinkAnimation";
+import { LinkAnimation } from "../../Animations/LinkAnimation";
 
-export const SubNav = ({ data }: any) => {
+export const Drawer = ({ data }: any) => {
   return (
     <motion.ul
       key="ul"

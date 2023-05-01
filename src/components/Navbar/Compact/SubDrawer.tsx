@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { Background } from "../Background";
 import { Icon } from "../Icon";
 
-export const SubNav = ({ data, setData, setRender, setShow }: any) => {
+export const SubDrawer = ({ data, setData, setRender, setShow }: any) => {
   return (
     <nav>
       <Button
