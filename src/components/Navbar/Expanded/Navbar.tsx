@@ -5,8 +5,8 @@ import { Slide } from "../../Animations/Slide";
 
 export default function Navbar() {
   const [show, setShow] = useState(false);
-  const [data, setData] = useState([]);
   const [render, setRender] = useState(false);
+  const [data, setData] = useState([]);
 
   window.onresize = function () {
     const width = window.innerWidth;
@@ -28,24 +28,16 @@ export default function Navbar() {
         setData={setData}
         setRender={setRender}
       />
-      <Nav
-        show={show}
-        data={data}
-        render={render}
-      />
+      {data.length !== 0 &&
+        <Slide
+          key="expanded"
+          classes="z-0 p-2 h-screen w-[244px] border-r-[1px] bg-[#FFF8F6] border-[#D8C2C0]"
+          x={-243}
+          show={show}
+        >
+          {render && <Drawer data={data} />}
+        </Slide>
+      }
     </div>
   )
-}
-
-const Nav = ({ show, data, render }: any) => {
-
-  if (show === true && data.length !== 0 && render === true) return (
-    <Slide
-      key="expanded"
-      classes="z-0 p-2 h-screen w-[244px] border-r-[1px] bg-[#FFF8F6] border-[#D8C2C0]"
-      x={-244}
-    >
-      <Drawer data={data} />
-    </Slide>
-  ); else return null;
 }

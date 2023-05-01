@@ -2,9 +2,14 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Background } from "../Background";
 import { Icon } from "../Icon";
+import { Ease } from "../../Animations/Ease";
 
 export const SubDrawer = ({ data, setData, setRender, setShow }: any) => {
   return (
+    <Ease
+      key="compact-subdrawer"
+      // x={20}
+    >
     <nav>
       <Button
         setData={setData}
@@ -24,6 +29,7 @@ export const SubDrawer = ({ data, setData, setRender, setShow }: any) => {
         })}
       </ul>
     </nav>
+    </Ease>
   )
 }
 

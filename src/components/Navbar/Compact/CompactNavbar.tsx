@@ -7,8 +7,8 @@ import { Slide } from "../../Animations/Slide";
 
 export default function CompactNavbar() {
   const [show, setShow] = useState(false);
-  const [data, setData] = useState([]);
   const [render, setRender] = useState(false);
+  const [data, setData] = useState([]);
 
   window.onresize = function () {
     const width = window.innerWidth;
@@ -26,16 +26,14 @@ export default function CompactNavbar() {
         show={show}
         setShow={setShow}
       />
-      {show &&
-        <Menu
-          show={show}
-          data={data}
-          render={render}
-          setShow={setShow}
-          setData={setData}
-          setRender={setRender}
-        />
-      }
+      <Menu
+        show={show}
+        data={data}
+        render={render}
+        setShow={setShow}
+        setData={setData}
+        setRender={setRender}
+      />
     </div>
   )
 }
@@ -84,43 +82,27 @@ const Menu = ({ show, setShow, render, data, setData, setRender }: any) => {
       compact:rounded-none medium:rounded-r-xl
       compact:w-screen compact:min-w-[320px] medium:w-80"
       x={-320}
+      show={show}
     >
       <Button
         show={show}
         setShow={setShow}
       />
-      <div className="px-2">
-        <Nav
-          data={data}
-          render={render}
-          setShow={setShow}
-          setData={setData}
-          setRender={setRender}
-        />
+      <div className="relative px-2">
+        {render && data ?
+          <SubDrawer
+            data={data}
+            setData={setData}
+            setShow={setShow}
+            setRender={setRender}
+          /> :
+          <Drawer
+            setShow={setShow}
+            setData={setData}
+            setRender={setRender}
+          />
+        }
       </div>
     </Slide>
   )
-}
-
-const Nav = ({ data, setData, setRender, render, setShow }: any) => {
-  if (render === false) {
-    return (
-      <Drawer
-        setShow={setShow}
-        setData={setData}
-        setRender={setRender}
-      />
-    )
-  } else if (render === true) {
-    if (data) {
-      return (
-        <SubDrawer
-          data={data}
-          setData={setData}
-          setShow={setShow}
-          setRender={setRender}
-        />
-      )
-    }
-  } return null;
 }

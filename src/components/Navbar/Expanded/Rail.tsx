@@ -7,7 +7,7 @@ import { Icon } from "../Icon";
 
 export const Rail = ({ setShow, setData, setRender }: any) => {
   return (
-    <nav className="p-2 bg-[#FFF8F6] border-r-[1px] border-[#D8C2C0]">
+    <nav className="z-20 p-2 bg-[#FFF8F6] border-r-[1px] border-[#D8C2C0]">
       <ul className="flex flex-col items-center gap-7">
         {routes.map((item: any, index: number) => {
           return (
@@ -35,16 +35,24 @@ const Item = ({ index, item, setData, setShow, setRender }: any) => {
     setTimeout(() => setRender(true), 200)
   }
 
+  const handleMouseEnter = () => {
+    if (item.route !== '/') {
+      setRender(false);
+      setData(item.subnav);
+      setShow(true);
+      handleRender();
+    } else {
+      setShow(false);
+    }
+  }
+
   return (
     <NavLink
       to={item.route}
       className="relative flex flex-col w-14 h-fit items-center text-[#201A18] capitalize text-xs break-normal"
       onMouseEnter={() => {
-        setRender(false);
         setHover(true);
-        setData(item.subnav);
-        setShow(true);
-        handleRender();
+        handleMouseEnter();
       }}
       onMouseLeave={() => setHover(false)}
       onMouseDown={() => setClicked(true)}

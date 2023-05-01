@@ -1,29 +1,28 @@
 import { NavLink } from "react-router-dom";
-import { motion } from "framer-motion";
 import { useState } from "react";
 import { LinkAnimation } from "../../Animations/LinkAnimation";
+import { Ease } from "../../Animations/Ease";
 
 export const Drawer = ({ data }: any) => {
   return (
-    <motion.ul
-      key="ul"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ ease: "linear", duration: 0.3 }}
-      className="flex flex-col"
+    <Ease
+      key="ExpandedDrawer"
     >
-      {data.map((item: any, index: number) => {
-        return (
-          <li key={index} className="w-full flex flex-col">
-            <Item
-              item={item}
-              index={index}
-            />
-          </li>
-        );
-      })}
-    </motion.ul>
+      <nav>
+        <ul>
+          {data.map((item: any, index: number) => {
+            return (
+              <li key={index} className="w-full flex flex-col">
+                <Item
+                  item={item}
+                  index={index}
+                />
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
+    </Ease>
   )
 }
 

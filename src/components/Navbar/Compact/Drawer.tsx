@@ -3,34 +3,40 @@ import { routes } from "../../../routes/Routes"
 import { NavLink, useLocation } from "react-router-dom";
 import { Background } from "../Background";
 import { Icon } from "../Icon";
+import { Ease } from "../../Animations/Ease";
 
 export const Drawer = ({ setData, setShow, setRender }: any) => {
   return (
-    <nav>
-      <ul className="flex flex-col w-full items-center">
-        {routes.map((item: any, index: number) => {
-          return (
-            <li key={index} className="w-full">
-              {item.subnav.length === 0 ?
-                <LinkItem
-                  item={item}
-                  index={index}
-                  setData={setData}
-                  setShow={setShow}
-                /> :
-                <DivItem
-                  item={item}
-                  index={index}
-                  setData={setData}
-                  setShow={setShow}
-                  setRender={setRender}
-                />
-              }
-            </li>
-          )
-        })}
-      </ul>
-    </nav>
+    <Ease
+      key="compact"
+      // x={-20}
+    >
+      <nav>
+        <ul className="flex flex-col w-full items-center">
+          {routes.map((item: any, index: number) => {
+            return (
+              <li key={index} className="w-full">
+                {item.subnav.length === 0 ?
+                  <LinkItem
+                    item={item}
+                    index={index}
+                    setData={setData}
+                    setShow={setShow}
+                  /> :
+                  <DivItem
+                    item={item}
+                    index={index}
+                    setData={setData}
+                    setShow={setShow}
+                    setRender={setRender}
+                  />
+                }
+              </li>
+            )
+          })}
+        </ul>
+      </nav>
+    </Ease>
   )
 }
 
