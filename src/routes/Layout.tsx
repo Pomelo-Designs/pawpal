@@ -23,12 +23,23 @@ export default function Layout() {
   const [show, setShow] = useState(false);
   const [data, setData] = useState<DataProps[] | any>([]);
 
+  const getData = () => routes.map((item: any) => {
+    if (item.route === location.pathname) {
+      setData(item as unknown as DataProps[]);
+    } else {
+      item.subnav.map((subitem: any) => {
+        if (subitem.route === location.pathname) {
+          setData(subitem as unknown as DataProps[]);
+        }
+      })
+    }
+  });
+
   useEffect(() => {
-    const data = routes.find(element => element.route === location.pathname)!;
-    setData(data as unknown as DataProps[]);
+    getData();
     setShow(false);
     setTimeout(() => setShow(true), 100);
-  }, [location])
+  }, [location]);
 
   return (
     <>
