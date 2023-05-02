@@ -14,7 +14,7 @@ export const Card = ({ title, description, src, handleClick }: CardProps) => {
       onClick={handleClick}
     >
       {src &&
-        <img src={src} className="w-full h-[192px] object-cover object-top m-0 rounded-t-xl" alt="image" />
+        <img src={src} className="w-full h-[192px] object-cover object-center m-0 rounded-t-xl" alt="image" />
       }
       <div className="flex flex-col p-4 pb-8 gap-2.5">
         <h6 className="text-2xl">{title}</h6>
