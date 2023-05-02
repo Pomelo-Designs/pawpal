@@ -31,7 +31,8 @@ export default function Navbar() {
       {data.length !== 0 &&
         <Slide
           key="expanded"
-          classes="z-0 p-2 h-screen w-[244px] border-r-[1px] bg-[#FFF8F6] border-[#D8C2C0]"
+          classes="z-0 p-2 h-screen w-[244px] border-r-[1px] bg-[#FFF8F6] border-[#D8C2C0]
+          rounded-r-xl shadow-sm drop-shadow-sm"
           x={-243}
           show={show}
         >

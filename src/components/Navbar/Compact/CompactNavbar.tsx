@@ -4,6 +4,7 @@ import { SubDrawer } from "./SubDrawer";
 import { Icon } from "../Icon";
 import { Background } from "../Background";
 import { Slide } from "../../Animations/Slide";
+import OutsideClickHandler from 'react-outside-click-handler';
 
 export default function CompactNavbar() {
   const [show, setShow] = useState(false);
@@ -74,35 +75,37 @@ const Button = ({ show, setShow }: any) => {
 
 const Menu = ({ show, setShow, render, data, setData, setRender }: any) => {
   return (
-    <Slide
-      key="compact"
-      classes="fixed pt-2 pb-6 top-0 left-0
-      flex flex-col z-20 h-screen w-[320px] 
-      bg-[#FFF8F6] border-r-[1px] border-[#D8C2C0]
-      compact:rounded-none medium:rounded-r-xl
-      compact:w-screen compact:min-w-[320px] medium:w-80"
-      x={-320}
-      show={show}
-    >
-      <Button
+    <OutsideClickHandler onOutsideClick={() => setShow(false)}>
+      <Slide
+        key="compact"
+        classes="fixed pt-2 pb-6 top-0 left-0
+          flex flex-col z-20 h-screen w-[320px] 
+          bg-[#FFF8F6] border-r-[1px] border-[#D8C2C0]
+          compact:rounded-none medium:rounded-r-xl
+          compact:w-screen compact:min-w-[320px] medium:w-80"
+        x={-320}
         show={show}
-        setShow={setShow}
-      />
-      <div className="relative px-2">
-        {render && data ?
-          <SubDrawer
-            data={data}
-            setData={setData}
-            setShow={setShow}
-            setRender={setRender}
-          /> :
-          <Drawer
-            setShow={setShow}
-            setData={setData}
-            setRender={setRender}
-          />
-        }
-      </div>
-    </Slide>
+      >
+        <Button
+          show={show}
+          setShow={setShow}
+        />
+        <div className="relative px-2">
+          {render && data ?
+            <SubDrawer
+              data={data}
+              setData={setData}
+              setShow={setShow}
+              setRender={setRender}
+            /> :
+            <Drawer
+              setShow={setShow}
+              setData={setData}
+              setRender={setRender}
+            />
+          }
+        </div>
+      </Slide>
+    </OutsideClickHandler>
   )
 }

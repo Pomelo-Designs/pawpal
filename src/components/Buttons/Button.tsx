@@ -1,10 +1,10 @@
 import { useMemo } from "react";
 
 interface ButtonProps {
-  label: string;
+  label: string | undefined;
   primary: boolean;
   size: "small" | "medium" | "large";
-  handleClick: () => void;
+  handleClick: () => void | undefined;
 }
 
 const getSizeClasses = (size: "small" | "medium" | "large") => {
@@ -13,7 +13,7 @@ const getSizeClasses = (size: "small" | "medium" | "large") => {
       return "px-4 py-2.5";
     }
     case "large": {
-      return "px-6 py-3";
+      return "px-8 py-4";
     }
     default: {
       return "px-5 py-2.5";
@@ -27,7 +27,7 @@ const getModeClasses = (isPrimary: boolean) =>
     : "text-slate-700 bg-transparent border-slate-700 dark:text-white dark:border-white";
 
 const BASE_BUTTON_CLASSES =
-  "cursor-pointer rounded-full border-2 font-bold leading-none inline-block";
+  "cursor-pointer rounded-[56px] font-medium text-sm border-1 leading-none inline-block";
 
 
 

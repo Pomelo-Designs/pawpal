@@ -16,6 +16,9 @@ module.exports = {
       'compact': { 'max': '600px' },
       // => @media (max-width: 639px) { ... }
     },
+    fontFamily: {
+      'karla': ['"Karla"'],
+    },
     extend: {
       colors: {
         pink: {

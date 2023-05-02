@@ -8,7 +8,7 @@ export const Pets = () => useRoutePath({
   path: "/pets",
   children: (
     <>
-      Pets overview
+      Pets
     </>
   )
 });
