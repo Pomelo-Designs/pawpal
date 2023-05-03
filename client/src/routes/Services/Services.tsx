@@ -1,20 +1,7 @@
-import { Card } from "../../components/Cards/Card";
 import { NavCard } from "../../components/Cards/NavCard";
 import { Heading } from "../../components/Heading";
 import { ArrowCard } from "../../components/Cards/ArrowCard";
 import { useRoutePath } from "../../hooks/useRoutePath";
-
-// @ts-ignore
-import Dog from "./../../components/assets/Dog1.jpeg"
-
-// @ts-ignore
-import Success1 from "./../../components/assets/success1.jpeg"
-// @ts-ignore
-import Success2 from "./../../components/assets/success2.jpeg"
-// @ts-ignore
-import Success3 from "./../../components/assets/success3.jpeg"
-// @ts-ignore
-import Success4 from "./../../components/assets/success4.jpeg"
 
 export const Services = () => useRoutePath({
   path: "/services",
@@ -36,19 +23,19 @@ export const Services = () => useRoutePath({
         <div className="grid grid-cols-2 gap-6">
           <NavCard
             title={"Veterinary care"}
-            src={Dog}
+            src={`https://previews.dropbox.com/p/thumb/AB4TtsUU6FETdXVuCGAcGx_TCEEJgFtUuZQ_z6LnL95dcpAaL5XbuhuP3K5-irplKQWZmTYNGtD2L81N6PTTY3hSq3fNa8d58rw3Udh9i3qXFI8SF-rKjKGR1wlHya-CqO1yNwA85f80DP6BGAjMJvzIKEwFHzJi4ji8bD35CiqkwIwhSfQj3yaCi_QvweMZa-EBweffhP8Socl6mnDqMFO6b0CZjb-hwlSBhdtoMpXVc-fpFgOPplCXKMbtvLY9cez2nbQIkjGgUbN44gwR2uZ-VZuQIB0Di-M_KM4I20i_WHwj4Vb4ZuLc7m9IoJIhG6x1YQoZQb6d9RaywzQfIP0FZsGHISuhaDXLMZLXL7GB-tKIp-Lc5wTGMEHHIsFa5wc/p.jpeg`}
           />
           <NavCard
             title={"Chip my pet"}
-            src={Dog}
+            src={`https://previews.dropbox.com/p/thumb/AB4TtsUU6FETdXVuCGAcGx_TCEEJgFtUuZQ_z6LnL95dcpAaL5XbuhuP3K5-irplKQWZmTYNGtD2L81N6PTTY3hSq3fNa8d58rw3Udh9i3qXFI8SF-rKjKGR1wlHya-CqO1yNwA85f80DP6BGAjMJvzIKEwFHzJi4ji8bD35CiqkwIwhSfQj3yaCi_QvweMZa-EBweffhP8Socl6mnDqMFO6b0CZjb-hwlSBhdtoMpXVc-fpFgOPplCXKMbtvLY9cez2nbQIkjGgUbN44gwR2uZ-VZuQIB0Di-M_KM4I20i_WHwj4Vb4ZuLc7m9IoJIhG6x1YQoZQb6d9RaywzQfIP0FZsGHISuhaDXLMZLXL7GB-tKIp-Lc5wTGMEHHIsFa5wc/p.jpeg`}
           />
           <NavCard
             title={"License my pet"}
-            src={Dog}
+            src={`https://previews.dropbox.com/p/thumb/AB4TtsUU6FETdXVuCGAcGx_TCEEJgFtUuZQ_z6LnL95dcpAaL5XbuhuP3K5-irplKQWZmTYNGtD2L81N6PTTY3hSq3fNa8d58rw3Udh9i3qXFI8SF-rKjKGR1wlHya-CqO1yNwA85f80DP6BGAjMJvzIKEwFHzJi4ji8bD35CiqkwIwhSfQj3yaCi_QvweMZa-EBweffhP8Socl6mnDqMFO6b0CZjb-hwlSBhdtoMpXVc-fpFgOPplCXKMbtvLY9cez2nbQIkjGgUbN44gwR2uZ-VZuQIB0Di-M_KM4I20i_WHwj4Vb4ZuLc7m9IoJIhG6x1YQoZQb6d9RaywzQfIP0FZsGHISuhaDXLMZLXL7GB-tKIp-Lc5wTGMEHHIsFa5wc/p.jpeg`}
           />
           <NavCard
             title={"Grooming services"}
-            src={Dog}
+            src={`https://previews.dropbox.com/p/thumb/AB4TtsUU6FETdXVuCGAcGx_TCEEJgFtUuZQ_z6LnL95dcpAaL5XbuhuP3K5-irplKQWZmTYNGtD2L81N6PTTY3hSq3fNa8d58rw3Udh9i3qXFI8SF-rKjKGR1wlHya-CqO1yNwA85f80DP6BGAjMJvzIKEwFHzJi4ji8bD35CiqkwIwhSfQj3yaCi_QvweMZa-EBweffhP8Socl6mnDqMFO6b0CZjb-hwlSBhdtoMpXVc-fpFgOPplCXKMbtvLY9cez2nbQIkjGgUbN44gwR2uZ-VZuQIB0Di-M_KM4I20i_WHwj4Vb4ZuLc7m9IoJIhG6x1YQoZQb6d9RaywzQfIP0FZsGHISuhaDXLMZLXL7GB-tKIp-Lc5wTGMEHHIsFa5wc/p.jpeg`}
           />
         </div>
       </section>
