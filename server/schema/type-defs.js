@@ -17,6 +17,13 @@ const typeDefs = gql`
   input AnimalInput {
     age: Int
     liked: Boolean
+    gender: String
+    species: String
+    livedWith: String
+    sortByAge: String
+    sortBySize: String
+    offset: Int
+    limit: Int
   }
   
   type Query {

@@ -16,6 +16,35 @@ import { Support, Donate, Volunteer } from './routes/Support/Support';
 // // Help
 import { Help, Report } from './routes/Help/Help';
 
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+
+const cache = new InMemoryCache({
+  typePolicies: {
+    Query: {
+      fields: {
+        feed: {
+          keyArgs: [],
+          // @ts-ignore
+          merge(existing, incoming, { args: { offset = 0 }}) {
+            // Slicing is necessary because the existing data is
+            // immutable, and frozen in development.
+            const merged = existing ? existing.slice(0) : [];
+            for (let i = 0; i < incoming.length; ++i) {
+              merged[offset + i] = incoming[i];
+            }
+            return merged;
+          },
+        },
+      },
+    },
+  },
+});
+
+const client = new ApolloClient({
+  cache: cache,
+  uri: "http://localhost:4000"
+});
+
 const router = createBrowserRouter([
   {
     element: <Layout />,
@@ -125,6 +154,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ApolloProvider client={client}>
+      <RouterProvider router={router} />
+    </ApolloProvider>
   </React.StrictMode>
 );

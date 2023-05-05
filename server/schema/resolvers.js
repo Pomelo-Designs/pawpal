@@ -14,17 +14,71 @@ const resolvers = {
     },
     animals: (parent, { input }) => {
       // Filter animals based on the input variables
-      return animals.filter((animal) => {
+      const filteredAnimals = animals.filter((animal) => {
         if (input.liked !== undefined && animal.liked !== input.liked) {
           return false;
         }
 
-        if (input.year && animal.year !== input.year) {
+        if (input.age && animal.age !== input.age) {
           return false;
         }
 
+        if (input.gender) {
+          if (input.gender === 'male' && animal.gender !== 'male') {
+            return false;
+          }
+
+          if (input.gender === 'female' && animal.gender !== 'female') {
+            return false;
+          }
+        }
+
+        if (input.species) {
+          if (input.species === 'dog' && animal.species !== 'dog') {
+            return false;
+          }
+
+          if (input.species === 'cat' && animal.species !== 'cat') {
+            return false;
+          }
+
+          if (input.species === 'critter' && animal.species !== 'critter') {
+            return false;
+          }
+
+          if (input.species === 'bird' && animal.species !== 'bird') {
+            return false;
+          }
+        }
+
+        if (input.livedWith) {
+          if (input.livedWith === 'children' && animal.livedWith !== 'children') {
+            return false;
+          }
+
+          if (input.livedWith === 'animals' && animal.livedWith !== 'animals') {
+            return false;
+          }
+        }
+
         return true;
+
       });
+      // Sort the filtered animals based on the age field
+      if (input.sortByAge === 'asc') {
+        filteredAnimals.sort((a, b) => a.age - b.age);
+      } else if (input.sortByAge === 'desc') {
+        filteredAnimals.sort((a, b) => b.age - a.age);
+      }
+
+      // Sort the filtered animals based on the size field
+      if (input.sortBySize === 'asc') {
+        filteredAnimals.sort((a, b) => a.size - b.size);
+      } else if (input.sortBySize === 'desc') {
+        filteredAnimals.sort((a, b) => b.size - a.size);
+      }
+
+      return filteredAnimals.slice(input.offset, input.limit + input.offset);
     },
   },
   Mutation: {
