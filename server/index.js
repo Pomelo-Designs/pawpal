@@ -1,16 +1,9 @@
-const express = require('express');
-const { graphqlHTTP } = require('express-graphql');
-const schema = require('./schema/schema');
+const { ApolloServer } = require("apollo-server");
+const { typeDefs } = require("./schema/type-defs");
+const { resolvers } = require("./schema/resolvers");
 
-const app = express();
+const server = new ApolloServer({ typeDefs, resolvers });
 
-app.use(
-  "/graphql",
-  graphqlHTTP({
-    schema: schema,
-    graphiql: true,
-  }));
-
-app.listen(5000, () => {
-  console.log('now listening for requests on port 5000');
+server.listen().then(({ url }) => {
+  console.log(`YOUR API IS RUNNING AT: ${url} :)`);
 });
