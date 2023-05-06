@@ -2,15 +2,15 @@ const Adoption = require("../models/Adoption");
 
 const resolvers = {
   Query: {
-    animal: async (parent, { id }) => {
-      // Find the animal with the specified ID in the database
-      const animal = await Adoption.findOne({ id });
+    adoption: async (parent, { id }) => {
+      // Find the adoption with the specified ID in the database
+      const adoption = await Adoption.findOne({ id });
 
-      if (!animal) throw new Error(`Animal with ID ${id} not found`);
+      if (!adoption) throw new Error(`Adoption with ID ${id} not found`);
 
-      return animal.toObject(); // convert the Mongoose document to a plain object
+      return adoption.toObject(); // convert the Mongoose document to a plain object
     },
-    animals: async (parent, { input: { liked, age, gender, species, livedWith, sortByAge, sortBySize, limit, offset } }) => {
+    adoptions: async (parent, { input: { liked, age, gender, species, livedWith, sortByAge, sortBySize, limit, offset } }) => {
       // Create a Mongoose query object
       const query = Adoption.find();
 
@@ -42,23 +42,23 @@ const resolvers = {
       if (offset !== undefined) query = query.skip(offset);
 
       // Execute the query and return the results as an array of plain objects
-      const animals = await query.exec();
-      return animals.map((animal) => animal.toObject());
+      const adoptions = await query.exec();
+      return adoptions.map((adoption) => adoption.toObject());
     },
   },
   Mutation: {
-    updateAnimalLiked: async (parent, { id, liked }) => {
-      // Find the animal with the specified ID in the database
-      const animal = await Adoption.findOne({ id });
+    updateAdoptionLiked: async (parent, { id, liked }) => {
+      // Find the adoption with the specified ID in the database
+      const adoption = await Adoption.findOne({ id });
 
-      if (!animal) throw new Error(`Animal with ID ${id} not found`);
+      if (!adoption) throw new Error(`Adoption with ID ${id} not found`);
 
-      // Update the animal's "liked" field
-      animal.liked = liked;
+      // Update the adoption's "liked" field
+      adoption.liked = liked;
 
-      // Save the changes to the database and return the updated animal as a plain object
-      await animal.save();
-      return animal.toObject();
+      // Save the changes to the database and return the updated adoption as a plain object
+      await adoption.save();
+      return adoption.toObject();
     },
   },
 }
