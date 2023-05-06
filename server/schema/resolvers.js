@@ -1,101 +1,66 @@
-const { animals } = require("../FakeData");
+const Adoption = require("../models/Adoption");
 
 const resolvers = {
   Query: {
-    animal: (parent, { id }) => {
-      // Find the animal with the specified ID
-      const animal = animals.find((animal) => animal.id === id);
+    animal: async (parent, { id }) => {
+      // Find the animal with the specified ID in the database
+      const animal = await Adoption.findOne({ id });
 
-      if (!animal) {
-        throw new Error(`Animals with ID ${id} not found`);
-      }
+      if (!animal) throw new Error(`Animal with ID ${id} not found`);
 
-      return animal;
+      return animal.toObject(); // convert the Mongoose document to a plain object
     },
-    animals: (parent, { input }) => {
-      // Filter animals based on the input variables
-      const filteredAnimals = animals.filter((animal) => {
-        if (input.liked !== undefined && animal.liked !== input.liked) {
-          return false;
-        }
+    animals: async (parent, { input: { liked, age, gender, species, livedWith, sortByAge, sortBySize, limit, offset } }) => {
+      // Create a Mongoose query object
+      const query = Adoption.find();
 
-        if (input.age && animal.age !== input.age) {
-          return false;
-        }
+      // Apply filters
+      if (liked !== undefined) query.where('liked').equals(liked);
 
-        if (input.gender) {
-          if (input.gender === 'male' && animal.gender !== 'male') {
-            return false;
-          }
+      if (age) query.where('age').equals(age);
 
-          if (input.gender === 'female' && animal.gender !== 'female') {
-            return false;
-          }
-        }
+      if (gender) query.where('gender').equals(gender);
 
-        if (input.species) {
-          if (input.species === 'dog' && animal.species !== 'dog') {
-            return false;
-          }
+      if (species) query.where('species').equals(species);
 
-          if (input.species === 'cat' && animal.species !== 'cat') {
-            return false;
-          }
+      if (livedWith) query.where('livedWith').equals(livedWith);
 
-          if (input.species === 'critter' && animal.species !== 'critter') {
-            return false;
-          }
-
-          if (input.species === 'bird' && animal.species !== 'bird') {
-            return false;
-          }
-        }
-
-        if (input.livedWith) {
-          if (input.livedWith === 'children' && animal.livedWith !== 'children') {
-            return false;
-          }
-
-          if (input.livedWith === 'animals' && animal.livedWith !== 'animals') {
-            return false;
-          }
-        }
-
-        return true;
-
-      });
-      // Sort the filtered animals based on the age field
-      if (input.sortByAge === 'asc') {
-        filteredAnimals.sort((a, b) => a.age - b.age);
-      } else if (input.sortByAge === 'desc') {
-        filteredAnimals.sort((a, b) => b.age - a.age);
+      // Apply sorting
+      if (sortByAge) {
+        const sortOrder = sortByAge === 'ASC' ? 1 : -1;
+        query.sort({ age: sortOrder });
       }
 
-      // Sort the filtered animals based on the size field
-      if (input.sortBySize === 'asc') {
-        filteredAnimals.sort((a, b) => a.size - b.size);
-      } else if (input.sortBySize === 'desc') {
-        filteredAnimals.sort((a, b) => b.size - a.size);
+      if (sortBySize) {
+        const sortOrder = sortBySize === 'ASC' ? 1 : -1;
+        query.sort({ size: sortOrder });
       }
 
-      return filteredAnimals.slice(input.offset, input.limit + input.offset);
+      // Apply pagination
+      if (limit !== undefined) query = query.limit(limit);
+
+      if (offset !== undefined) query = query.skip(offset);
+
+      // Execute the query and return the results as an array of plain objects
+      const animals = await query.exec();
+      return animals.map((animal) => animal.toObject());
     },
   },
   Mutation: {
-    updateAnimalLiked: (parent, { id, liked }) => {
-      // Find the animal with the specified ID
-      const animal = animals.find((animal) => animal.id === id);
+    updateAnimalLiked: async (parent, { id, liked }) => {
+      // Find the animal with the specified ID in the database
+      const animal = await Adoption.findOne({ id });
 
-      if (!animal) {
-        throw new Error(`Animal with ID ${id} not found`);
-      }
+      if (!animal) throw new Error(`Animal with ID ${id} not found`);
 
       // Update the animal's "liked" field
       animal.liked = liked;
 
-      return animal;
+      // Save the changes to the database and return the updated animal as a plain object
+      await animal.save();
+      return animal.toObject();
     },
   },
-};
+}
 
-module.exports = { resolvers };
+module.exports = { resolvers }
