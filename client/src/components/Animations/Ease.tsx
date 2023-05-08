@@ -1,18 +1,15 @@
-import { motion } from "framer-motion"
-import { Key } from "react"
+import { motion } from "framer-motion";
 
 interface EaseProps {
-  key: Key;
   children: any;
   classes?: string;
   x?: number;
   y?: number;
 }
 
-export const Ease = ({ key, children, x, y, classes }: EaseProps) => {
+export const Ease = ({ children, x, y, classes }: EaseProps) => {
   return (
     <motion.div
-      key={key}
       initial={{ opacity: 0, x: 0, y: 0 }}
       animate={{ opacity: 1, x: [x || 0, 0], y: [y || 0, 0] }}
       exit={{ opacity: 0 }}

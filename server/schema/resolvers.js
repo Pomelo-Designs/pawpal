@@ -11,12 +11,12 @@ const resolvers = {
       return adoption.toObject(); // convert the Mongoose document to a plain object
     },
     adoptions: async (parent, { input }) => {
-
       const {
         limit = 10,
         offset = 0,
         gender,
         species,
+        liked,
         livedWith,
         age,
         sortByAge,
@@ -24,6 +24,10 @@ const resolvers = {
       } = input;
 
       let filter = {};
+
+      if (liked) {
+        filter.liked = liked;
+      }
 
       if (gender) {
         filter.gender = gender;
@@ -56,11 +60,6 @@ const resolvers = {
         .skip(offset)
         .limit(limit);
 
-              // // Execute the query and return the results as an array of plain objects
-      // const adoptions = await query.exec();
-      // return adoptions.map((adoption) => adoption.toObject());
-      
-
       const count = await Adoption.countDocuments(filter);
 
       return {
@@ -70,40 +69,6 @@ const resolvers = {
         limit: limit,
         offset: offset,
       };
-
-      // Create a Mongoose query object
-      // const query = Adoption.find();
-
-      // // Apply filters
-      // if (liked !== undefined) query.where('liked').equals(liked);
-
-      // if (age) query.where('age').equals(age);
-
-      // if (gender) query.where('gender').equals(gender);
-
-      // if (species) query.where('species').equals(species);
-
-      // if (livedWith) query.where('livedWith').equals(livedWith);
-
-      // // Apply sorting
-      // if (sortByAge) {
-      //   const sortOrder = sortByAge === 'ASC' ? 1 : -1;
-      //   query.sort({ age: sortOrder });
-      // }
-
-      // if (sortBySize) {
-      //   const sortOrder = sortBySize === 'ASC' ? 1 : -1;
-      //   query.sort({ size: sortOrder });
-      // }
-
-      // // Apply pagination
-      // if (limit) query = query.limit(limit);
-
-      // if (offset) query = query.skip(offset);
-
-      // // Execute the query and return the results as an array of plain objects
-      // const adoptions = await query.exec();
-      // return adoptions.map((adoption) => adoption.toObject());
     },
   },
   Mutation: {
