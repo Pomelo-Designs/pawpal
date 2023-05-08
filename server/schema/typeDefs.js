@@ -1,6 +1,7 @@
 const { gql } = require("apollo-server");
 
 const typeDefs = gql`
+
   type Adoption {
     id: ID!
     name: String!
@@ -20,17 +21,22 @@ const typeDefs = gql`
     gender: String
     species: String
     livedWith: String
-    sortByAge: String
+    sortByAge: String 
     sortBySize: String
-    offset: Int
     limit: Int
+    offset: Int
   }
+
+  type AdoptionList {
+    adoptions: [Adoption!]!
+  }
+  
   
   type Query {
     adoption(id: ID!): Adoption
-    adoptions(input: AdoptionInput): [Adoption]!
+    adoptions(input: AdoptionInput): AdoptionList!
   }
-
+  
   type Mutation {
     updateAdoptionLiked(id: ID!, liked: Boolean!): Adoption!
   }

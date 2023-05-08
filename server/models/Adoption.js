@@ -16,17 +16,17 @@ const schema = new Schema({
   },
   species: {
     type: String,
-    enum: ['dog', 'cat', 'critter', 'bird'],
+    enum: ['Dogs', 'Cats', 'Critters', 'Birds'],
     required: true,
   },
   gender: {
     type: String,
-    enum: ['male', 'female'],
+    enum: ['Male', 'Female'],
     required: true,
   },
   livedWith: {
     type: String,
-    enum: ['children', 'animals'],
+    enum: ['Children', 'Animals'],
     required: true,
   },
   size: {
@@ -35,7 +35,7 @@ const schema = new Schema({
   },
   coat: {
     type: String,
-    enum: ['short', 'medium', 'long'],
+    enum: ['Short', 'Medium', 'Long'],
     required: true,
   },
   data: {
