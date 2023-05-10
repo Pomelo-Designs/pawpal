@@ -30,6 +30,12 @@ export default function Layout() {
       item.subnav.map((subitem: any) => {
         if (subitem.route === location.pathname) {
           setData(subitem as unknown as DataProps[]);
+        } else if (subitem.subnav) {
+          subitem.subnav.map((subsubitem: any) => {
+            if (subsubitem.route === location.pathname) {
+              setData(subsubitem as unknown as DataProps[]);
+            }
+          })
         }
       })
     }

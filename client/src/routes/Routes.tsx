@@ -16,8 +16,8 @@ export const routes = [
     description: `At PawPal Adoption Center, we have a variety of pets available for adoption and foster, including dogs, cats, rabbits, and more. Each pet has their own unique personality and needs, so we work closely with potential adopters to find the perfect match.`,
     button: { label: 'Get a pet', path: '/pets/adoption' },
     subnav: [
-      { 
-        route: '/pets', 
+      {
+        route: '/pets',
         label: 'Pets overview',
       },
       {
@@ -51,14 +51,29 @@ export const routes = [
         }
       },
       {
-        route: '/pets/requirements',
         label: 'Requirements',
-        heading: `General\nRequirements`,
-        description: `Pet adoption and fostering can be incredibly rewarding experiences for both animals and humans alike. We collected useful resources to help potential caregivers and pet owners meet the requirements and get informed.`,
-        button: {
-          label: 'Schedule a visit',
-          path: '/pets/adoption'
-        }
+        subnav: [
+          {
+            route: '/pets/requirements/general',
+            label: 'General',
+            heading: `General\nRequirements`,
+            description: `Pet adoption and fostering can be incredibly rewarding experiences for both animals and humans alike. We collected useful resources to help potential caregivers and pet owners meet the requirements and get informed.`,
+            button: {
+              label: 'Schedule a visit',
+              path: '/pets/adoption'
+            },
+          },
+          {
+            route: '/pets/requirements/step-by-step',
+            label: 'Step by step',
+            heading: `Step by step\nRequirements`,
+            description: `Pet adoption and fostering can be incredibly rewarding experiences for both animals and humans alike. We collected useful resources to help potential caregivers and pet owners meet the requirements and get informed.`,
+            button: {
+              label: 'Schedule a visit',
+              path: '/pets/adoption'
+            },
+          }
+        ]
       }
     ]
   },
@@ -85,12 +100,12 @@ export const routes = [
     description: `Pawpal Adoption Center is dedicated to providing a safe and loving environment for abandoned and neglected animals, while also educating and encouraging the community to adopt and care for pets in need.`,
     button: { label: 'Contact us', path: '/pets/adoption' },
     subnav: [
-      { 
-        route: '/about', 
-        label: 'About overview' 
+      {
+        route: '/about',
+        label: 'About overview'
       },
-      { 
-        route: '/about/education', 
+      {
+        route: '/about/education',
         label: 'Education',
         heading: `Education`,
         description: `We are committed to promoting responsible pet ownership through education and outreach programs, and we work closely with our community to raise awareness about animal welfare issues. Together, we can create a more compassionate and just world for animals.`,
