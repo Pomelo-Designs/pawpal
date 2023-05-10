@@ -1,34 +1,30 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
 import { Background } from "../Background";
 import { Icon } from "../Icon";
 import { Ease } from "../../Animations/Ease";
+import { NDrawer } from "../Drawer";
 
 export const SubDrawer = ({ data, setData, setRender, setShow }: any) => {
   return (
-    <Ease
-      key="compact-subdrawer"
-      // x={20}
-    >
-    <nav>
-      <Button
-        setData={setData}
-        setRender={setRender}
-      />
-      <ul className="ml-10">
-        {data.map((item: any, index: number) => {
-          return (
-            <li key={index} className="w-full flex flex-col">
-              <Item
+    <Ease key="compact-subdrawer">
+      <nav>
+        <Button
+          setData={setData}
+          setRender={setRender}
+        />
+        <ul className="ml-10">
+          {data.map((item: any, index: number) => {
+            return (
+              <NDrawer
                 item={item}
                 index={index}
                 setShow={setShow}
+                type="compact"
               />
-            </li>
-          );
-        })}
-      </ul>
-    </nav>
+            );
+          })}
+        </ul>
+      </nav>
     </Ease>
   )
 }
@@ -63,43 +59,5 @@ const Button = ({ setData, setRender }: any) => {
         Main menu
       </div>
     </button>
-  )
-}
-
-const Item = ({ item, index, setShow }: any) => {
-  const [hover, setHover] = useState(false);
-  const [clicked, setClicked] = useState(false);
-
-  return (
-    <NavLink
-      to={item.route}
-      tabIndex={index}
-      className="relative flex flex-col
-        hover:bg-pink-100 active:bg-pink-200 rounded-full"
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-      onMouseDown={() => setClicked(true)}
-      onMouseUp={() => setClicked(false)}
-      onClick={() => {
-        setShow(false);
-      }}
-      end
-    >
-      {({ isActive }) => (
-        <>
-          <Background
-            hover={hover}
-            clicked={clicked}
-            isActive={isActive}
-            styles="w-full h-12 rounded-full"
-          />
-          <div className="flex items-center w-full h-12 px-4">
-            <span className="text-start">
-              {item.label}
-            </span>
-          </div>
-        </>
-      )}
-    </NavLink>
   )
 }

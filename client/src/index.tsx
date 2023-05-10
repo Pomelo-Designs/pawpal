@@ -6,7 +6,7 @@ import Layout from './routes/Layout';
 import ErrorPage from './routes/ErrorPage';
 import Home from './routes/Home';
 // // Pets
-import { Pets, Adoption, FosterCare, WorkingCats, Requirements, General, StepByStep } from './routes/Pets/Pets';
+import { Pets, Adoption, FosterCare, WorkingCats, General, StepByStep } from './routes/Pets/Pets';
 // // Services
 import { Services, VetCare, Grooming, Chipping, Licensing } from './routes/Services/Services';
 // // About

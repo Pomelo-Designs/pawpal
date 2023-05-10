@@ -102,7 +102,6 @@ export const Pets = () => useRoutePath({
 
 export { default as Adoption } from "./Adoption";
 export { default as FosterCare } from "./FosterCare";
-export { default as Requirements } from "./Requirements";
 export { default as WorkingCats } from "./WorkingCats";
-export { default as General } from "./General";
-export { default as StepByStep } from "./StepByStep";
+export { default as General } from "./Requirements/General";
+export { default as StepByStep } from "./Requirements/StepByStep";
