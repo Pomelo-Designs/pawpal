@@ -3,6 +3,8 @@ export const routes = [
     route: '/',
     label: 'home',
     icon: 'home',
+    gradient: 'bg-gradient-purple',
+    image: 'bg-hero-home',
     heading: `PawPal\nAdoption Center`,
     description: `Welcome to our Adoption Center!\n We are dedicated to providing a safe and loving environment for animals in need and finding them their forever homes.`,
     button: { label: 'See our pets', path: '/pets' },
@@ -12,6 +14,8 @@ export const routes = [
     route: '/pets',
     label: 'pets',
     icon: 'sound_detection_dog_barking',
+    gradient: 'bg-gradient-orange',
+    image: 'bg-hero-pets',
     heading: `Our pets`,
     description: `At PawPal Adoption Center, we have a variety of pets available for adoption and foster, including dogs, cats, rabbits, and more. Each pet has their own unique personality and needs, so we work closely with potential adopters to find the perfect match.`,
     button: { label: 'Get a pet', path: '/pets/adoption' },
@@ -23,6 +27,8 @@ export const routes = [
       {
         route: '/pets/adoption',
         label: 'Adoption',
+        gradient: 'bg-gradient-orange',
+        image: 'bg-hero-adoption',
         heading: 'Adoption',
         description: `Our pets are up-to-date on their vaccinations and receive regular veterinarian care to ensure they are healthy and happy. Additionally, our pet training and grooming services help prepare pets for their new homes. Come visit us and find your new furry friend today!`,
         button: {
@@ -33,6 +39,8 @@ export const routes = [
       {
         route: '/pets/foster-care',
         label: 'Foster care',
+        gradient: 'bg-gradient-orange',
+        image: 'bg-hero-foster-care',
         heading: 'Foster care',
         description: `We offer a foster program to help pets who may not be ready for adoption. Our foster families provide a safe and loving environment, while we cover all medical expenses and necessary supplies. Our foster program is a great way to make a difference in a pet's life without the long-term commitment of adoption.`,
         button: {
@@ -43,6 +51,8 @@ export const routes = [
       {
         route: '/pets/working-cats',
         label: 'Working cats',
+        gradient: 'bg-gradient-orange',
+        image: 'bg-hero-working-cats',
         heading: 'Working cats',
         description: `Our Working Cat Program is designed to find homes at barns, warehouses, farms and other safe locations for cats that have traditionally been deemed unadoptable, but make excellent working cats and thrive in that environment as pest control specialists.`,
         button: {
@@ -56,6 +66,8 @@ export const routes = [
           {
             route: '/pets/requirements/general',
             label: 'General',
+            gradient: 'bg-gradient-orange',
+            image: 'bg-hero-requirements',
             heading: `General\nRequirements`,
             description: `Pet adoption and fostering can be incredibly rewarding experiences for both animals and humans alike. We collected useful resources to help potential caregivers and pet owners meet the requirements and get informed.`,
             button: {
@@ -66,6 +78,8 @@ export const routes = [
           {
             route: '/pets/requirements/step-by-step',
             label: 'Step by step',
+            gradient: 'bg-gradient-orange',
+            image: 'bg-hero-requirements',
             heading: `Step by step\nRequirements`,
             description: `Pet adoption and fostering can be incredibly rewarding experiences for both animals and humans alike. We collected useful resources to help potential caregivers and pet owners meet the requirements and get informed.`,
             button: {
@@ -96,6 +110,8 @@ export const routes = [
     route: '/about',
     label: 'about us',
     icon: 'help_clinic',
+    gradient: 'bg-gradient-blue',
+    image: 'bg-hero-requirements',
     heading: `About us`,
     description: `Pawpal Adoption Center is dedicated to providing a safe and loving environment for abandoned and neglected animals, while also educating and encouraging the community to adopt and care for pets in need.`,
     button: { label: 'Contact us', path: '/pets/adoption' },
@@ -107,6 +123,8 @@ export const routes = [
       {
         route: '/about/education',
         label: 'Education',
+        gradient: 'bg-gradient-blue',
+        image: 'bg-hero-education',
         heading: `Education`,
         description: `We are committed to promoting responsible pet ownership through education and outreach programs, and we work closely with our community to raise awareness about animal welfare issues. Together, we can create a more compassionate and just world for animals.`,
         button: {

@@ -83,7 +83,7 @@ const Button = ({ item, index, dropdown, setDropdown, activeLink }: any) => {
       <span className="flex w-full h-full 
         items-center self-start 
         expanded:tracking-[0.15px] expanded:text-base expanded:font-medium expanded:text-[#201A18]
-        pl-4 whitespace-nowrap"
+        expanded:pl-5 compact:pl-4 whitespace-nowrap"
       >
         {item.label}
       </span>

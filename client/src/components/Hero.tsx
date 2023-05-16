@@ -2,18 +2,21 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "./Buttons/Button";
 
 interface HeroProps {
+  gradient: string;
+  image: string;
   heading: string;
   description: string;
   buttonLabel: string | undefined;
   buttonLink: string;
 }
 
-export const Hero = ({ heading, description, buttonLabel, buttonLink }: HeroProps) => {
+export const Hero = ({ gradient, image, heading, description, buttonLabel, buttonLink }: HeroProps) => {
   const navigate = useNavigate();
 
   return (
-    <section className="flex flex-col items-center justify-center grow h-[632px] bg-[#FF84A9] rounded-2xl">
-      <div>
+    <section className={`flex flex-col relative items-center justify-center grow h-[632px] ${gradient} bg-cover rounded-2xl`}>
+      <div className={`absolute ${image} bg-cover w-full h-full bg-no-repeat z-0`} />
+      <div className="z-10">
         <h1 className="font-karla text-8xl leading-[72px] capitalize mb-7 whitespace-pre-line break-all">
           {heading}
         </h1>

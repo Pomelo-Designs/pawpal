@@ -59,6 +59,8 @@ export default function Layout() {
               <Ease key="page" y={10}>
                 <div className="flex flex-col">
                   <Hero
+                    gradient={data.gradient}
+                    image={data.image}
                     heading={data.heading}
                     description={data.description}
                     buttonLink={data.button.path}
