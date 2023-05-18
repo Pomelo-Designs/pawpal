@@ -8,9 +8,10 @@ interface HeroProps {
   description: string;
   buttonLabel: string | undefined;
   buttonLink: string;
+  buttonType: "pink" | "blue" | "brown";
 }
 
-export const Hero = ({ gradient, image, heading, description, buttonLabel, buttonLink }: HeroProps) => {
+export const Hero = ({ gradient, image, heading, description, buttonLabel, buttonLink, buttonType }: HeroProps) => {
   const navigate = useNavigate();
 
   return (
@@ -30,6 +31,7 @@ export const Hero = ({ gradient, image, heading, description, buttonLabel, butto
               label={buttonLabel}
               primary={true}
               size="large"
+              type={buttonType}
             />
           </div>
         </div>

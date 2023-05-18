@@ -20,12 +20,35 @@ module.exports = {
       'karla': ['"Karla"'],
     },
     extend: {
+      dropShadow: {
+        'fab-default': [
+          '0 1px 3px rgba(0, 0, 0, 0.3)',
+          '0 4px 8px rgba(0, 0, 0, 0.15)'
+        ],
+        'fab-hover': [
+          '0 2px 3px rgba(0, 0, 0, 0.3)',
+          '0 6px 10px rgba(0, 0, 0, 0.15)'
+        ]
+      },
       colors: {
         pink: {
           100: 'rgba(173, 41, 92, 0.11)',
           200: 'rgba(173, 41, 92, 0.14)',
           300: '#FFDBCC',
+          600: "#CE4374",
+          650: "#C0406E",
+          700: "#B93E6B",
         },
+        brown: {
+          600: "#C2571D",
+          650: "#B5521E",
+          700: "#AE501F",
+        },
+        blue: {
+          600: "#387ABF",
+          650: "#3772B2",
+          700: "#376DAC",
+        }
       },
       backgroundImage: {
         'gradient-purple': "url('https://previews.dropbox.com/p/thumb/AB4M3yIZE73kpEmLYaOWr4gNEAPmJr4JbjNhFQUQP7aY9fsEVwx53wK-cIsNHM8pSDxE523pIzlfbKVAAn5q_XKJ3lMPFmv-PCDoojkpO9it87xyoBbo3rNXXi6dtGcuEH5YBR5s_QD1IkGRXymGkVtRaf3RYcvjVBtte7TL4Wp6WeSmAcCio_tN0OhLOieCRW2AaAAnr5ZCJb21C7aI2nT63OiXEq82V5PeFy_PIAe7ITI_HT7fBzIbAkfWPpc2efetuqBik0MMBXNdoUZnziNZcefwcdfI6lLI2PY1dn6en9_hbwx21XrhQobf1eBnuw6WCkvrVz9_3QsyQqu3m-c5hPgGKGp3yzRpn5WVhDrqIZqAD0KXtJpVP3fs4fALUjU/p.jpeg')",

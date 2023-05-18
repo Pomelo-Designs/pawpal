@@ -51,7 +51,7 @@ export default function Layout() {
 
   const transformPathToTitle = () => {
     if (path === "/") {
-      return "";
+      return "PawPal";
     } else {
       // Removes all but last sub-path
       const str = path.slice(path.lastIndexOf("/") + 1, path.length);
@@ -59,8 +59,8 @@ export default function Layout() {
 
       const handleDash = capitalizeString.replace("-", " ");
 
-      if (capitalizeString.includes("-")) return handleDash + ` - `;
-      else return capitalizeString + ` - `;
+      if (capitalizeString.includes("-")) return handleDash + ` – `;
+      else return capitalizeString + ` – `;
     }
   }
 
@@ -88,6 +88,7 @@ export default function Layout() {
                     description={data.description}
                     buttonLink={data.button.path}
                     buttonLabel={data.button.label}
+                    buttonType={data.button.type}
                   />
                   <div className="self-center w-[936px]">
                     <Outlet />
