@@ -4,16 +4,17 @@ interface NavCardProps {
   title: string;
   description?: string;
   src?: any;
+  image?: string;
   handleClick?: () => void;
 }
 
-export const NavCard = ({ title, description, src, handleClick }: NavCardProps) => {
+export const NavCard = ({ image, title, description, handleClick }: NavCardProps) => {
 
   return (
     <div className="w-full cursor-pointer"
       onClick={handleClick}>
-      {src &&
-        <img src={src} className="w-full h-[192px] object-cover object-top m-0 mb-6 rounded-xl" alt="image" />
+      {image &&
+        <div className={`w-full ${image} bg-center bg-no-repeat m-0 mb-6 rounded-xl`} />
       }
       {description ?
         <div className="flex flex-col">

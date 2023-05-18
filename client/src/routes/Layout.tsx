@@ -7,6 +7,7 @@ import { Ease } from "../components/Animations/Ease";
 import { Hero } from "../components/Hero";
 import { useEffect, useState } from "react";
 import { routes } from "./Routes";
+import { Helmet } from "react-helmet";
 
 interface DataProps {
   route: string;
@@ -20,19 +21,20 @@ interface DataProps {
 
 export default function Layout() {
   const location = useLocation();
+  const path = location.pathname;
   const [show, setShow] = useState(false);
   const [data, setData] = useState<DataProps[] | any>([]);
 
   const getData = () => routes.map((item: any) => {
-    if (item.route === location.pathname) {
+    if (item.route === path) {
       setData(item as unknown as DataProps[]);
     } else {
       item.subnav.map((subitem: any) => {
-        if (subitem.route === location.pathname) {
+        if (subitem.route === path) {
           setData(subitem as unknown as DataProps[]);
         } else if (subitem.subnav) {
           subitem.subnav.map((subsubitem: any) => {
-            if (subsubitem.route === location.pathname) {
+            if (subsubitem.route === path) {
               setData(subsubitem as unknown as DataProps[]);
             }
           })
@@ -47,8 +49,29 @@ export default function Layout() {
     setTimeout(() => setShow(true), 100);
   }, [location]);
 
+  const transformPathToTitle = () => {
+    if (path === "/") {
+      return "";
+    } else {
+      // Removes all but last sub-path
+      const str = path.slice(path.lastIndexOf("/") + 1, path.length);
+      const capitalizeString = str.charAt(0).toUpperCase() + str.slice(1);
+
+      const handleDash = capitalizeString.replace("-", " ");
+
+      if (capitalizeString.includes("-")) return handleDash + ` - `;
+      else return capitalizeString + ` - `;
+    }
+  }
+
   return (
     <>
+      <Helmet>
+        <title>
+          {transformPathToTitle()}PawPal
+        </title>
+        <meta name="description" content="Helmet application" />
+      </Helmet>
       <ScrollToTop />
       <section className="w-full flex compact:flex-col medium:flex-col expanded:flex-row">
         <Navbar />

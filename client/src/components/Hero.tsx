@@ -15,7 +15,7 @@ export const Hero = ({ gradient, image, heading, description, buttonLabel, butto
 
   return (
     <section className={`flex flex-col relative items-center justify-center grow h-[632px] ${gradient} bg-cover rounded-2xl`}>
-      <div className={`absolute ${image} bg-cover w-full h-full bg-no-repeat z-0`} />
+      <div className={`absolute ${image} bg-cover w-full h-full bg-no-repeat bg-right z-0`} />
       <div className="z-10">
         <h1 className="font-karla text-8xl leading-[72px] capitalize mb-7 whitespace-pre-line break-all">
           {heading}

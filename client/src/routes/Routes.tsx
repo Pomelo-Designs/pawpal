@@ -95,6 +95,8 @@ export const routes = [
     route: '/services',
     label: 'services',
     icon: 'medical_services',
+    gradient: 'bg-gradient-cyan',
+    image: 'bg-hero-services',
     heading: `Our services`,
     description: `We provide various services to ensure the health and wellbeing of pets, including vet care, microchipping to identify lost pets, licensing to comply with local regulations, and grooming to keep pets clean and healthy.`,
     button: { label: 'Contact us', path: '/pets/adoption' },
