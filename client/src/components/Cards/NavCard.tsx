@@ -5,13 +5,14 @@ interface NavCardProps {
   description?: string;
   src?: any;
   image?: string;
+  classname?: string;
   handleClick?: () => void;
 }
 
-export const NavCard = ({ image, title, description, handleClick }: NavCardProps) => {
+export const NavCard = ({ image, title, description, handleClick, classname }: NavCardProps) => {
 
   return (
-    <div className="w-full cursor-pointer"
+    <div className={` ${classname} col-span-3 cursor-pointer`}
       onClick={handleClick}>
       {image &&
         <div className={`w-full ${image} bg-center bg-no-repeat m-0 mb-6 rounded-xl`} />

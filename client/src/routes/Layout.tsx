@@ -59,8 +59,10 @@ export default function Layout() {
 
       const handleDash = capitalizeString.replace("-", " ");
 
-      if (capitalizeString.includes("-")) return handleDash + ` – `;
-      else return capitalizeString + ` – `;
+      const text = ` – PawePal`;
+
+      if (capitalizeString.includes("-")) return handleDash + text;
+      else return capitalizeString + text;
     }
   }
 
@@ -68,7 +70,7 @@ export default function Layout() {
     <>
       <Helmet>
         <title>
-          {transformPathToTitle()}PawPal
+          {transformPathToTitle()}
         </title>
         <meta name="description" content="Helmet application" />
       </Helmet>
@@ -76,28 +78,26 @@ export default function Layout() {
       <section className="w-full flex compact:flex-col medium:flex-col expanded:flex-row">
         <Navbar />
         <CompactNavbar />
-        <div className="w-full flex flex-col top-0 compact:mt-[64px] medium:mt-[64px] expanded:ml-[72px] z-0">
+        <div className="w-full top-0 compact:mt-[64px] medium:mt-[64px] expanded:ml-[72px] z-0">
           {show &&
-            <>
-              <Ease key="page" y={10}>
-                <div className="flex flex-col">
-                  <Hero
-                    gradient={data.gradient}
-                    image={data.image}
-                    heading={data.heading}
-                    description={data.description}
-                    buttonLink={data.button.path}
-                    buttonLabel={data.button.label}
-                    buttonType={data.button.type}
-                  />
-                  <div className="self-center w-[936px]">
-                    <Outlet />
-                  </div>
+            <Ease key="page" y={10}>
+              <Hero
+                gradient={data.gradient}
+                image={data.image}
+                heading={data.heading}
+                description={data.description}
+                buttonLink={data.button.path}
+                buttonLabel={data.button.label}
+                buttonType={data.button.type}
+              />
+              <div className="grid justify-items-stretch">
+                <div className="w-[1130px] grid justify-self-center grid-cols-12 gap-2 gap-y-12">
+                  <Outlet />
                 </div>
-              </Ease>
-              <div className="w-full grow min-h-[100px]" />
-              <Footer />
-            </>
+                <div className="w-full grow min-h-[100px]" />
+                <Footer />
+              </div>
+            </Ease>
           }
         </div>
       </section>
