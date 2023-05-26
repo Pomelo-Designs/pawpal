@@ -14,7 +14,7 @@ export const Card = ({ image, title, description, cols, handleClick }: CardProps
     <div className={` ${cols} cursor-pointer rounded-xl border-[1px] leading-none inline-block`}
       onClick={handleClick}
     >
-      {image && <div className={`w-full h-[192px] ${image} bg-cover bg-no-repeat bg-center m-0 rounded-t-xl`} />
+      {image && <img src={image} className={`w-full h-[192px] bg-cover bg-no-repeat bg-center m-0 rounded-t-xl`} />
       }
       <div className="flex flex-col p-4 pb-8 gap-2.5">
         <h6 className="text-2xl">{title}</h6>

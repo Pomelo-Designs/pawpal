@@ -1,10 +1,16 @@
+// gradients
+import GradientPink from "../assets/gradients/pink.png";
+
+// heros
+import HeroHome from "../assets/heros/home.png";
+
 export const routes = [
   {
     route: '/',
     label: 'home',
     icon: 'home',
-    gradient: 'bg-gradient-purple',
-    image: 'bg-hero-home',
+    gradient: GradientPink,
+    image: HeroHome,
     heading: `PawPal\nAdoption Center`,
     description: `Welcome to our Adoption Center!\n We are dedicated to providing a safe and loving environment for animals in need and finding them their forever homes.`,
     button: { label: 'See our pets', path: '/pets', type: 'pink' },

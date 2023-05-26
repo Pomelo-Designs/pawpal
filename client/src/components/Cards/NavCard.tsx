@@ -15,7 +15,7 @@ export const NavCard = ({ image, title, description, handleClick, classname }: N
     <div className={` ${classname} col-span-3 cursor-pointer`}
       onClick={handleClick}>
       {image &&
-        <div className={`w-full ${image} bg-center bg-no-repeat m-0 mb-6 rounded-xl`} />
+        <img src={image} className={`w-full bg-center bg-no-repeat m-0 mb-6 rounded-xl`} />
       }
       {description ?
         <div className="flex flex-col">
