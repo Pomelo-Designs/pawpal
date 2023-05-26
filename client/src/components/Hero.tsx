@@ -2,36 +2,38 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "./Buttons/Button";
 
 interface HeroProps {
-  gradient: string;
-  image: string;
-  heading: string;
-  description: string;
-  buttonLabel: string | undefined;
-  buttonLink: string;
-  buttonType: "pink" | "blue" | "brown";
+  data: {
+    gradient: string;
+    image: string;
+    heading: string;
+    description: string;
+    buttonLabel: string | undefined;
+    buttonLink: string;
+    buttonType: "pink" | "blue" | "brown";
+  }
 }
 
-export const Hero = ({ gradient, image, heading, description, buttonLabel, buttonLink, buttonType }: HeroProps) => {
+export const Hero = ({ data }: HeroProps) => {
   const navigate = useNavigate();
 
   return (
-    <section className={`flex flex-col relative items-center justify-center grow h-[632px] ${gradient} bg-cover rounded-2xl`}>
-      <div className={`absolute ${image} bg-cover w-full h-full bg-no-repeat bg-right z-0`} />
-      <div className="z-10">
-        <h1 className="font-karla text-8xl leading-[72px] capitalize mb-7 whitespace-pre-line break-all">
-          {heading}
+    <section className={`flex items-stretch col-span-full relative items-center justify-center grow h-[632px] ${data.gradient} bg-cover rounded-2xl`}>
+      <div className={`absolute ${data.image} bg-cover w-full h-full bg-no-repeat bg-right z-0`} />
+      <div className="self-center grid grid-cols-12 col-span-full">
+        <h1 className="col-start-5 col-span-8 font-karla text-8xl leading-[72px] capitalize mb-7 whitespace-pre-line break-all">
+          {data.heading}
         </h1>
-        <div className=" w-[650px]">
+        <div className="col-start-5 col-span-7">
           <p className="text-2xl whitespace-pre-line">
-            {description}
+            {data.description}
           </p>
           <div className="flex flex-row justify-end mt-14">
             <Button
-              handleClick={() => navigate(buttonLink)}
-              label={buttonLabel}
+              handleClick={() => navigate(data.buttonLink)}
+              label={data.buttonLabel}
               primary={true}
               size="large"
-              type={buttonType}
+              type={data.buttonType}
             />
           </div>
         </div>

@@ -26,21 +26,13 @@ export default function Layout() {
   const [data, setData] = useState<DataProps[] | any>([]);
 
   const getData = () => routes.map((item: any) => {
-    if (item.route === path) {
-      setData(item as unknown as DataProps[]);
-    } else {
-      item.subnav.map((subitem: any) => {
-        if (subitem.route === path) {
-          setData(subitem as unknown as DataProps[]);
-        } else if (subitem.subnav) {
-          subitem.subnav.map((subsubitem: any) => {
-            if (subsubitem.route === path) {
-              setData(subsubitem as unknown as DataProps[]);
-            }
-          })
-        }
+    if (item.route === path) setData(item as unknown as DataProps[]);
+    else item.subnav.map((subitem: any) => {
+      if (subitem.route === path) setData(subitem as unknown as DataProps[]);
+      else if (subitem.subnav) subitem.subnav.map((subsubitem: any) => {
+        if (subsubitem.route === path) setData(subsubitem as unknown as DataProps[]);
       })
-    }
+    })
   });
 
   useEffect(() => {
@@ -69,38 +61,27 @@ export default function Layout() {
   return (
     <>
       <Helmet>
-        <title>
-          {transformPathToTitle()}
-        </title>
+        <title>{transformPathToTitle()}</title>
         <meta name="description" content="Helmet application" />
       </Helmet>
       <ScrollToTop />
       <section className="w-full flex compact:flex-col medium:flex-col expanded:flex-row">
         <Navbar />
         <CompactNavbar />
-        <div className="w-full top-0 compact:mt-[64px] medium:mt-[64px] expanded:ml-[72px] z-0">
-          {show &&
-            <Ease key="page" y={10}>
-              <Hero
-                gradient={data.gradient}
-                image={data.image}
-                heading={data.heading}
-                description={data.description}
-                buttonLink={data.button.path}
-                buttonLabel={data.button.label}
-                buttonType={data.button.type}
-              />
-              <div className="grid justify-items-stretch">
-                <div className="w-[1130px] grid justify-self-center grid-cols-12 gap-2 gap-y-12">
-                  <Outlet />
-                </div>
-                <div className="w-full grow min-h-[100px]" />
-                <Footer />
-              </div>
-            </Ease>
-          }
-        </div>
-      </section>
+        {show && <Page data={data} />}
+      </section >
     </>
   );
 }
+
+const Page = ({ data }: any) => (
+  <div className="grid justify-items-stretch w-full top-0 compact:mt-[64px] medium:mt-[64px] expanded:ml-[72px] z-0">
+    <Ease key="page" y={10}>
+      <div className="justify-self-center grid w-[1130px] grid-cols-12 gap-2 gap-y-12">
+        <Hero data={data} />
+        <Outlet />
+        <Footer />
+      </div>
+    </Ease>
+  </div>
+);

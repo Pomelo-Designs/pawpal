@@ -9,9 +9,9 @@ import { ReactComponent as LinkedIn } from "./assets/LinkedIn.svg";
 export default function Footer() {
 
   return (
-    <div className="flex flex-row items-center justify-center 
-    border-t-[1px] border-[#D8C2C0] h-[72px] w-full text-xs">
-      <div className="flex flex-row gap-12 items-center">
+    <div className="grid col-start-3 grid-cols-10 col-span-full gap-5 items-center justify-center 
+    border-t-[1px] border-[#D8C2C0] h-[72px] text-xs">
+      <div className="flex col-span-full flex-row justify-between">
         <span>
           &copy; PawPals Adoption Center. All rights reserved.
         </span>
@@ -27,7 +27,6 @@ export default function Footer() {
         </span>
         <Social />
       </div>
-
     </div>
   )
 }
