@@ -12,11 +12,13 @@ interface NavCardProps {
 export const NavCard = ({ image, title, description, handleClick, classname }: NavCardProps) => {
 
   return (
-    <div className={` ${classname} col-span-3 cursor-pointer`}
+    <div className={`grid col-span-3 cursor-pointer`}
       onClick={handleClick}>
-      {image &&
-        <img src={image} className={`w-full bg-center bg-no-repeat m-0 mb-6 rounded-xl`} />
-      }
+      <div className={classname}>
+        {image &&
+          <img src={image} className={`w-full bg-center bg-no-repeat m-0 mb-6 rounded-xl`} />
+        }
+      </div>
       {description ?
         <div className="flex flex-col">
           <h6 className="text-2xl">{title}</h6>

@@ -1,6 +1,7 @@
 import { Card } from "../components/Cards/Card";
 import { NavCard } from "../components/Cards/NavCard";
 import { Heading } from "../components/Heading";
+import { Section } from "../components/Section";
 // assets
 import Adopt from "../assets/home-page/adopt.png";
 import Foster from "../assets/home-page/foster.png";
@@ -13,7 +14,7 @@ import News4 from "../assets/home-page/news4.png";
 export default function Home() {
   return (
     <>
-      <section className="grid col-start-2 grid-cols-11 col-span-full gap-5">
+      <Section>
         <div className="grid grid-cols-11 col-span-full gap-5">
           <Heading label="Adoption & Foster" />
           <p className="col-span-4 text-sm w-[360px] p-6 pl-0">
@@ -24,21 +25,24 @@ export default function Home() {
           title={"Adopt"}
           description="give a permanent home to an animal in need"
           image={Adopt}
+          classname="h-[312px]"
         />
         <div />
         <NavCard
           title={"Foster"}
           description="provide a temporary home to an animal in need"
           image={Foster}
+          classname="h-[312px]"
         />
         <div />
         <NavCard
           title={"Hire"}
           description="provide a barn/farm for a cat pest control expert"
           image={Hire}
+          classname="h-[312px]"
         />
-      </section>
-      <section className="grid col-start-2 grid-cols-11 col-span-full gap-5">
+      </Section>
+      <Section>
         <div className="col-span-full">
           <Heading label="Latest news" />
         </div>
@@ -66,8 +70,8 @@ export default function Home() {
           description={"When they were brought to the Adoption Center, the staff immediately noticed their special bond and knew they needed to be adopted together."}
           cols="col-span-5"
         />
-      </section>
-      <section className="grid col-start-2 grid-cols-11 col-span-full gap-5">
+      </Section>
+      <Section>
         <div className="col-span-full">
           <Heading label="Resources" />
         </div>
@@ -86,7 +90,7 @@ export default function Home() {
           description={`Your Puppy Keeps Chewing on Everything in Their Sight?`}
           cols="col-span-3"
         />
-      </section>
+      </Section>
     </>
   )
 }

@@ -618,8 +618,8 @@ video {
   grid-column: span 5 / span 5;
 }
 
-.col-span-7 {
-  grid-column: span 7 / span 7;
+.col-span-6 {
+  grid-column: span 6 / span 6;
 }
 
 .col-span-8 {
@@ -630,20 +630,12 @@ video {
   grid-column: 1 / -1;
 }
 
-.col-span-6 {
-  grid-column: span 6 / span 6;
-}
-
 .col-start-2 {
   grid-column-start: 2;
 }
 
 .col-start-3 {
   grid-column-start: 3;
-}
-
-.col-start-5 {
-  grid-column-start: 5;
 }
 
 .col-start-4 {
@@ -762,16 +754,12 @@ video {
   height: 272px;
 }
 
-.h-\[305px\] {
-  height: 305px;
+.h-\[524px\] {
+  height: 524px;
 }
 
 .h-\[56px\] {
   height: 56px;
-}
-
-.h-\[632px\] {
-  height: 632px;
 }
 
 .h-\[72px\] {
@@ -792,9 +780,16 @@ video {
   height: 100vh;
 }
 
-.h-min {
-  height: -webkit-min-content;
-  height: min-content;
+.h-\[350px\] {
+  height: 350px;
+}
+
+.h-\[304px\] {
+  height: 304px;
+}
+
+.h-\[312px\] {
+  height: 312px;
 }
 
 .w-10 {
@@ -900,6 +895,10 @@ video {
 
 .grid-cols-4 {
   grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.grid-rows-2 {
+  grid-template-rows: repeat(2, minmax(0, 1fr));
 }
 
 .flex-row {
@@ -1128,10 +1127,6 @@ video {
   background-image: url('https://previews.dropbox.com/p/thumb/AB6VnC7ahf5_mkKAwm5VroOnZR4DNtRR45D82GahQTc1qJprX77ct7sZPv7oBySFnbK643p5S8Tij9Nkm5dssXQA-DeEtnnb4fzgurCAauHrxmF5NTTJ_hO_yY1-bRnX-z3BEQtdSH-2FQatutu5F5IOyjFR7PNBzU7_uEJiuy_yq8RSEHI5XAaGxndkfEWbtY7iWzmVIAxjUCP3DsBV8SlBmcWySQi3wF2BTNto6zXnj6AmEmxZiW8wjrsHJ526cwPq2FQn9lL4HKr6eoF12yCGW_ZUxhYUXmaO3UIobZryCnKdiMj4AtKrXIr58FrafjzQbwVi0uLjPXMPQ8Zq5k9ZPoC_Jq2yLyNCJyCsxd4oev1CX8oWmQpVzsy_SeCByDY/p.jpeg');
 }
 
-.bg-gradient-purple {
-  background-image: url('https://previews.dropbox.com/p/thumb/AB4M3yIZE73kpEmLYaOWr4gNEAPmJr4JbjNhFQUQP7aY9fsEVwx53wK-cIsNHM8pSDxE523pIzlfbKVAAn5q_XKJ3lMPFmv-PCDoojkpO9it87xyoBbo3rNXXi6dtGcuEH5YBR5s_QD1IkGRXymGkVtRaf3RYcvjVBtte7TL4Wp6WeSmAcCio_tN0OhLOieCRW2AaAAnr5ZCJb21C7aI2nT63OiXEq82V5PeFy_PIAe7ITI_HT7fBzIbAkfWPpc2efetuqBik0MMBXNdoUZnziNZcefwcdfI6lLI2PY1dn6en9_hbwx21XrhQobf1eBnuw6WCkvrVz9_3QsyQqu3m-c5hPgGKGp3yzRpn5WVhDrqIZqAD0KXtJpVP3fs4fALUjU/p.jpeg');
-}
-
 .bg-hero-adoption {
   background-image: url('https://previews.dropbox.com/p/thumb/AB6vt3mgPaQdcytSXm6lkdcDrl4LR7SVR_ZJ_WdgjxMEvHeeVDeI3sbie3fNq4ku8uqVw85f6Ot37g4vYeGhvmJ765nBDNuCJnqHQezL6M4uUan0SQ4eK3yhY-srVCOyfePwHNls12uqVeSPI6AElFtFBIhY7s_kYdo6tkN0vBiJTObVJkycEcdUWWts_9peFfYhvjth-NAOeoFM7-L0eqlIFsc4d3H2vQgyUNvu1vEzey7JhKT_CjP-25cBNaZx1eIb6YWfU4VeODvV5VsGKlTsKwzpV49tEaErRIBVL0elILO6-_o43HjFcokzY8SRfF-T10aGh_puM4i2fFrBsSnUxbOyoGpp-mNErw8KP0FRX1WCexIcjjvUohR-ccwG3C4/p.png');
 }
@@ -1142,10 +1137,6 @@ video {
 
 .bg-hero-foster-care {
   background-image: url('https://previews.dropbox.com/p/thumb/AB7Toal4U6m29tLdbrKENjES7U5bP2Of3v8AI0859x1KhMQ-CCXBiUj6gUmdlX2yWWsnGG6o5NnZqNZZ1T7xKCmdvn7KII_JoBdMwf_EJiYEmDYUHvZPzM8Uc2PJ1utCDY8DOB8wqyWwgEqzDCzZ1u1WIo_LF2iCziqNOfZ6Yg7_JjnTzVXT-hraZ6UbjfUo_60KTL4hql5Q_qnS-eukZtumsHLQRN3HjF-3dnP1qAac2qI2b5lo1UXSk2DOgjPM78GO_KNfLLGraB7dbKaoEHikC4j3PIrSuC_OX-AKfVaRqjTRGDTcRcLRrje6Ee3rU-I9F1POFKeRDXNd3wtNK3ghMqtP_MwZ0CYGVu6QombbZAXLtrwUF3GkHGULnuZMvbU/p.png');
-}
-
-.bg-hero-home {
-  background-image: url('https://previews.dropbox.com/p/thumb/AB535EKglZgisQ7PIYxnL8vD-AG-Td3vVboBYkf-j6GL89mWqsdWFjHAjgaAz46mOoVECVWsnjP4EvS3G-U6uYlUaUWZHDNLeE9VP2L3YCxksw5GtEBfeSrZ-xl8IfI3ouh2P8oa7Jhou4C_aqRh0txHLvDOaM_y4SPg50W9liWxdbFuwYBmW5n9_ohgqEdh4vem331DVZLzxCzS4QJ3DGXQKNP8Dwu7O3bdDMBg04W56yez7LOb46fBYQsGptvFopJlCUBh8U7rrlz7qdKDdIXX9oHBP-7UNef2P_bpyPe2pqQcb3pFYu7g___4HQ1ifdJhBN4iPd6mTQDwNHgvBy9UKSVDN8m07XugWsHaW7RWLBptWoSaVrVXP3lgJWVKif0/p.png');
 }
 
 .bg-hero-pets {
@@ -1162,34 +1153,6 @@ video {
 
 .bg-hero-working-cats {
   background-image: url('https://previews.dropbox.com/p/thumb/AB68M-o6feU7hSJLv5YUCiK7Yj_QFbkPj3ifa1_vC7ExPU72xx5ufzdtffVRK-9pTZkuHCisDmxFg9ZhjnGIB5rqJFgQsKGAxauwYsV-J24NEcVksNbchBeQSaw-k6YX6TlNsHpdPJFydCC2O69iXagz5vs2YsA3kG2Pcl_XK6uam88ky6fTsYFDeCwVb0c7UEcjYPope1YIIjwYG3A1HAztMBWXWaaXjup4iUpLNcFqNGaPdHPWjm7JpwU4W4OzIM06OBzQgGWxfTGycynxaBuZrsSCq4AN7MjcDI9lAsoEyayxh_HVRS6d-qpOSq-aCmBs95gTvg21fnACCvWiz6OPJagVJRvb2AWRhSkZG7GO-JtOxNe-QvZJQWTWOsHSLko/p.png');
-}
-
-.bg-home-adoption {
-  background-image: url('./assets/home-page/adopt.png');
-}
-
-.bg-home-foster {
-  background-image: url('https://previews.dropbox.com/p/thumb/AB6afs2gSo76FYB9gnapsxOlF7h-vkbs7W7D4_bHyInjwcrpYRdVSCnkSoBZXjfJgkk-YBnnyV5J16_fimzLZpg4AK31A-gbGFqF5W_H9nqgbjZPSe2gUif2n06auTdALAaT1ErgE882O0scRUM_pbAcpaMC05lc5slRyaSRYtGmBy5X79Ivz5YXZHzsF3CxaNLuODZlZ8y99rgkUkcZurMh52GZTL13I38FZWcxIxKdO6OoEz_g6ohiRHM5BdwmJBCpOwMkudjDJRAMvznIeajp-xgYPmFHmJRBXbEt_cWofI7BsXgGgyK0_SUIbPEsnaogNDoEhpvm9-mOMb1PI8mYppLPjVfmzUIwcilzNOxAHndIp1drkNafy3P6zSEvqwg/p.png');
-}
-
-.bg-home-news1 {
-  background-image: url('https://previews.dropbox.com/p/thumb/AB5UA0ceFXqpNT3zJd-ENqq-4q_rOW6GPXQmdj-rIm5bTC87aAgFCEv5S15oUZfYyLXRM4k2KfICjKgPJk3xk5mmifOxteaDBOFi4tiuoxmytDTr0TtZbnVtxEsHOz7w5cZ_DG88DmF7QJroHFf4UYzAy03EV5S0C9Apma9O_HTwjiwCzZ9MN-eONR1y8pW3Y6H2UNowfCCALScgq7Q_BB0UDFTrAdV0k9LbrbqN2TU9i7vRGd5UBoufev9usZpuqlxzfp6v8dXGXBVx846sIrljF3xIm4ikXwrb2oFKLHYF8nmpq3Q3OVse84KFDn-TL2Gm8yR6XNZeUf8Dbmzb9kgEzjZTrV0Z6v0y9569eQ36HIx2b1kh_AOE-_EhuDPfuns/p.png');
-}
-
-.bg-home-news2 {
-  background-image: url('https://previews.dropbox.com/p/thumb/AB6NO2O8L_e-i-6bdRsjTwmsgT2G2bGDr_KP7yt9aBblpBKunaBM28AQ1EEwysAihEElXQ48pIJ63TDVMI9LWUk3fEXQVcTBP2TqCvgk88DEvWu0ebr9olVJf7WlXcgwtqkDhXaCJH6OgfxDbubVn8rSamam8XeKzIdB22O3kVXcSQSM2v8k_FRzf91d9lKK3d9DSPky46QcbLIYMU_J7H3FmJesy5t-BBwGf2X8jOTf_zwL7OOAx23YzjY2ETBHXAcmydpkEgDcTqCss6dfaYBhqeOFzdh4RNbxLxtjin0aHk0KCrKICsrw9zqVe-PY9BVzwyTChhQOwUOGSMZT4Fi25aMj7lrYR04gx3WGiYsPlgy_5shuhFmTxeS5uEo6-wE/p.png');
-}
-
-.bg-home-news3 {
-  background-image: url('https://previews.dropbox.com/p/thumb/AB4BHpnL22x5u00ioCu48DsMeogFgXzn1gzt-3W8hMv1_modCoRFKS0Rq12F5NyQW3XsevxLaCIUKDtfHp4ixZQBVr852ihekwwX_JgGwMsi628ylIy83WV9GCPmIvkeXR65tbBbpfu-Gu_09kg76SI7GAIgfVJ36umqqBtce1JBkJgxa2fkZy5OtWhVeBwPIXqgnStyDgv7Od5vz8ITmZT1hYlQC-dC0xm_O7-0V5pe0B0tC061eN_SgBUZGSngqkS0cv1H1jIC9sszcPxnV3V-Vb8EaJcCsTxg7SsnTLkM6K01HufLm_j17voZ_xrvmQDLLKMvwapMMMd8H1kADx7_GMteqA4uy_sao8D-GidDKvJCpz0doA_pjU_9kckOSJI/p.png');
-}
-
-.bg-home-news4 {
-  background-image: url('https://previews.dropbox.com/p/thumb/AB4bUlaHExlD72JH-edP2OCI5ZSY1mFrHXKVk1_lz6GdMWHTBdXuGboBFujI4GiNEI3TAkVDhJKp9FOZompoOyZssVr5JaaAOJsJjksR4qkcrjqOLLi6EHBh3kVuzYuYTe_P8gLi4B4V6Hl5ytmO0UGAK57ni8eqReA46aitMbmef0l3Keo0bKRYQY9phZa_3jdpr72QBjFl8RyQv-ILWZnza1J91lb2Isw-7o1NsIyegmsBLcdK8VmpDCTIfP0bxxaKLQBLDclFAHIklGw9pO99AQZ9jHaKovbPV5TpJ5kpHSi1I2uTraE8Ew7h9M0cl1jx0TtEL-O-gLfHApGvxYI9QI7r-fdh4AMuAmOMMOypRq6TR3nvfuyvozw6WtJCHZM/p.png');
-}
-
-.bg-home-working-cats {
-  background-image: url('https://previews.dropbox.com/p/thumb/AB4iwIlf1Aw28KqT_OxlTiugcdtjz9kHhjcYMPznLIG3P876rcJnXO4Us0Mw5J24cX9Xa5wCETJ_7mSSrpwEVFtZcv0VyXEtgNlpcYcYQjxi95joZrkhaNCwW4fB9n7VlkcOy5oCm0vDjX80LTiQQ63F0_2gGnnFl6Jb5WCqQSbJmJt4w51xs9fwOTZzcQo5aeu26x_ZpdNdZLBoSkH85dK942fIwBU0nPScYcvDH6z2vJMe-3kGyQ5k9keRnDFQamtA_vNIyaLEkIXPwjiOS2Wa5bwR0fmkKJMFLPDi_y4jXN-T2IL_tlnKmRWHsF86FV6zqkdVJVMXYYAeOfwA-mHqD8eV0hehuUQmhi7aVOatUYIhdf_fHAoJsQH6cNhJiXQ/p.png');
 }
 
 .bg-pets-birds {

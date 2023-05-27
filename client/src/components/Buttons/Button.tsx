@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 
 interface ButtonProps {
-  label: string | undefined;
+  label: string;
   primary: boolean;
   type: "pink" | "brown" | "blue";
   size: "small" | "medium" | "large";
@@ -29,19 +29,10 @@ const getClasses = (type: string) => {
   if (type === "blue") return `${defaultClass} text-[#EAF1FF] bg-blue-600 hover:bg-blue-650 focus:bg-blue-700 active:bg-blue-700`;
   if (type === "brown") return `${defaultClass} text-[#FFEDE7] bg-brown-600 hover:bg-brown-650 focus:bg-brown-700 active:bg-brown-700`;
 }
-
-// const getModeClasses = (isPrimary: boolean) =>
-//   isPrimary
-//     ? "text-white bg-pink-600 border-pink-600 dark:bg-pink-700 dark:border-pink-700"
-//     : "text-slate-700 bg-transparent border-slate-700 dark:text-white dark:border-white";
-
-
-  
+ 
 
 const BASE_BUTTON_CLASSES =
   "cursor-pointer rounded-[56px] font-medium text-sm border-1 leading-none inline-block";
-
-
 
 export const Button = ({ primary, size, type, label, handleClick, ...props }: ButtonProps) => {
   const computedClasses = useMemo(() => {
