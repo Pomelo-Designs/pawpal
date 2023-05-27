@@ -48,6 +48,11 @@ module.exports = {
           600: "#387ABF",
           650: "#3772B2",
           700: "#376DAC",
+        },
+        grey: {
+          600: "#F6E1E5",
+          650: "#EAD4DF",
+          700: "#E5D0DD"
         }
       },
       backgroundImage: {

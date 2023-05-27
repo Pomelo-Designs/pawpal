@@ -24,6 +24,7 @@ const getSizeClasses = (size: "small" | "medium" | "large") => {
 
 const getClasses = (type: string) => {
   const defaultClass = "drop-shadow-fab-default hover:drop-shadow-fab-hover";
+  return `${defaultClass} text-[#AD295C] bg-grey-600 hover:bg-grey-650 focus:bg-grey-700 active:bg-grey-700`;
 
   if (type === "pink") return `${defaultClass} text-[#FFECEF] bg-pink-600 hover:bg-pink-650 focus:bg-pink-700 active:bg-pink-700`;
   if (type === "blue") return `${defaultClass} text-[#EAF1FF] bg-blue-600 hover:bg-blue-650 focus:bg-blue-700 active:bg-blue-700`;
