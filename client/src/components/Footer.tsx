@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 // @ts-ignore
-import { ReactComponent as Facebook } from "./assets/Facebook.svg";
+import { ReactComponent as Facebook } from "../assets/icons/Facebook.svg";
 // @ts-ignore
-import { ReactComponent as Twitter } from "./assets/Twitter.svg";
+import { ReactComponent as Twitter } from "../assets/icons/Twitter.svg";
 // @ts-ignore
-import { ReactComponent as LinkedIn } from "./assets/LinkedIn.svg";
+import { ReactComponent as LinkedIn } from "../assets/icons/LinkedIn.svg";
 
 export default function Footer() {
 

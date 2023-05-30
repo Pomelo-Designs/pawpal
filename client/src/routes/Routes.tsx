@@ -28,7 +28,7 @@ export const routes = [
     image: HeroHome,
     heading: `PawPal\nAdoption Center`,
     description: `Welcome to our Adoption Center!\n We are dedicated to providing a safe and loving environment for animals in need and finding them their forever homes.`,
-    button: { label: 'See our pets', path: '/pets', type: 'pink' },
+    button: { label: 'See our pets', path: '/pets' },
     subnav: []
   },
   {
@@ -39,7 +39,7 @@ export const routes = [
     image: HeroPets,
     heading: `Our pets`,
     description: `At PawPal Adoption Center, we have a variety of pets available for adoption and foster, including dogs, cats, rabbits, and more. Each pet has their own unique personality and needs, so we work closely with potential adopters to find the perfect match.`,
-    button: { label: 'Get a pet', path: '/pets/adoption', type: 'brown' },
+    button: { label: 'Get a pet', path: '/pets/adoption' },
     subnav: [
       {
         route: '/pets',
@@ -55,7 +55,6 @@ export const routes = [
         button: {
           label: 'Schedule a visit',
           path: '/pets/adoption',
-          type: 'brown'
         }
       },
       {
@@ -68,7 +67,6 @@ export const routes = [
         button: {
           label: 'Schedule a visit',
           path: '/pets/adoption',
-          type: 'brown'
         }
       },
       {
@@ -81,7 +79,6 @@ export const routes = [
         button: {
           label: 'Schedule a visit',
           path: '/pets/adoption',
-          type: 'brown'
         }
       },
       {
@@ -97,7 +94,6 @@ export const routes = [
             button: {
               label: 'Schedule a visit',
               path: '/pets/adoption',
-              type: 'brown'
             },
           },
           {
@@ -110,7 +106,6 @@ export const routes = [
             button: {
               label: 'Schedule a visit',
               path: '/pets/adoption',
-              type: 'brown'
             },
           }
         ]
@@ -128,10 +123,10 @@ export const routes = [
     button: { label: 'Contact us', path: '/pets/adoption' },
     subnav: [
       { route: '/services', label: 'Services overview' },
-      { route: '/services/vet-care', label: 'Vet care' },
-      { route: '/services/grooming', label: 'Grooming' },
-      { route: '/services/chipping', label: 'Chipping' },
-      { route: '/services/licensing', label: 'Licensing' }
+      { route: '/services/vet-care', label: 'Vet care', complete: false  },
+      { route: '/services/grooming', label: 'Grooming', complete: false  },
+      { route: '/services/chipping', label: 'Chipping', complete: false  },
+      { route: '/services/licensing', label: 'Licensing', complete: false  }
     ]
   },
   {
@@ -160,10 +155,10 @@ export const routes = [
           path: '/pets/adoption'
         }
       },
-      { route: '/about/programs', label: 'Programs' },
-      { route: '/about/employment', label: 'Employment' },
-      { route: '/about/news', label: 'News' },
-      { route: '/about/shop', label: 'Gift shop' }
+      { route: '/about/programs', label: 'Programs', complete: false  },
+      { route: '/about/employment', label: 'Employment', complete: false  },
+      { route: '/about/news', label: 'News', complete: false  },
+      { route: '/about/shop', label: 'Gift shop', complete: false  }
     ]
   },
   {
@@ -177,8 +172,8 @@ export const routes = [
     button: { label: 'Contact us', path: '/pets/adoption' },
     subnav: [
       { route: '/support', label: 'Support overview' },
-      { route: '/support/donate', label: 'Donate' },
-      { route: '/support/volunteer', label: 'Volunteer' }
+      { route: '/support/donate', label: 'Donate', complete: false  },
+      { route: '/support/volunteer', label: 'Volunteer', complete: false  }
     ]
   },
   {
@@ -192,7 +187,25 @@ export const routes = [
     button: { label: 'Contact us', path: '/pets/adoption' },
     subnav: [
       { route: '/help', label: 'Help overview' },
-      { route: '/help/report', label: 'Report' }
+      { route: '/help/resources', label: 'Resources', complete: false }
     ]
   },
 ]
+
+export { default as Home } from "./Home";
+export { default as Layout } from "./Layout";
+export { default as Incomplete } from "./Incomplete";
+export { default as Error } from "./Error";
+
+export { default as About } from "./About";
+export { default as Education } from "./Education";
+export { default as Services } from "./Services";
+export { default as Support } from "./Support";
+export { default as Help } from "./Help";
+
+export { default as Pets } from "./Pets/Pets";
+export { default as Adoption } from "./Pets/Adoption";
+export { default as FosterCare } from "./Pets/FosterCare";
+export { default as WorkingCats } from "./Pets/WorkingCats";
+export { default as GeneralRequirements } from "./Pets/GeneralRequirements";
+export { default as StepByStepRequirements } from "./Pets/StepByStepRequirements";

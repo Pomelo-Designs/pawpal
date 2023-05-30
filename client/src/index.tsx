@@ -1,85 +1,49 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-// Routes
-import Layout from './routes/Layout';
-import ErrorPage from './routes/ErrorPage';
-import Home from './routes/Home';
-// // Pets
-import { Pets, Adoption, FosterCare, WorkingCats, General, StepByStep } from './routes/Pets/Pets';
-// // Services
-import { Services, VetCare, Grooming, Chipping, Licensing } from './routes/Services/Services';
-// // About
-import { About, Education, Programs, Employment, News, Shop } from './routes/About/About';
-// // Support
-import { Support, Donate, Volunteer } from './routes/Support/Support';
-// // Help
-import { Help, Report } from './routes/Help/Help';
-
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
-
-const cache = new InMemoryCache({
-  typePolicies: {
-    Query: {
-      fields: {
-        feed: {
-          keyArgs: [],
-          // @ts-ignore
-          merge(existing, incoming, { args: { offset = 0 }}) {
-            // Slicing is necessary because the existing data is
-            // immutable, and frozen in development.
-            const merged = existing ? existing.slice(0) : [];
-            for (let i = 0; i < incoming.length; ++i) {
-              merged[offset + i] = incoming[i];
-            }
-            return merged;
-          },
-        },
-      },
-    },
-  },
-});
+import * as Route from './routes/Routes';
 
 const client = new ApolloClient({
-  cache: cache,
+  cache: new InMemoryCache(),
   uri: "http://localhost:4000"
 });
 
 const router = createBrowserRouter([
   {
-    element: <Layout />,
-    errorElement: <ErrorPage />,
+    element: <Route.Layout />,
+    errorElement: <Route.Error />,
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: <Route.Home />,
       },
       {
         path: "pets",
-        element: <Pets />,
+        element: <Route.Pets />,
         children: [
           {
             path: "adoption",
-            element: <Adoption />,
+            element: <Route.Adoption />,
           },
           {
             path: "foster-care",
-            element: <FosterCare />,
+            element: <Route.FosterCare />,
           },
           {
             path: "working-cats",
-            element: <WorkingCats />,
+            element: <Route.WorkingCats />,
           },
           {
             path: "requirements",
             children: [
               {
                 path: "general",
-                element: <General />,
+                element: <Route.GeneralRequirements />,
               },
               {
                 path: "step-by-step",
-                element: <StepByStep />,
+                element: <Route.StepByStepRequirements />,
               },
             ]
           },
@@ -87,73 +51,73 @@ const router = createBrowserRouter([
       },
       {
         path: "services",
-        element: <Services />,
+        element: <Route.Services />,
         children: [
           {
             path: "vet-care",
-            element: <VetCare />,
+            element: <Route.Incomplete />,
           },
           {
             path: "grooming",
-            element: <Grooming />,
+            element: <Route.Incomplete />,
           },
           {
             path: "chipping",
-            element: <Chipping />,
+            element: <Route.Incomplete />,
           },
           {
             path: "licensing",
-            element: <Licensing />,
+            element: <Route.Incomplete />,
           },
         ]
       },
       {
         path: "about",
-        element: <About />,
+        element: <Route.About />,
         children: [
           {
             path: "education",
-            element: <Education />,
+            element: <Route.Education />,
           },
           {
             path: "programs",
-            element: <Programs />,
+            element: <Route.Incomplete />,
           },
           {
             path: "employment",
-            element: <Employment />,
+            element: <Route.Incomplete />,
           },
           {
             path: "news",
-            element: <News />,
+            element: <Route.Incomplete />,
           },
           {
             path: "shop",
-            element: <Shop />,
+            element: <Route.Incomplete />,
           },
         ]
       },
       {
         path: "support",
-        element: <Support />,
+        element: <Route.Support />,
         children: [
           {
             path: "donate",
-            element: <Donate />,
+            element: <Route.Incomplete />,
           },
           {
             path: "volunteer",
-            element: <Volunteer />,
+            element: <Route.Incomplete />,
           },
         ]
       },
       {
         path: "help",
-        element: <Help />,
+        element: <Route.Help />,
         children: [
           {
-            path: "report",
-            element: <Report />,
+            path: "resources",
+            element: <Route.Incomplete />,
           },
         ]
       },

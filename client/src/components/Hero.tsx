@@ -10,7 +10,6 @@ interface HeroProps {
     button: {
       label: string;
       path: string;
-      type: "pink" | "blue" | "brown";
     },
   }
 }
@@ -19,9 +18,9 @@ export const Hero = ({ data }: HeroProps) => {
   const navigate = useNavigate();
 
   return (
-    <section className={`flex items-stretch col-span-full h-[641px] relative items-center justify-center grow rounded-2xl`}>
-      <img src={data.gradient} className="absolute w-full bg-cover bg-no-repeat z-0"/>
-      <img src={data.image} className="absolute right-0 bottom-0 bg-cover bg-no-repeat bg-right z-0" style={{alignSelf: "right"}}/>
+    <section className="flex items-stretch col-span-full h-[641px] relative items-center justify-center grow rounded-2xl">
+      <img src={data.gradient} className="absolute w-full bg-cover bg-no-repeat z-0" />
+      <img src={data.image} className="absolute right-0 bottom-0 bg-cover bg-no-repeat bg-right z-0" />
       <div className="self-center grid grid-cols-12 gap-5 col-span-full z-10">
         <h1 className="col-start-4 col-span-8 font-karla text-8xl leading-[72px] capitalize mb-7 whitespace-pre-line break-all">
           {data.heading}
@@ -36,7 +35,6 @@ export const Hero = ({ data }: HeroProps) => {
               label={data.button.label}
               primary={true}
               size="large"
-              type={data.button.type}
             />
           </div>
         </div>

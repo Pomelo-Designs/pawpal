@@ -26,12 +26,16 @@ export default function Layout() {
   const [data, setData] = useState<DataProps[] | any>([]);
 
   const getData = () => routes.map((item: any) => {
-    if (item.route === path) setData(item as unknown as DataProps[]);
-    else item.subnav.map((subitem: any) => {
-      if (subitem.route === path) setData(subitem as unknown as DataProps[]);
-      else if (subitem.subnav) subitem.subnav.map((subsubitem: any) => {
-        if (subsubitem.route === path) setData(subsubitem as unknown as DataProps[]);
-      })
+    if (item.route === path) {
+      setData(item as unknown as DataProps[]);
+    } else item.subnav.map((subitem: any) => {
+      if (subitem.route === path) {
+        setData(subitem as unknown as DataProps[]);
+      } else if (subitem.subnav) {
+        subitem.subnav.map((subsubitem: any) => {
+          if (subsubitem.route === path) setData(subsubitem as unknown as DataProps[]);
+        })
+      }
     })
   });
 
@@ -51,7 +55,7 @@ export default function Layout() {
 
       const handleDash = capitalizeString.replace("-", " ");
 
-      const text = ` – PawePal`;
+      const text = ` – PawPal`;
 
       if (capitalizeString.includes("-")) return handleDash + text;
       else return capitalizeString + text;
@@ -74,14 +78,16 @@ export default function Layout() {
   );
 }
 
-const Page = ({ data }: any) => (
-  <div className="grid justify-items-stretch w-full top-0 compact:mt-[64px] medium:mt-[64px] expanded:ml-[72px] z-0">
-    <Ease key="page" y={10}>
-      <div className="justify-self-center grid w-[1130px] grid-cols-12 gap-2 gap-y-12">
-        <Hero data={data} />
-        <Outlet />
-        <Footer />
-      </div>
-    </Ease>
-  </div>
-);
+const Page = ({ data }: any) => {
+  return (
+    <div className="grid justify-items-stretch w-full top-0 compact:mt-[64px] medium:mt-[64px] expanded:ml-[72px] z-0">
+      <Ease key="page" y={10}>
+        <div className="justify-self-center grid w-[1130px] grid-cols-12 gap-2 gap-y-12">
+          {data.complete !== false && <Hero data={data} />}
+          <Outlet />
+          <Footer />
+        </div>
+      </Ease>
+    </div>
+  )
+};
