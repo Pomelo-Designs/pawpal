@@ -7,7 +7,7 @@ interface EaseProps {
   y?: number;
 }
 
-export const Ease = ({ children, x, y, classes }: EaseProps) => {
+export default function Ease({ children, x, y, classes }: EaseProps) {
   return (
     <motion.div
       initial={{ opacity: 0, x: 0, y: 0 }}

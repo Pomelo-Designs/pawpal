@@ -2,7 +2,7 @@ import { useMutation } from "@apollo/client";
 import { useState } from "react";
 import { MUTATE_ADOPTION_BY_ID } from "../../queries/Adoption";
 
-export const AnimalCard = ({ data, mutation }: any) => {
+export default function AnimalCard({ data, mutation }: any) {
   return (
     <div className="flex flex-col h-[272px] w-full rounded-xl bg-pink-300">
       <div className="h-[72px] flex flex-row justify-between">

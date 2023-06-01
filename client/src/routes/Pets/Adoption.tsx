@@ -1,9 +1,11 @@
-import { Heading, SubHeading } from "../../components/Heading";
+// import { Heading, SubHeading } from "../../components/Heading";
 import { useState } from "react";
-import { ArrowCard } from "../../components/Cards/ArrowCard";
-import { Card } from "../../components/Cards/Card";
-import { Chip } from "../../components/Buttons/Chip";
+// import { ArrowCard } from "../../components/Cards/ArrowCard";
+// import { Card } from "../../components/Cards/Card";
+// import { Chip } from "../../components/Buttons/Chip";
 import { Data } from "../../components/Data";
+
+import * as Component from "../../components/Components";
 
 export default function Adoption() {
   const [input, setInput] = useState({
@@ -29,32 +31,32 @@ export default function Adoption() {
   return (
     <>
       <section>
-        <Heading label={`Available pets\nfor adoption`} />
+        <Component.Heading label={`Available pets\nfor adoption`} />
         <div className="grid grid-cols-3 gap-6 pb-12">
           <div className="col-span-2">
-            <SubHeading label={`By species`} />
+            <Component.SubHeading label={`By species`} />
             <div className="flex flex-row gap-6">
-              <Chip
+              <Component.Chip
                 click={() => handleInput({ species: null })}
                 label="All"
                 input={input.species}
               />
-              <Chip
+              <Component.Chip
                 click={() => handleInput({ species: "DOGS" })}
                 label="Dogs"
                 input={input.species}
               />
-              <Chip
+              <Component.Chip
                 click={() => handleInput({ species: "CATS" })}
                 label="Cats"
                 input={input.species}
               />
-              <Chip
+              <Component.Chip
                 click={() => handleInput({ species: "CRITTERS" })}
                 label="Critters"
                 input={input.species}
               />
-              <Chip
+              <Component.Chip
                 click={() => handleInput({ species: "BIRDS" })}
                 label="Birds"
                 input={input.species}
@@ -62,19 +64,19 @@ export default function Adoption() {
             </div>
           </div>
           <div className="col-span-1">
-            <SubHeading label={`By gender`} />
+            <Component.SubHeading label={`By gender`} />
             <div className="flex flex-row gap-4">
-              <Chip
+              <Component.Chip
                 click={() => handleInput({ gender: null })}
                 label="All"
                 input={input.gender}
               />
-              <Chip
+              <Component.Chip
                 click={() => handleInput({ gender: "MALE" })}
                 label="Male"
                 input={input.gender}
               />
-              <Chip
+              <Component.Chip
                 click={() => handleInput({ gender: "FEMALE" })}
                 label="Female"
                 input={input.gender}
@@ -82,7 +84,7 @@ export default function Adoption() {
             </div>
           </div>
           <div className="col-span-2">
-            <SubHeading label={`Filter by`} />
+            <Component.SubHeading label={`Filter by`} />
             <div className="flex flex-row gap-6">
               {/* <Chip
                 click={() => input.liked === false ? handleInput({ liked: true }) : input.liked === true && handleInput({ liked: false })}
@@ -92,19 +94,19 @@ export default function Adoption() {
             </div>
           </div>
           <div className="col-span-1">
-            <SubHeading label={`Lived with`} />
+            <Component.SubHeading label={`Lived with`} />
             <div className="flex flex-row gap-6">
-              <Chip
+              <Component.Chip
                 click={() => handleInput({ livedWith: null })}
                 label="All"
                 input={input.livedWith}
               />
-              <Chip
+              <Component.Chip
                 click={() => handleInput({ livedWith: "CHILDREN" })}
                 label="Children"
                 input={input.livedWith}
               />
-              <Chip
+              <Component.Chip
                 click={() => handleInput({ livedWith: "ANIMALS" })}
                 label="Animals"
                 input={input.livedWith}
@@ -119,17 +121,17 @@ export default function Adoption() {
         handleInput={handleInput}
       />
       <section>
-        <Heading label="Resources" />
+        <Component.Heading label="Resources" />
         <div className="grid grid-cols-3 gap-6">
-          <Card
+          <Component.Card
             title={"The Ultimate Guide to Pet Adoption"}
             description={`Tips and Tricks for Finding Your Perfect Match`}
           />
-          <Card
+          <Component.Card
             title={"The Pros and Cons of Adopting a Dog"}
             description={`Is a Canine Companion Right for You?`}
           />
-          <Card
+          <Component.Card
             title={"The Dos and Don'ts of Adopting a Pet"}
             description={`Common Mistakes to Avoid`}
           />
@@ -137,12 +139,12 @@ export default function Adoption() {
       </section>
       <section className="mt-28">
         <div className="grid grid-cols-2 gap-6">
-          <ArrowCard
+          <Component.ArrowCard
             title="Our pets"
             direction="left"
             path="/pets"
           />
-          <ArrowCard
+          <Component.ArrowCard
             title="Foster care"
             direction="right"
             path="/pets/foster-care"

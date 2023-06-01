@@ -1,4 +1,4 @@
-export const Chip = ({ click, label, input }: any) => {
+export default function Chip({ click, label, input }: any) {
 
   const bool = () => {
     if (input === null && label === "All") return true;

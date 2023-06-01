@@ -1,4 +1,4 @@
-import { ArrowButton } from "../Buttons/ArrowButton";
+import { ArrowButton } from "../Components";
 
 interface NavCardProps {
   title: string;
@@ -9,7 +9,7 @@ interface NavCardProps {
   handleClick?: () => void;
 }
 
-export const NavCard = ({ image, title, description, handleClick, classname }: NavCardProps) => {
+export default function NavCard({ image, title, description, handleClick, classname }: NavCardProps) {
 
   return (
     <div className={`grid col-span-3 cursor-pointer`}

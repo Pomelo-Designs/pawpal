@@ -6,8 +6,7 @@ import { QUERY_ALL_ADOPTIONS } from "../queries/Adoption";
 import { MUTATE_ADOPTION_BY_ID } from "../queries/Adoption";
 
 // Components
-import { AnimalCard } from "./Cards/AnimalCard";
-import { Pagination } from "./Pagination";
+import { AnimalCard, Pagination } from "./Components";
 import { useLocation } from "react-router-dom";
 
 export const Data = ({ input, setInput, handleInput }: any) => {

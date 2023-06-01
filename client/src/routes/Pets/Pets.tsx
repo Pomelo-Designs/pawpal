@@ -1,8 +1,5 @@
-import { Card } from "../../components/Cards/Card";
-import { NavCard } from "../../components/Cards/NavCard";
-import { Heading } from "../../components/Heading";
 import { useRoutePath } from "../../hooks/useRoutePath";
-import { ArrowCard } from "../../components/Cards/ArrowCard";
+import * as Component from "../../components/Components";
 
 export default function Pets() {
   return useRoutePath({
@@ -10,7 +7,7 @@ export default function Pets() {
     children: (
       <>
         <section>
-          <Heading label={`About adoption\nand foster programs`} />
+          <Component.Heading label={`About adoption\nand foster programs`} />
           <div className="grid grid-cols-2 gap-6">
             <p className="text-sm w-[360px] p-6 pl-0">
               At PawPal, we believe that every animal deserves a loving and permanent home. Our pet adoption and foster care services provide a safe and comfortable environment for animals in need. Adopting a pet not only brings joy to your life but also saves a life.
@@ -21,45 +18,45 @@ export default function Pets() {
           </div>
         </section>
         <section>
-          <Heading label="Available pets" />
+          <Component.Heading label="Available pets" />
           <div className="grid grid-cols-4 gap-6">
-            <NavCard
+            <Component.NavCard
               title={"Dogs"}
               image="bg-pets-dogs h-[201px]"
             />
-            <NavCard
+            <Component.NavCard
               title={"Cats"}
               image="bg-pets-cats h-[201px]"
             />
-            <NavCard
+            <Component.NavCard
               title={"Rodents"}
               image="bg-pets-rodents h-[201px]"
             />
-            <NavCard
+            <Component.NavCard
               title={"Birds"}
               image="bg-pets-birds h-[201px]"
             />
           </div>
         </section>
         <section>
-          <Heading label="Success stories" />
+          <Component.Heading label="Success stories" />
           <div className="grid grid-cols-2 gap-6">
-            <Card
+            <Component.Card
               image="bg-pets-news1"
               title={`Finding Love at the Center: Noodle's Success Story`}
               description={"Local senior dog Noodle met her forever family last Monday"}
             />
-            <Card
+            <Component.Card
               image="bg-pets-news2"
               title={"A Happy Ending for a Rescued Bird Anthony"}
               description={"One Family's Journey to Adopting a Feathered Friend"}
             />
-            <Card
+            <Component.Card
               image="bg-pets-news3"
               title={"From Stray to Sweetheart"}
               description={"A Cat's Journey to Finding a Loving Home."}
             />
-            <Card
+            <Component.Card
               image="bg-pets-news4"
               title={"How Pet Adoption Changed My Life"}
               description={"Inspiring Stories from Adoptive Pet Parents."}
@@ -67,17 +64,17 @@ export default function Pets() {
           </div>
         </section>
         <section>
-          <Heading label="Resources" />
+          <Component.Heading label="Resources" />
           <div className="grid grid-cols-3 gap-6">
-            <Card
+            <Component.Card
               title={"The Benefits of Owning a Pet"}
               description={`Why Having a Furry Friendis Good for Your Health`}
             />
-            <Card
+            <Component.Card
               title={"The Pros and Cons of Adopting a Pet"}
               description={`Is Pet Ownership Right for You?`}
             />
-            <Card
+            <Component.Card
               title={"A Beginner's Guide to Pet Care"}
               description={`Everything You Need to Know Before Bringing Your New Pet Home`}
             />
@@ -85,12 +82,12 @@ export default function Pets() {
         </section>
         <section className="mt-28">
           <div className="grid grid-cols-2 gap-6">
-            <ArrowCard
+            <Component.ArrowCard
               title="Home"
               direction="left"
               path="/"
             />
-            <ArrowCard
+            <Component.ArrowCard
               title="Adoption"
               direction="right"
               path="/pets/adoption"
@@ -101,9 +98,3 @@ export default function Pets() {
     )
   })
 };
-
-// export { default as Adoption } from "./Adoption";
-// export { default as FosterCare } from "./FosterCare";
-// export { default as WorkingCats } from "./WorkingCats";
-// export { default as General } from "./GeneralRequirements";
-// export { default as StepByStep } from "./StepByStepRequirements";

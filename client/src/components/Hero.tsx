@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Button } from "./Buttons/Button";
+import { Button } from "./Components";
 
 interface HeroProps {
   data: {
@@ -14,7 +14,7 @@ interface HeroProps {
   }
 }
 
-export const Hero = ({ data }: HeroProps) => {
+export default function Hero({ data }: HeroProps) {
   const navigate = useNavigate();
 
   return (

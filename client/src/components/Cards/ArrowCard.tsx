@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-export const ArrowCard = ({ title, path, direction }: any) => {
+export default function ArrowCard({ title, path, direction }: any) {
   const navigate = useNavigate();
 
   return (

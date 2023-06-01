@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ArrowButton } from "./Buttons/ArrowButton";
+import { ArrowButton } from "./Components";
 
 interface PaginationProps {
   data: any;
@@ -7,7 +7,7 @@ interface PaginationProps {
   setInput: (input: any) => void;
 }
 
-export const Pagination = ({ data, input, setInput }: PaginationProps) => {
+export default function Pagination({ data, input, setInput }: PaginationProps) {
   const [offset, setOffset] = useState(0);
   const totalCount = data?.adoptions?.totalCount || 0;
   const itemsPerPage = input.limit;

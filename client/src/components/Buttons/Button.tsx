@@ -18,7 +18,7 @@ const getSizeClasses = (size: "small" | "medium" | "large") => {
 const BASE_BUTTON_CLASSES =
   "cursor-pointer rounded-[56px] font-medium text-sm border-1 leading-none inline-block";
 
-export const Button = ({ primary, size, label, handleClick, ...props }: ButtonProps) => {
+export default function Button({ primary, size, label, handleClick, ...props }: ButtonProps) {
   const computedClasses = useMemo(() => {
     const modeClass = "drop-shadow-fab-default hover:drop-shadow-fab-hover text-[#AD295C] bg-grey-600 hover:bg-grey-650 focus:bg-grey-700 active:bg-grey-700";
     const sizeClass = getSizeClasses(size);

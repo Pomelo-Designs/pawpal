@@ -8,7 +8,7 @@ interface CardProps {
   handleClick?: () => void;
 }
 
-export const Card = ({ image, title, description, cols, handleClick }: CardProps) => {
+export default function Card({ image, title, description, cols, handleClick }: CardProps) {
 
   return (
     <div className={` ${cols} cursor-pointer rounded-xl border-[1px] leading-none inline-block`}

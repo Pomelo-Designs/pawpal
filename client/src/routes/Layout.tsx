@@ -1,13 +1,10 @@
 import { Outlet, useLocation } from "react-router-dom";
-import Navbar from "../components/Navbar/Expanded/Navbar";
-import CompactNavbar from "../components/Navbar/Compact/CompactNavbar";
-import Footer from "../components/Footer";
-import ScrollToTop from "../hooks/ScrollTop";
-import { Ease } from "../components/Animations/Ease";
-import { Hero } from "../components/Hero";
 import { useEffect, useState } from "react";
-import { routes } from "./Routes";
 import { Helmet } from "react-helmet";
+import ScrollToTop from "../hooks/ScrollTop";
+import { Ease } from "../animations/Animations";
+import { routes } from "./Routes";
+import * as Component from "../components/Components";
 
 interface DataProps {
   route: string;
@@ -70,8 +67,7 @@ export default function Layout() {
       </Helmet>
       <ScrollToTop />
       <section className="w-full flex compact:flex-col medium:flex-col expanded:flex-row">
-        <Navbar />
-        <CompactNavbar />
+        <Component.Navbar />
         {show && <Page data={data} />}
       </section >
     </>
@@ -83,9 +79,9 @@ const Page = ({ data }: any) => {
     <div className="grid justify-items-stretch w-full top-0 compact:mt-[64px] medium:mt-[64px] expanded:ml-[72px] z-0">
       <Ease key="page" y={10}>
         <div className="justify-self-center grid w-[1130px] grid-cols-12 gap-2 gap-y-12">
-          {data.complete !== false && <Hero data={data} />}
+          {data.complete !== false && <Component.Hero data={data} />}
           <Outlet />
-          <Footer />
+          <Component.Footer />
         </div>
       </Ease>
     </div>

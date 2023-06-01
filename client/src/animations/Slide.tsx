@@ -7,7 +7,7 @@ interface SlideProps {
   show: boolean;
 }
 
-export const Slide = ({ children, classes, x, show }: SlideProps) => {
+export default function Slide({ children, classes, x, show }: SlideProps) {
   return (
     <AnimatePresence initial={false}>
       {show &&
