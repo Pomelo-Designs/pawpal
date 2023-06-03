@@ -1,7 +1,7 @@
 {
   "short_name": "PawPal",
   "name": "PawPal",
-  "start_url": ".",
+  "start_url": "https://pomelo-designs.github.io/pawpals/",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff",
