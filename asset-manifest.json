@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/pawpals/static/js/main.c3679041.js",
+    "main.js": "/pawpals/static/js/main.cfc075e5.js",
     "static/media/light-pink.png": "/pawpals/static/media/light-pink.2020cbf561392a212dec.png",
     "static/media/pink.png": "/pawpals/static/media/pink.d80efe000d4cb8f485de.png",
     "static/media/blue.png": "/pawpals/static/media/blue.e3b9534002f1beaff233.png",
@@ -29,6 +29,6 @@
     "static/media/Facebook.svg": "/pawpals/static/media/Facebook.871ea1ca47ba7b7303ee6f090edecf12.svg"
   },
   "entrypoints": [
-    "static/js/main.c3679041.js"
+    "static/js/main.cfc075e5.js"
   ]
 }
