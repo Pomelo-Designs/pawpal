@@ -3,9 +3,10 @@ import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { routes } from "../../routes/Routes";
 import { Background } from "./Background";
 import { Icon } from "./Icon";
-import { Ease, Slide } from "../../animations/Animations";
+import { Slide } from "../../animations/Animations";
 import OutsideClickHandler from "react-outside-click-handler";
 import { LinkAnimation } from "./Link";
+import { Drawer } from "./Drawer";
 
 export default function Navbar() {
   const [show, setShow] = useState(false);
@@ -46,17 +47,39 @@ const Compact = ({ show, setShow, data, setData, render, setRender }: any) => {
           />
           <div className="relative px-2">
             {data.length > 0 && render ?
-              <SubDrawer
-                data={data}
-                setData={setData}
-                setShow={setShow}
-                setRender={setRender}
-              /> :
               <Drawer
                 setShow={setShow}
                 setData={setData}
                 setRender={setRender}
-              />
+                type="compact"
+                style="ml-10"
+                button={true}
+              >
+                <Map array={data}>
+                  {(injectedProps: { index: number, item: any }) => (
+                    <NDrawer {...injectedProps} setShow={setShow} type="compact" />
+                  )}
+                </Map>
+              </Drawer>
+              :
+              <Drawer
+                setShow={setShow}
+                setData={setData}
+                setRender={setRender}
+                type="compact"
+                style="flex flex-col w-full items-center"
+              >
+                <Map array={routes}>
+                  {(injectedProps: { index: number, item: any }) => (
+                    <DivItem
+                      {...injectedProps}
+                      setData={setData}
+                      setShow={setShow}
+                      setRender={setRender}
+                    />
+                  )}
+                </Map>
+              </Drawer>
             }
           </div>
         </Slide>
@@ -84,54 +107,31 @@ const Expanded = ({ show, setShow, data, setData, render, setRender }: any) => {
         x={-243}
         show={show && data.length !== 0}
       >
-        {render && <ExpandedDrawer data={data} />}
+        {render &&
+          <Drawer
+            setShow={setShow}
+            type="expanded"
+          >
+            <Map array={data}>
+              {(injectedProps: { index: number, item: any }) => (
+                <NDrawer {...injectedProps} type="expanded" setShow={setShow} />
+              )}
+            </Map>
+          </Drawer>
+        }
       </Slide>
     </div>
   )
 }
 
-const ExpandedDrawer = ({ data, setShow }: any) => {
-  return (
-    <Ease key="ExpandedDrawer">
-      <nav>
-        <ul>
-          {data.map((item: any, index: number) => {
-            return (
-              <NDrawer
-                item={item}
-                index={index}
-                type="expanded"
-                setShow={setShow}
-              />
-            );
-          })}
-        </ul>
-      </nav>
-    </Ease>
-  )
-}
-
-const Drawer = ({ setData, setShow, setRender }: any) => {
-  return (
-    <Ease key="compact">
-      <nav>
-        <ul className="flex flex-col w-full items-center">
-          {routes.map((item: any, index: number) => {
-            return (
-              <DivItem
-                item={item}
-                index={index}
-                setData={setData}
-                setShow={setShow}
-                setRender={setRender}
-              />
-            )
-          })}
-        </ul>
-      </nav>
-    </Ease>
-  )
-}
+const Map = ({ array, children }: any) => array.map((item: any, index: number) => {
+  return <>
+    {children({
+      item: item,
+      index: index
+    })}
+  </>
+});
 
 const Rail = ({ setShow, setData, setRender }: any) => {
   return (
@@ -245,31 +245,6 @@ const Button = ({ show, onClick }: any) => {
   );
 };
 
-const SubDrawer = ({ data, setData, setRender, setShow }: any) => {
-  return (
-    <Ease key="compact-subdrawer">
-      <nav>
-        <ReturnButton
-          setData={setData}
-          setRender={setRender}
-        />
-        <ul className="ml-10">
-          {data.map((item: any, index: number) => {
-            return (
-              <NDrawer
-                item={item}
-                index={index}
-                setShow={setShow}
-                type="compact"
-              />
-            );
-          })}
-        </ul>
-      </nav>
-    </Ease>
-  )
-}
-
 const Item = ({ isActive, hover, clicked, item }: any) => (
   <>
     <Background
@@ -344,39 +319,6 @@ const DivItem = ({ setRender, setData, setShow, item, index }: any) => {
     >
       <Item isActive={isActive} hover={hover} clicked={clicked} item={item} />
     </div>
-  )
-}
-
-const ReturnButton = ({ setData, setRender }: any) => {
-  const [hover, setHover] = useState(false);
-  const [clicked, setClicked] = useState(false);
-
-  return (
-    <button
-      className="relative w-full flex flex-row items-center h-12"
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-      onMouseDown={() => setClicked(true)}
-      onMouseUp={() => setClicked(false)}
-      onClick={() => {
-        setData([]);
-        setRender(false);
-      }}>
-      <Background
-        hover={hover}
-        clicked={clicked}
-        styles="w-full h-12 rounded-full"
-      />
-      <div className="flex px-4">
-        <Icon
-          icon="arrow_back"
-          styles="mr-4"
-          hover={hover}
-          clicked={clicked}
-        />
-        Main menu
-      </div>
-    </button>
   )
 }
 

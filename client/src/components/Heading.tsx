@@ -1,6 +1,6 @@
 export default function Heading({ label }: any) {
   return (
-    <h3 className="col-span-4 font-karla whitespace-pre-line text-4xl p-12 pt-0 pl-0">{label}</h3>
+    <h3 className="col-span-full font-karla whitespace-pre-line text-4xl p-12 pt-0 pl-0">{label}</h3>
   )
 };
 

@@ -81,7 +81,9 @@ const Page = ({ data }: any) => {
         <div className="justify-self-center grid w-[1130px] grid-cols-12 gap-2 gap-y-12">
           {data.complete !== false && <Component.Hero data={data} />}
           <Outlet />
-          <Component.Footer />
+          <div className="col-start-4 col-span-10">
+            <Component.Footer />
+          </div>
         </div>
       </Ease>
     </div>

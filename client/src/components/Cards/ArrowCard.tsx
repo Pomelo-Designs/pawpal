@@ -1,13 +1,13 @@
 import { useNavigate } from "react-router-dom";
 
-export default function ArrowCard({ title, path, direction }: any) {
+export default function ArrowCard({ title, path, direction, cols }: any) {
   const navigate = useNavigate();
 
   return (
-    <div className="w-full h-24 
+    <div className={`${cols} h-24 
       flex flex-col justify-center 
       rounded-xl px-6 bg-pink-300
-      cursor-pointer"
+      cursor-pointer`}
       onClick={() => navigate(path)}
     >
       <div className="flex flex-row items-center">

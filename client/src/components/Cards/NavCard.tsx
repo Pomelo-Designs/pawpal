@@ -6,13 +6,14 @@ interface NavCardProps {
   src?: any;
   image?: string;
   classname?: string;
+  cols?: string;
   handleClick?: () => void;
 }
 
-export default function NavCard({ image, title, description, handleClick, classname }: NavCardProps) {
+export default function NavCard({ image, cols, title, description, handleClick, classname }: NavCardProps) {
 
   return (
-    <div className={`grid col-span-3 cursor-pointer`}
+    <div className={`grid ${cols} cursor-pointer`}
       onClick={handleClick}>
       <div className={classname}>
         {image &&

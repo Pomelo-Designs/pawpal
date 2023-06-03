@@ -11,13 +11,11 @@ import News4 from "../assets/home-page/news4.png";
 export default function Home() {
   return (
     <>
-      <Component.Section>
-        <div className="grid grid-cols-11 col-span-full gap-5">
-          <Component.Heading label="Adoption & Foster" />
-          <p className="col-span-4 text-sm w-[360px] p-6 pl-0">
-            At our Adoption Center, we offer a wide range of adoption options to suit every lifestyle and preference. Whether you're looking for a furry friend to join your family or a companion for your existing pet, we have a variety of animals to choose from, including cats, dogs, rabbits, and more!
-          </p>
-        </div>
+      <Component.Section cols="grid-cols-11" start="col-start-2">
+        <Component.Heading label="Adoption & Foster" />
+        <p className="col-span-4 text-sm w-[360px] p-6 pl-0">
+          At our Adoption Center, we offer a wide range of adoption options to suit every lifestyle and preference. Whether you're looking for a furry friend to join your family or a companion for your existing pet, we have a variety of animals to choose from, including cats, dogs, rabbits, and more!
+        </p>
         <Component.NavCard
           title={"Adopt"}
           description="give a permanent home to an animal in need"
@@ -39,10 +37,8 @@ export default function Home() {
           classname="h-[312px]"
         />
       </Component.Section>
-      <Component.Section>
-        <div className="col-span-full">
-          <Component.Heading label="Latest news" />
-        </div>
+      <Component.Section cols="grid-cols-11" start="col-start-2">
+        <Component.Heading label="Latest news" />
         <Component.Card
           image={News1}
           title={"Adopted Pitbull Lulu Overcomes Stereotypes"}
@@ -68,10 +64,8 @@ export default function Home() {
           cols="col-span-5"
         />
       </Component.Section>
-      <Component.Section>
-        <div className="col-span-full">
-          <Component.Heading label="Resources" />
-        </div>
+      <Component.Section cols="grid-cols-11" start="col-start-2">
+        <Component.Heading label="Resources" />
         <Component.Card
           title={"Claws out!"}
           description={`Reasons Why Your Cat Seems Angry All the Time...`}
