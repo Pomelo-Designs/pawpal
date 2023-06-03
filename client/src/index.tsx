@@ -13,6 +13,7 @@ const router = createBrowserRouter([
   {
     element: <Route.Layout />,
     errorElement: <Route.Error />,
+    path: "pawpals",
     children: [
       {
         path: "/",
