@@ -32,7 +32,7 @@ export const routes = [
     subnav: []
   },
   {
-    route: '/pets',
+    route: '/#pets',
     label: 'pets',
     icon: 'sound_detection_dog_barking',
     gradient: GradientOrange,

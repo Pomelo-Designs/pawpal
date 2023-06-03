@@ -7,13 +7,13 @@ module.exports = {
   darkMode: ['class', '[data-mode="dark"]'],
   theme: {
     screens: {
-      'expanded': '840px',
+      'expanded': '1440px',
       // => @media (min-width: 1023px) { ... }
 
-      'medium': { 'max': '840px' },
+      'medium': { 'max': '1280px' },
       // => @media (max-width: 767px) { ... }
 
-      'compact': { 'max': '600px' },
+      'compact': { 'max': '360px' },
       // => @media (max-width: 639px) { ... }
     },
     fontFamily: {

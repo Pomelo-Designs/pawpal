@@ -74,6 +74,8 @@ export default function Layout() {
   );
 }
 
+// 1440, 1280, 360
+
 const Page = ({ data }: any) => {
   return (
     <div className="grid justify-items-stretch w-full top-0 compact:mt-[64px] medium:mt-[64px] expanded:ml-[72px] z-0">

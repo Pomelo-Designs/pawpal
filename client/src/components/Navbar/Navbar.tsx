@@ -16,7 +16,7 @@ export default function Navbar() {
   return (
     <>
       <Compact show={show} setShow={setShow} data={data} setData={setData} render={render} setRender={setRender} />
-      <Expanded show={show} setShow={setShow} data={data} setData={setData} render={render} setRender={setRender} />
+      <Default show={show} setShow={setShow} data={data} setData={setData} render={render} setRender={setRender} />
     </>
   );
 }
@@ -48,7 +48,6 @@ const Compact = ({ show, setShow, data, setData, render, setRender }: any) => {
           <div className="relative px-2">
             {data.length > 0 && render ?
               <Drawer
-                setShow={setShow}
                 setData={setData}
                 setRender={setRender}
                 type="compact"
@@ -63,7 +62,6 @@ const Compact = ({ show, setShow, data, setData, render, setRender }: any) => {
               </Drawer>
               :
               <Drawer
-                setShow={setShow}
                 setData={setData}
                 setRender={setRender}
                 type="compact"
@@ -88,7 +86,27 @@ const Compact = ({ show, setShow, data, setData, render, setRender }: any) => {
   );
 };
 
-const Expanded = ({ show, setShow, data, setData, render, setRender }: any) => {
+const Default = ({ show, setShow, data, setData, render, setRender }: any) => {
+  const [dimensions, setDimensions] = useState({
+    width: window.innerWidth
+  });
+
+  const handleResize = () => {
+    setDimensions({
+      width: window.innerWidth,
+    });
+  }
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize, false);
+  }, [])
+
+  const handleExpanded = () => {
+    if (dimensions.width > 1440 || dimensions.width == 1440) {
+      return true;
+    } else if (dimensions.width < 1440) return show;
+  }
+
   return (
     <div
       className="compact:hidden medium:hidden expanded:flex 
@@ -105,11 +123,10 @@ const Expanded = ({ show, setShow, data, setData, render, setRender }: any) => {
         classes="z-0 p-2 h-screen w-[244px] border-r-[1px] bg-[#FFF8F6] border-[#D8C2C0]
           rounded-r-xl shadow-sm drop-shadow-sm"
         x={-243}
-        show={show && data.length !== 0}
+        show={handleExpanded() && data.length !== 0}
       >
         {render &&
           <Drawer
-            setShow={setShow}
             type="expanded"
           >
             <Map array={data}>

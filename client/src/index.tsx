@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import * as Route from './routes/Routes';
 
@@ -9,18 +9,17 @@ const client = new ApolloClient({
   uri: "http://localhost:4000"
 });
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     element: <Route.Layout />,
     errorElement: <Route.Error />,
-    path: "pawpals",
     children: [
       {
-        path: "/",
+        path: "/*",
         element: <Route.Home />,
       },
       {
-        path: "pets",
+        path: "/#pets",
         element: <Route.Pets />,
         children: [
           {

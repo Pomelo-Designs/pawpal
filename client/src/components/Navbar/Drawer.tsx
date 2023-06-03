@@ -10,7 +10,6 @@ type DrawerProps = {
   style?: string,
   children: any,
   type: string,
-  setShow: any,
   setData?: any,
   setRender?: any,
 }
@@ -41,6 +40,7 @@ export const Drawer = ({ array, button, style, children, type, setData, setRende
               </>
             )
           })} */}
+
         </ul>
       </nav>
     </Ease>

@@ -606,6 +606,10 @@ video {
   grid-column: span 1 / span 1;
 }
 
+.col-span-10 {
+  grid-column: span 10 / span 10;
+}
+
 .col-span-2 {
   grid-column: span 2 / span 2;
 }
@@ -634,10 +638,6 @@ video {
   grid-column: 1 / -1;
 }
 
-.col-span-10 {
-  grid-column: span 10 / span 10;
-}
-
 .col-start-2 {
   grid-column-start: 2;
 }
@@ -650,12 +650,12 @@ video {
   grid-column-start: 4;
 }
 
-.col-start-6 {
-  grid-column-start: 6;
-}
-
 .col-start-5 {
   grid-column-start: 5;
+}
+
+.col-start-6 {
+  grid-column-start: 6;
 }
 
 .col-end-4 {
@@ -877,6 +877,10 @@ video {
   cursor: pointer;
 }
 
+.resize {
+  resize: both;
+}
+
 .grid-flow-row {
   grid-auto-flow: row;
 }
@@ -899,10 +903,6 @@ video {
 
 .grid-cols-3 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.grid-cols-4 {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .grid-cols-9 {
@@ -1483,7 +1483,7 @@ body {
   background-color: #1c1b1f1f;
 }
 
-@media (min-width: 840px) {
+@media (min-width: 1440px) {
   .expanded\:absolute {
     position: absolute;
   }
@@ -1535,7 +1535,7 @@ body {
   }
 }
 
-@media (max-width: 840px) {
+@media (max-width: 1280px) {
   .medium\:mt-\[64px\] {
     margin-top: 64px;
   }
@@ -1564,7 +1564,7 @@ body {
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 360px) {
   .compact\:mt-\[64px\] {
     margin-top: 64px;
   }
