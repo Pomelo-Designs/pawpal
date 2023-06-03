@@ -22,7 +22,7 @@ export default function NavCard({ image, cols, title, description, handleClick, 
       </div>
       {description ?
         <div className="flex flex-col">
-          <h6 className="text-2xl">{title}</h6>
+          <h6 className="text-xl">{title}</h6>
           <div className="flex flex-row items-center justify-between">
             <p className="text-base w-48 mt-1.5 whitespace-pre-line">{description}</p>
             <ArrowButton />

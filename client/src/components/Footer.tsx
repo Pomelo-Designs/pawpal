@@ -33,7 +33,7 @@ export default function Footer() {
 }
 
 const Social = () => (
-  <div className="flex flex-row h-7 w-40 items-center justify-evenly rounded-full bg-pink-300">
+  <div className="flex flex-row h-7 w-40 items-center justify-evenly">
     <Twitter
       style={{ height: "16px", width: "16px" }}
       fill="#362F2C"

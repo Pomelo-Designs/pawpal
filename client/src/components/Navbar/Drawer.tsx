@@ -2,7 +2,6 @@ import { Ease } from "../../animations/Animations";
 import { useState } from "react";
 import { Background } from "./Background";
 import { Icon } from "./Icon";
-import React from "react";
 
 type DrawerProps = {
   array?: any,

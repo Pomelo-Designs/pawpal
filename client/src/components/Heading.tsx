@@ -1,6 +1,12 @@
-export default function Heading({ label }: any) {
+export default function Heading({ label, cols }: any) {
+
+  const useCols = () => {
+    if (cols) return cols;
+    else return "col-span-full";
+  }
+
   return (
-    <h3 className="col-span-full font-karla whitespace-pre-line text-4xl p-12 pt-0 pl-0">{label}</h3>
+    <h3 className={`${useCols()} font-karla whitespace-pre-line text-4xl p-12 pt-0 pl-0`}>{label}</h3>
   )
 };
 

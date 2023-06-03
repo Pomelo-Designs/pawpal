@@ -8,6 +8,7 @@ html[data-mode="dark"] {
 
 body {
   margin: 0;
+  background-color: #FFF8F6;
   font-family: 'Roboto';
   font-weight: 400;
   -webkit-font-smoothing: antialiased;

@@ -19,24 +19,29 @@ import HeroAbout from "../assets/heros/about.png";
 import HeroEducation from "../assets/heros/education.png";
 import HeroServices from "../assets/heros/services.png";
 
+
+// new heros
+import HeroHome2 from "../assets/new-heros/home.svg";
+import HeroPets2 from "../assets/new-heros/pets.svg";
+
 export const routes = [
   {
     route: '/',
     label: 'home',
     icon: 'home',
-    gradient: GradientPink,
-    image: HeroHome,
+    // gradient: GradientPink,
+    image: HeroHome2,
     heading: `PawPal\nAdoption Center`,
     description: `Welcome to our Adoption Center!\n We are dedicated to providing a safe and loving environment for animals in need and finding them their forever homes.`,
     button: { label: 'See our pets', path: '/pets' },
     subnav: []
   },
   {
-    route: '/#pets',
+    route: '/pets',
     label: 'pets',
     icon: 'sound_detection_dog_barking',
-    gradient: GradientOrange,
-    image: HeroPets,
+    // gradient: GradientOrange,
+    image: HeroPets2,
     heading: `Our pets`,
     description: `At PawPal Adoption Center, we have a variety of pets available for adoption and foster, including dogs, cats, rabbits, and more. Each pet has their own unique personality and needs, so we work closely with potential adopters to find the perfect match.`,
     button: { label: 'Get a pet', path: '/pets/adoption' },

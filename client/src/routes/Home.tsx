@@ -12,15 +12,20 @@ export default function Home() {
   return (
     <>
       <Component.Section cols="grid-cols-11" start="col-start-2">
-        <Component.Heading label="Adoption & Foster" />
-        <p className="col-span-4 text-sm w-[360px] p-6 pl-0">
-          At our Adoption Center, we offer a wide range of adoption options to suit every lifestyle and preference. Whether you're looking for a furry friend to join your family or a companion for your existing pet, we have a variety of animals to choose from, including cats, dogs, rabbits, and more!
-        </p>
+        <div className="col-span-full grid grid-cols-11">
+          <Component.Heading label="Adoption & Foster" cols="col-span-4" />
+          <p className="col-span-4 text-sm w-[360px]">
+            At our Adoption Center, we offer a wide range of adoption options to suit every lifestyle and preference. Whether you're looking for a furry friend to join your family or a companion for your existing pet, we have a variety of animals to choose from, including cats, dogs, rabbits, and more!
+          </p>
+        </div>
+      </Component.Section>
+      <Component.Section cols="grid-cols-11" start="col-start-2">
         <Component.NavCard
           title={"Adopt"}
           description="give a permanent home to an animal in need"
           image={Adopt}
           classname="h-[312px]"
+          cols="col-span-3"
         />
         <div />
         <Component.NavCard
@@ -28,6 +33,7 @@ export default function Home() {
           description="provide a temporary home to an animal in need"
           image={Foster}
           classname="h-[312px]"
+          cols="col-span-3"
         />
         <div />
         <Component.NavCard
@@ -35,6 +41,7 @@ export default function Home() {
           description="provide a barn/farm for a cat pest control expert"
           image={Hire}
           classname="h-[312px]"
+          cols="col-span-3"
         />
       </Component.Section>
       <Component.Section cols="grid-cols-11" start="col-start-2">

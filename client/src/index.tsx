@@ -19,7 +19,7 @@ const router = createHashRouter([
         element: <Route.Home />,
       },
       {
-        path: "/#pets",
+        path: "pets",
         element: <Route.Pets />,
         children: [
           {

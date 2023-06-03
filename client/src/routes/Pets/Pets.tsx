@@ -1,5 +1,14 @@
 import { useRoutePath } from "../../hooks/useRoutePath";
 import * as Component from "../../components/Components";
+// assets
+import Cats from "../../assets/pets-page/cats.png";
+import Dogs from "../../assets/pets-page/dogs.png";
+import Rodents from "../../assets/pets-page/rodents.png";
+import Birds from "../../assets/pets-page/birds.png";
+import News1 from "../../assets/pets-page/news1.png";
+import News2 from "../../assets/pets-page/news2.png";
+import News3 from "../../assets/pets-page/news3.png";
+import News4 from "../../assets/pets-page/news4.png";
 
 export default function Pets() {
   return useRoutePath({
@@ -8,10 +17,10 @@ export default function Pets() {
       <>
         <Component.Section start="col-start-5">
           <Component.Heading label={`About adoption\nand foster programs`} />
-          <p className="text-sm w-[360px] p-6 pl-0">
+          <p className="text-sm w-[360px]">
             At PawPal, we believe that every animal deserves a loving and permanent home. Our pet adoption and foster care services provide a safe and comfortable environment for animals in need. Adopting a pet not only brings joy to your life but also saves a life.
           </p>
-          <p className="col-start-6 text-sm w-[360px] p-6 pl-0">
+          <p className="col-start-6 text-sm w-[360px]">
             Our adoption process is easy and efficient, ensuring that you find the perfect furry companion for your home. We also offer a foster care and working cats programs for those who want to make a difference in an animal's life but are not ready for a full-time commitment. By fostering, you provide a temporary home for an animal in need, helping them to socialize and prepare for their forever home. Contact us today to learn more about our adoption and foster care programs.
           </p>
         </Component.Section>
@@ -19,47 +28,51 @@ export default function Pets() {
           <Component.Heading label="Available pets" />
           <Component.NavCard
             title={"Dogs"}
-            image="bg-pets-dogs h-[201px]"
+            image={Dogs}
+            classname="h-[201px]"
             cols="col-span-2"
           />
           <Component.NavCard
             title={"Cats"}
-            image="bg-pets-cats h-[201px]"
+            image={Cats}
+            classname="h-[201px]"
             cols="col-span-2"
           />
           <Component.NavCard
             title={"Rodents"}
-            image="bg-pets-rodents h-[201px]"
+            image={Rodents}
+            classname="h-[201px]"
             cols="col-span-2"
           />
           <Component.NavCard
             title={"Birds"}
-            image="bg-pets-birds h-[201px]"
+            image={Birds}
+            classname="h-[201px]"
             cols="col-span-2"
           />
         </Component.Section>
         <Component.Section start="col-start-5">
           <Component.Heading label="Success stories" />
           <Component.Card
-            image="bg-pets-news1"
+            image={News1}
             title={`Finding Love at the Center: Noodle's Success Story`}
             description={"Local senior dog Noodle met her forever family last Monday"}
             cols="col-span-4"
           />
           <Component.Card
-            image="bg-pets-news2"
+            image={News2}
             title={"A Happy Ending for a Rescued Bird Anthony"}
             description={"One Family's Journey to Adopting a Feathered Friend"}
             cols="col-span-4"
           />
           <Component.Card
-            image="bg-pets-news3"
+            image={News3}
             title={"From Stray to Sweetheart"}
             description={"A Cat's Journey to Finding a Loving Home."}
             cols="col-span-4"
           />
           <Component.Card
-            image="bg-pets-news4"
+            image={News4}
             title={"How Pet Adoption Changed My Life"}
             description={"Inspiring Stories from Adoptive Pet Parents."}
             cols="col-span-4"
