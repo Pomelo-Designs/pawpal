@@ -27,7 +27,7 @@ const Compact = ({ show, setShow, data, setData, render, setRender }: any) => {
   };
 
   return (
-    <div className="compact:w-screen medium:w-fit h-14 expanded:hidden 
+    <div className="compact:w-screen medium:hidden h-14 expanded:hidden 
       fixed top-0 left-0 z-10 pt-2">
       <Button show={show} onClick={handleButtonClick} />
       <OutsideClickHandler onOutsideClick={() => setShow(false)}>
@@ -109,7 +109,7 @@ const Default = ({ show, setShow, data, setData, render, setRender }: any) => {
 
   return (
     <div
-      className="compact:hidden medium:hidden expanded:flex 
+      className="compact:hidden medium:flex expanded:flex 
         fixed top-0 left-0 h-screen w-fit z-20 flex flex-row"
       onMouseLeave={() => setShow(false)}
     >

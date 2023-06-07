@@ -17,7 +17,7 @@ export default function NavCard({ image, cols, title, description, handleClick, 
       onClick={handleClick}>
       <div className={classname}>
         {image &&
-          <img src={image} className={`w-full bg-center bg-no-repeat m-0 mb-6 rounded-xl`} />
+          <img src={image} className={`bg-center bg-auto bg-no-repeat m-0 mb-6 rounded-xl`} />
         }
       </div>
       {description ?

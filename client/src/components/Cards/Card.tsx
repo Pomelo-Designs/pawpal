@@ -11,7 +11,7 @@ interface CardProps {
 export default function Card({ image, title, description, cols, handleClick }: CardProps) {
 
   return (
-    <div className={` ${cols} cursor-pointer rounded-xl border-[1px] leading-none inline-block`}
+    <div className={` ${cols} cursor-pointer rounded-xl border-[1px] leading-none inline-block bg-transparent hover:bg-[#FFDBCC]`}
       onClick={handleClick}
     >
       {image && <img src={image} className={`w-full h-[192px] bg-cover bg-no-repeat bg-center m-0 rounded-t-xl`} />

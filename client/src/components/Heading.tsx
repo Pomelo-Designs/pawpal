@@ -6,7 +6,7 @@ export default function Heading({ label, cols }: any) {
   }
 
   return (
-    <h3 className={`${useCols()} font-karla whitespace-pre-line text-4xl p-12 pt-0 pl-0`}>{label}</h3>
+    <h3 className={`${useCols()} font-karla whitespace-pre-line text-4xl p-12 pt-0 px-0`}>{label}</h3>
   )
 };
 

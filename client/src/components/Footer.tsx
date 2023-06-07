@@ -9,7 +9,7 @@ import { ReactComponent as LinkedIn } from "../assets/icons/LinkedIn.svg";
 export default function Footer() {
 
   return (
-    <div className="grid col-start-3 grid-cols-10 col-span-full gap-5 
+    <div className="grid medium:grid-cols-12 expanded:col-start-3 expanded:grid-cols-10 col-span-full gap-5 
       items-center justify-center 
       h-[72px] text-xs">
       <div className="flex col-span-full flex-row items-center justify-between">

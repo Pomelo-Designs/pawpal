@@ -10,10 +10,10 @@ module.exports = {
       'expanded': '1440px',
       // => @media (min-width: 1023px) { ... }
 
-      'medium': { 'max': '1280px' },
+      'medium': '1280px',
       // => @media (max-width: 767px) { ... }
 
-      'compact': { 'max': '360px' },
+      'compact': '360px',
       // => @media (max-width: 639px) { ... }
     },
     fontFamily: {

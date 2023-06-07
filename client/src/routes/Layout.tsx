@@ -78,13 +78,30 @@ export default function Layout() {
 
 const Page = ({ data }: any) => {
   return (
-    <div className="grid justify-items-stretch w-full top-0 compact:mt-[64px] medium:mt-[64px] expanded:ml-[72px] z-0">
+    <div className="grid justify-items-stretch w-full top-0 compact:mt-[64px] medium:mt-0 expanded:mt-0 expanded:ml-[72px] z-0">
       <Ease key="page" y={10}>
-        <div className="justify-self-center grid w-[1130px] grid-cols-12 gap-2 gap-y-12">
-          {data.complete !== false && <Component.Hero data={data} />}
-          <Outlet />
-          <div className="col-start-4 col-span-10">
-            <Component.Footer />
+        <div className="flex 
+        expanded:ml-0 expanded:w-full expanded:mb-10
+        medium:ml-[73px] medium:w-[calc(100%-73px)] medium:mb-10">
+          <div className="grid 
+          expanded:grid-cols-12
+          medium:grid-cols-12
+          compact:grid-cols-4
+          gap-2 gap-y-12">
+            {data.complete !== false && <Component.Hero data={data} />}
+          </div>
+        </div>
+        <div className="flex justify-center medium:ml-[73px] medium:w-[calc(100%-146px)]">
+          <div className="justify-self-center grid 
+            expanded:w-[1360px] expanded:grid-cols-12 
+            medium:w-[880px] medium:grid-cols-12 
+            compact:grid-cols-4 
+            gap-2 gap-y-12">
+
+            <Outlet />
+            <div className="medium:col-span-12 expanded:col-start-3 expanded:col-span-10">
+              <Component.Footer />
+            </div>
           </div>
         </div>
       </Ease>

@@ -18,8 +18,8 @@ export default function Hero({ data }: HeroProps) {
   const navigate = useNavigate();
 
   return (
-    <section className="flex items-stretch col-span-full h-[641px] relative items-center justify-center grow rounded-2xl">
-      <img src={data.image} className="absolute right-0 top-0 bg-cover bg-no-repeat bg-right z-0" />
+    <section className="flex items-stretch col-span-full expanded:h-[632px] medium:h-[632px] compact:h-[344px] relative items-center justify-center grow rounded-2xl">
+      <img src={data.image} className="absolute left-0 right-0 top-0 bg-cover bg-no-repeat bg-right z-0" />
       <div className="self-center grid grid-cols-12 gap-5 col-span-full z-10">
         <h1 className="col-start-4 col-span-8 font-karla text-8xl leading-[72px] capitalize mb-7 whitespace-pre-line break-all">
           {data.heading}
